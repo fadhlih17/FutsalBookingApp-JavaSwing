@@ -43,15 +43,9 @@ public class AppDbContext {
     }
     public void closeResources(ResultSet resultSet, Statement statement, Connection connection) {
         try {
-            if (resultSet != null) {
-                resultSet.close();
-            }
-            if (statement != null) {
-                statement.close();
-            }
-            if (connection != null) {
-                connection.close();
-            }
+            resultSet.close();
+            statement.close();
+            connection.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

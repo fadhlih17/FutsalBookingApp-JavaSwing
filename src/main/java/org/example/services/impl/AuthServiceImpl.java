@@ -8,12 +8,13 @@ import org.example.repositories.AdminRepository;
 import org.example.repositories.PersonaliaRepository;
 import org.example.repositories.UserRepository;
 import org.example.services.AuthService;
+import org.example.services.EmployeeService;
 import org.example.services.OwnerWalletService;
 import org.example.services.UserWalletService;
 import org.mindrot.jbcrypt.BCrypt;
 
 import javax.swing.*;
-import java.util.UUID;
+import java.util.*;
 
 public class AuthServiceImpl implements AuthService {
     UserRepository userRepository;
@@ -21,13 +22,15 @@ public class AuthServiceImpl implements AuthService {
     PersonaliaRepository personaliaRepository;
     UserWalletService userWalletService;
     OwnerWalletService ownerWalletService;
+    EmployeeService employeeService;
 
-    public AuthServiceImpl(UserRepository userRepository, AdminRepository adminRepository, UserWalletService userWalletService, OwnerWalletService ownerWalletService, PersonaliaRepository personaliaRepository) {
+    public AuthServiceImpl(UserRepository userRepository, AdminRepository adminRepository, UserWalletService userWalletService, OwnerWalletService ownerWalletService, PersonaliaRepository personaliaRepository, EmployeeService employeeService) {
         this.userRepository = userRepository;
         this.adminRepository = adminRepository;
         this.userWalletService = userWalletService;
         this.ownerWalletService = ownerWalletService;
         this.personaliaRepository = personaliaRepository;
+        this.employeeService = employeeService;
     }
 
     private User loadEmailUser(String emailInput) {
@@ -54,11 +57,11 @@ public class AuthServiceImpl implements AuthService {
         return user;
     }
 
-    private Admin loadUsernameAdmin(String usernameInput) {
-        Admin admin = adminRepository.findAdminByUsername(usernameInput);
+    private Admin loadUsernameAdmin(String employeeId) {
+        Admin admin = adminRepository.findAdminByEmployeeId(employeeId);
 
         if (admin == null) try {
-            throw new UnauthorizedException("Username atau password salah, pastikan akun sudah terdaftar. Hubungi personalia untuk mendaftar");
+            throw new UnauthorizedException("Username atau password salah. Hubungi personalia jika ada masalah login");
         } catch (UnauthorizedException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
             throw new RuntimeException(e);
@@ -68,7 +71,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     private Admin loadRegisterUsernameAdmin(String usernameInput){
-        Admin admin = adminRepository.findAdminByUsername(usernameInput);
+        Admin admin = adminRepository.findAdminByEmployeeId(usernameInput);
 
         if (admin != null) try {
             throw new UnauthorizedException("Registrasi gagal, admin sudah terdaftar !");
@@ -82,7 +85,7 @@ public class AuthServiceImpl implements AuthService {
     public String registerAdmin(Admin request){
         loadRegisterUsernameAdmin(request.getUsername());
         request.setId(UUID.randomUUID().toString());
-        Admin admin = new Admin(request.getId(), request.getUsername(), BCrypt.hashpw(request.getPassword(), BCrypt.gensalt()));
+        Admin admin = new Admin(request.getId(), request.getUsername(), request.getPassword(), request.getEmployee_id());
         Admin saveAdmin = adminRepository.createAdmin(admin);
         OwnerWallet ownerWallet = ownerWalletService.findOwnerWallet();
 
@@ -96,7 +99,7 @@ public class AuthServiceImpl implements AuthService {
 
     public LoginResponse loginAdmin(LoginRequest request){
         Admin admin = loadUsernameAdmin(request.getUsername());
-        boolean isValid = BCrypt.checkpw(request.getPassword(), admin.getPassword());
+        boolean isValid = request.getPassword().equals(admin.getPassword());
 
         if (!isValid){
             try {
@@ -163,5 +166,20 @@ public class AuthServiceImpl implements AuthService {
             }
         }
         return new LoginResponse(personalia1.getUsername(), "personalia");
+    }
+
+    public List<Admin> findAllAdmin(){
+        return adminRepository.findAllAdmin();
+    }
+    public Map<String, String> findEmployeeWhereAdmin(){
+        Map<String, String> employeeMap = new HashMap<>();
+        List<Employee> employees = employeeService.findEmployeeWhereAdmin();
+
+        for (Employee employee : employees) {
+            employeeMap.put(employee.getName(), employee.getId());
+        }
+
+        return employeeMap;
+        //return employeeService.findEmployeeWhereAdmin();
     }
 }

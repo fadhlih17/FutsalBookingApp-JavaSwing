@@ -9,4 +9,5 @@ public interface ItemRepository {
     boolean updateItem(Item item);
     List<Item> findAllItem();
     boolean deleteItem(String name);
+    Item findItemByName(String name);
 }

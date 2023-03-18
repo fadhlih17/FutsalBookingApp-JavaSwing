@@ -68,6 +68,29 @@ public class ItemRepositoryImpl implements ItemRepository {
         return items;
     }
 
+    public Item findItemByName(String name){
+        String query = "select * from item where name = '"+name+"'";
+        ResultSet resultSet = null;
+        Item item = null;
+        try{
+            context.getStatement().executeQuery(query);
+            resultSet = context.setResultSet(context.getStatement().executeQuery(query));
+            while (resultSet.next()){
+                String id = resultSet.getString("id");
+                String nameItem = resultSet.getString("name");
+                int total = Integer.parseInt(resultSet.getString("total"));
+                String unit = resultSet.getString("unit");
+                item = new Item(id, nameItem, unit, total);
+            }
+        } catch (Exception e){
+            error(e);
+            throw new RuntimeException(e);
+        } finally {
+            context.closeResources(resultSet, context.getStatement(), context.getConnection());
+        }
+        return item;
+    }
+
     public boolean deleteItem(String name){
         String query = "delete from item wher name = '"+name+"'";
         try {

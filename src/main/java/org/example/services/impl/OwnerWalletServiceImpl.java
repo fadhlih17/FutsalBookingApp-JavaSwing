@@ -21,13 +21,6 @@ public class OwnerWalletServiceImpl implements OwnerWalletService {
 
     public OwnerWallet findOwnerWallet(){
         OwnerWallet find = repository.findOwnerWallet();
-        if (find == null){
-            try {
-                throw new NotFoundException("Wallet not found");
-            } catch (NotFoundException e) {
-                throw new RuntimeException(e);
-            }
-        }
         return find;
     }
 

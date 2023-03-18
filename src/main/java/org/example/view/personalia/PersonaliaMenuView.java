@@ -27,6 +27,9 @@ public class PersonaliaMenuView extends javax.swing.JFrame {
     private void initComponents() {
 
         btnLogout = new javax.swing.JButton();
+        btnAdminRegistrasi = new javax.swing.JButton();
+        btnInputEmployee = new javax.swing.JButton();
+        btnReadEmployee = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -37,21 +40,55 @@ public class PersonaliaMenuView extends javax.swing.JFrame {
             }
         });
 
+        btnAdminRegistrasi.setText("Buat Akun Admin");
+        btnAdminRegistrasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdminRegistrasiActionPerformed(evt);
+            }
+        });
+
+        btnInputEmployee.setText("Input Data Karyawan");
+        btnInputEmployee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInputEmployeeActionPerformed(evt);
+            }
+        });
+
+        btnReadEmployee.setText("Lihat Data Karyawan");
+        btnReadEmployee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReadEmployeeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(155, 155, 155)
-                .addComponent(btnLogout)
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnLogout)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnAdminRegistrasi, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnInputEmployee))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnReadEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(138, 138, 138)
+                .addContainerGap()
                 .addComponent(btnLogout)
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAdminRegistrasi, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReadEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnInputEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         pack();
@@ -62,6 +99,24 @@ public class PersonaliaMenuView extends javax.swing.JFrame {
         this.setVisible(false);
         new LoginPersonalia().setVisible(true);
     }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnAdminRegistrasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminRegistrasiActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new RegisterAdminView().setVisible(true);
+    }//GEN-LAST:event_btnAdminRegistrasiActionPerformed
+
+    private void btnReadEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadEmployeeActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new ReportEmployeeView().setVisible(true);
+    }//GEN-LAST:event_btnReadEmployeeActionPerformed
+
+    private void btnInputEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInputEmployeeActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new InputEmployeeData().setVisible(true);
+    }//GEN-LAST:event_btnInputEmployeeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -99,6 +154,9 @@ public class PersonaliaMenuView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdminRegistrasi;
+    private javax.swing.JButton btnInputEmployee;
     private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnReadEmployee;
     // End of variables declaration//GEN-END:variables
 }

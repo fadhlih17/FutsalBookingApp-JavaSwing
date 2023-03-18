@@ -29,7 +29,7 @@ create table user_wallet
 
 create table owner_wallet
 (
-    id      varchar(30) null,
+    id      varchar(36) null,
     balance bigint      null,
     constraint owner_wallet_pk
         primary key (id)
@@ -45,6 +45,47 @@ create table personalia
 );
 
 insert into personalia values (1, 'personalia', 'personalia123')
+
+create table item
+(
+    id    varchar(36) not null,
+    name  varchar(50) not null,
+    total int         null,
+    unit  varchar(50) not null
+);
+
+create table item_transaction
+(
+    id          varchar(36)  not null,
+    time        datetime     not null,
+    information varchar(100) not null,
+    constraint item_transaction_pk
+        primary key (id)
+);
+
+create table employee
+(
+    id          varchar(36)  not null,
+    name        varchar(100) not null,
+    address     varchar(100) not null,
+    birthdate   date         null,
+    phonenumber varchar(14)  not null,
+    position    int          null,
+    constraint employee_pk
+        primary key (id),
+    constraint employee_pk2
+        unique (phonenumber)
+);
+
+alter table admin
+    add employee_id varchar(36) null;
+
+alter table admin
+    add constraint admin_employee_id_fk
+        foreign key (employee_id) references employee (id);
+
+alter table employee
+    modify position varchar(50) null;
 
 
 password : 
