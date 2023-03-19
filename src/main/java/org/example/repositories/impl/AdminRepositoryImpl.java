@@ -30,9 +30,8 @@ public class AdminRepositoryImpl implements AdminRepository {
             context.getStatement().executeUpdate(query);
         } catch (Exception e){
             error(e);
-            throw new RuntimeException(e.getMessage());
         } finally {
-            context.closeResources(context.getResultSet(), context.getStatement(), context.getConnection());
+            context.closeResources();
         }
         return admin;
     }
@@ -53,21 +52,21 @@ public class AdminRepositoryImpl implements AdminRepository {
         } catch (Exception e){
             error(e);
         } finally {
-            context.closeResources(resultSet, context.getStatement(), context.getConnection());
+            context.closeResources();
         }
         return admin;
     }
 
     public List<Admin> findAllAdmin(){
         List<Admin> admins = new ArrayList<>();
-        String query = "select a.id, a.username, a.password, e.name\n" +
+        String query = "select a.id, a.username, a.password, e.name, e.id as employee_id\n" +
                 "from admin a\n" +
                 "join employee e on e.id = a.employee_id";
         ResultSet resultSet = null;
         try{
             resultSet = context.setResultSet(context.getStatement().executeQuery(query));
             while (resultSet.next()){
-                String id = resultSet.getString("id");
+                String id = resultSet.getString("employee_id");
                 String username = resultSet.getString("username");
                 String password = resultSet.getString("password");
                 String employeeId = resultSet.getString("name");
@@ -75,10 +74,33 @@ public class AdminRepositoryImpl implements AdminRepository {
             }
         } catch (Exception e){
             error(e);
-            throw new RuntimeException(e.getMessage());
         } finally {
-            context.closeResources(resultSet, context.getStatement(), context.getConnection());
+            context.closeResources();
         }
         return admins;
+    }
+
+    public boolean deleteAdminAccount(String username){
+        String query = "delete from admin where username = '"+username+"'";
+        try{
+            context.getStatement().executeUpdate(query);
+        } catch (Exception e){
+            error(e);
+        } finally {
+            context.closeResources();
+        }
+        return true;
+    }
+
+    public boolean deleteAdminAccountByEmployeeId(String employeeId){
+        String query = "delete from admin where employee_id = '"+employeeId+"'";
+        try{
+            context.getStatement().executeUpdate(query);
+        } catch (Exception e){
+            error(e);
+        } finally {
+            context.closeResources();
+        }
+        return true;
     }
 }

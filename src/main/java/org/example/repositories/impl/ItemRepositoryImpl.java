@@ -27,7 +27,7 @@ public class ItemRepositoryImpl implements ItemRepository {
             error(e);
             throw new RuntimeException(e);
         } finally {
-            context.closeResources(context.getResultSet(), context.getStatement(), context.getConnection());
+            context.closeResources();
         }
         return item;
     }
@@ -40,7 +40,7 @@ public class ItemRepositoryImpl implements ItemRepository {
             error(e);
             throw new RuntimeException(e);
         } finally {
-            context.closeResources(context.getResultSet(), context.getStatement(), context.getConnection());
+            context.closeResources();
         }
         return true;
     }
@@ -63,7 +63,7 @@ public class ItemRepositoryImpl implements ItemRepository {
             error(e);
             throw new RuntimeException(e);
         } finally {
-            context.closeResources(resultSet, context.getStatement(), context.getConnection());
+            context.closeResources();
         }
         return items;
     }
@@ -86,7 +86,7 @@ public class ItemRepositoryImpl implements ItemRepository {
             error(e);
             throw new RuntimeException(e);
         } finally {
-            context.closeResources(resultSet, context.getStatement(), context.getConnection());
+            context.closeResources();
         }
         return item;
     }
@@ -99,7 +99,7 @@ public class ItemRepositoryImpl implements ItemRepository {
             error(e);
             throw new RuntimeException(e);
         } finally {
-            context.closeResources(context.getResultSet(), context.getStatement(), context.getConnection());
+            context.closeResources();
         }
         return true;
     }

@@ -19,7 +19,7 @@ public class EmployeeController {
         return employeeService.findAllEmployee();
     }
 
-    public Employee updateEmployee(Employee employee){
+    public boolean updateEmployee(Employee employee){
         return employeeService.updateEmployee(employee);
     }
 

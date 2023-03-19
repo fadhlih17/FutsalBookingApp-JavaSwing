@@ -4,8 +4,10 @@
  */
 package org.example.view.personalia;
 
+import org.example.controllers.AdminController;
 import org.example.controllers.AuthController;
 import org.example.controllers.EmployeeController;
+import org.example.dependencyInjection.AdminControllerFactory;
 import org.example.dependencyInjection.AuthControllerFactory;
 import org.example.dependencyInjection.EmployeeControllerFactory;
 import org.example.models.Admin;
@@ -26,9 +28,9 @@ import java.util.Set;
 public class RegisterAdminView extends javax.swing.JFrame {
 
     AuthControllerFactory authControllerFactory = new AuthControllerFactory();
-    EmployeeControllerFactory employeeControllerFactory = new EmployeeControllerFactory();
+    AdminControllerFactory adminControllerFactory = new AdminControllerFactory();
     AuthController controller = authControllerFactory.create();
-    EmployeeController employeeController = employeeControllerFactory.controller();
+    AdminController adminController = adminControllerFactory.controller();
 
     /**
      * Creates new form RegisterAdminView
@@ -59,6 +61,8 @@ public class RegisterAdminView extends javax.swing.JFrame {
         cmbName = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAdmin = new javax.swing.JTable();
+        btnRefresh = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,8 +84,6 @@ public class RegisterAdminView extends javax.swing.JFrame {
             }
         });
 
-        btnCancel.setBackground(new java.awt.Color(255, 51, 51));
-        btnCancel.setForeground(new java.awt.Color(255, 255, 255));
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,8 +110,31 @@ public class RegisterAdminView extends javax.swing.JFrame {
                 "Id", "Nama Admin", "Username", "Password"
             }
         ));
+        tblAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblAdminMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblAdmin);
-        //custom
+
+        btnRefresh.setBackground(new java.awt.Color(0, 153, 51));
+        btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
+        btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
+
+        btnDelete.setBackground(new java.awt.Color(255, 0, 0));
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
+        btnDelete.setText("Hapus");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+        // custom
         fillComboBox();
         readTable();
 
@@ -118,40 +143,47 @@ public class RegisterAdminView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(56, 56, 56))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(btnRefresh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnRegister, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                                    .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(12, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5)
                             .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnRegister, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtUsername)
                             .addComponent(txtPassword)
                             .addComponent(txtConfirmPassword)
-                            .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cmbName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(56, 56, 56)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                            .addComponent(cmbName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(16, 16, 16)
+                .addComponent(jLabel1)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel1)
-                        .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(cmbName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -168,36 +200,24 @@ public class RegisterAdminView extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(txtConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(btnRegister)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCancel)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnRegister)
+                            .addComponent(btnRefresh))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnDelete)
+                            .addComponent(btnCancel)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-//    public String fillComboBox(){
-//        Map<String, String> employeeMap = controller.findEmployeeWhereAdmin();
-//        Set<String> employeeNames = employeeMap.keySet();
-//        //JComboBox<String> employeeComboBox = new JComboBox<>(employeeNames.toArray(new String[0]));
-//        // Buat sebuah DefaultComboBoxModel
-//        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>();
-//
-//        // Tambahkan elemen-elemen dari ArrayList ke dalam model ComboBox
-//        for (String data : employeeNames) {
-//            model.addElement(data);
-//        }
-//
-//        // Set model ComboBox ke DefaultComboBoxModel yang telah dibuat
-//        cmbName = new JComboBox<String>(model);
-//        String selectedName = (String) cmbName.getSelectedItem();
-//        return employeeMap.get(selectedName);
-//    }
     public void readTable(){
         DefaultTableModel model = (DefaultTableModel) tblAdmin.getModel();
         int x = 0;
-        List<Admin> admins = controller.findAllAdmin();
+        List<Admin> admins = adminController.findAllAdmin();
         for (Admin admin : admins) {
             model.setValueAt(admin.getId(), x, 0);
             model.setValueAt(admin.getEmployee_id(), x, 1);
@@ -207,7 +227,8 @@ public class RegisterAdminView extends javax.swing.JFrame {
         }
     }
     public void fillComboBox() {
-        Map<String, String> employeeMap = controller.findEmployeeWhereAdmin();
+        Map<String, String> employeeMap = adminController.findEmployeeWhereAdmin();
+        cmbName.addItem("Pilih Admin");
         for (String name : employeeMap.keySet()) {
             cmbName.addItem(name);
         }
@@ -215,7 +236,7 @@ public class RegisterAdminView extends javax.swing.JFrame {
 
     public String getCmbSelectedEmployeeId() {
         String selectedName = (String) cmbName.getSelectedItem();
-        Map<String, String> employeeMap = controller.findEmployeeWhereAdmin();
+        Map<String, String> employeeMap = adminController.findEmployeeWhereAdmin();
         return employeeMap.get(selectedName);
     }
 
@@ -266,6 +287,25 @@ public class RegisterAdminView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbNameActionPerformed
 
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        adminController.deleteAdminAccount(txtUsername.getText());
+        JOptionPane.showMessageDialog(null, "Akun berhsil di hapus");
+        readTable();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void tblAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAdminMouseClicked
+        // TODO add your handling code here:
+        int row = tblAdmin.getSelectedRow();
+        cmbName.setSelectedItem(tblAdmin.getValueAt(row, 1));
+        txtUsername.setText(tblAdmin.getValueAt(row, 2).toString());
+        txtPassword.setText(tblAdmin.getValueAt(row,3).toString());
+    }//GEN-LAST:event_tblAdminMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -303,6 +343,8 @@ public class RegisterAdminView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnRegister;
     private javax.swing.JComboBox<String> cmbName;
     private javax.swing.JLabel jLabel1;

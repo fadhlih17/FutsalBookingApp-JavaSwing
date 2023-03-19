@@ -23,7 +23,7 @@ public class AuthControllerFactory {
     private EmployeeRepository employeeRepository = new EmployeeRepositoryImpl(context);
     private OwnerWalletService ownerWalletService = new OwnerWalletServiceImpl(ownerWalletRepository);
     private UserWalletService userWalletService = new UserWalletServiceImpl(userWalletRepository, ownerWalletService);
-    private EmployeeService employeeService = new EmployeeServiceImpl(employeeRepository);
+    private EmployeeService employeeService = new EmployeeServiceImpl(employeeRepository, adminRepository);
     private AuthService authService = new AuthServiceImpl(userRepository, adminRepository, userWalletService, ownerWalletService, personaliaRepository, employeeService);
 
     public AuthController create() {

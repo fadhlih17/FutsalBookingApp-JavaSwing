@@ -3,15 +3,19 @@ package org.example.services.impl;
 import org.example.exceptions.ErrorException;
 import org.example.exceptions.WarningException;
 import org.example.models.Employee;
+import org.example.repositories.AdminRepository;
 import org.example.repositories.EmployeeRepository;
+import org.example.services.AdminService;
 import org.example.services.EmployeeService;
 
 import java.util.List;
 
 public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeRepository employeeRepository;
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository){
+    private AdminRepository adminRepository;
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository, AdminRepository adminRepository){
         this.employeeRepository = employeeRepository;
+        this.adminRepository = adminRepository;
     }
 
     public Employee createEmployee(Employee request){
@@ -25,15 +29,16 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.createEmployee(request);
     }
 
-    public Employee updateEmployee(Employee employee){
-        if (employeeRepository.findAllEmployeeById(employee.getId()) == null){
+    public boolean updateEmployee(Employee employee){
+        Employee emp = employeeRepository.findAllEmployeeById(employee.getId());
+        if ( emp == null){
             try {
                 throw new WarningException("Gagal merubah data karyawan, id tidak ditemukan !");
             } catch (WarningException e) {
                 throw new RuntimeException(e);
             }
         }
-        return updateEmployee(employee);
+        return employeeRepository.updateEmployee(employee);
     }
 
     public List<Employee> findAllEmployee(){
@@ -48,6 +53,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                 throw new RuntimeException(e);
             }
         }
+        adminRepository.deleteAdminAccountByEmployeeId(id);
         return employeeRepository.deleteEmployee(id);
     }
 

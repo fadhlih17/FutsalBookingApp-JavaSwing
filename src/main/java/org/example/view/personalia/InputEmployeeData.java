@@ -255,6 +255,7 @@ public class InputEmployeeData extends javax.swing.JFrame {
             }
         });
 
+        readTable();
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -413,7 +414,7 @@ public class InputEmployeeData extends javax.swing.JFrame {
 
         Employee employee = new Employee(id, name, address, phoneNumber, position, birthDateString);
         controller.updateEmployee(employee);
-        JOptionPane.showMessageDialog(this, "Berhasil membuat data karyawan baru");
+        JOptionPane.showMessageDialog(this, "Berhasil update data karyawan");
         readTable();
     }//GEN-LAST:event_btnEditActionPerformed
 

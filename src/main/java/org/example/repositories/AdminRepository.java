@@ -8,4 +8,6 @@ public interface AdminRepository {
     Admin createAdmin(Admin admin);
     Admin findAdminByEmployeeId(String usernameInput);
     List<Admin> findAllAdmin();
+    boolean deleteAdminAccount(String username);
+    boolean deleteAdminAccountByEmployeeId(String employeeId);
 }

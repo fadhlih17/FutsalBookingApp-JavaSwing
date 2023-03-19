@@ -1,6 +1,6 @@
 package org.example.dependencyInjection;
 
-import org.example.controllers.EmployeeController;
+import org.example.controllers.AdminController;
 import org.example.database.AppDbContext;
 import org.example.repositories.AdminRepository;
 import org.example.repositories.EmployeeRepository;
@@ -11,12 +11,13 @@ import org.example.services.EmployeeService;
 import org.example.services.impl.AdminServiceImpl;
 import org.example.services.impl.EmployeeServiceImpl;
 
-public class EmployeeControllerFactory {
+public class AdminControllerFactory {
     private AppDbContext context = new AppDbContext();
-    private EmployeeRepository repository = new EmployeeRepositoryImpl(context);
     private AdminRepository adminRepository = new AdminRepositoryImpl(context);
-    private EmployeeService employeeService = new EmployeeServiceImpl(repository, adminRepository);
-    public EmployeeController controller (){
-        return new EmployeeController(employeeService);
+    private EmployeeRepository employeeRepository = new EmployeeRepositoryImpl(context);
+    private EmployeeService employeeService = new EmployeeServiceImpl(employeeRepository, adminRepository);
+    private AdminService adminService = new AdminServiceImpl(adminRepository, employeeService);
+    public AdminController controller(){
+        return new AdminController(adminService);
     }
 }

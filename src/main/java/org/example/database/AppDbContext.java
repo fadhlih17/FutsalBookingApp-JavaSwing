@@ -41,13 +41,13 @@ public class AppDbContext {
         }
         return statement;
     }
-    public void closeResources(ResultSet resultSet, Statement statement, Connection connection) {
+    public void closeResources() {
         try {
-            resultSet.close();
-            statement.close();
-            connection.close();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+            getResultSet().close();
+            getStatement().close();
+            getConnection().close();
+        } catch (Exception e){
+            System.out.println(e);
         }
     }
 }

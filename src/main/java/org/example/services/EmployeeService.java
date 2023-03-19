@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface EmployeeService {
     Employee createEmployee(Employee request);
-    Employee updateEmployee(Employee employee);
+    boolean updateEmployee(Employee employee);
     List<Employee> findAllEmployee();
     boolean deleteEmployee(String id);
     List<Employee> findByName(String name);

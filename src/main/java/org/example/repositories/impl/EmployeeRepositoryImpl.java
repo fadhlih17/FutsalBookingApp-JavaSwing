@@ -33,7 +33,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
             error(e);
             throw new RuntimeException(e);
         } finally {
-            context.closeResources(context.getResultSet(), context.getStatement(), context.getConnection());
+            context.closeResources();
         }
         return employee;
     }
@@ -46,7 +46,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         } catch (Exception e){
             error(e);
         } finally {
-            context.closeResources(context.getResultSet(), context.getStatement(), context.getConnection());
+            context.closeResources();
         }
         return true;
     }
@@ -58,7 +58,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         } catch (Exception e){
             error(e);
         } finally {
-            context.closeResources(context.getResultSet(), context.getStatement(), context.getConnection());
+            context.closeResources();
         }
         return true;
     }
@@ -82,7 +82,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         } catch (Exception e){
             error(e);
         } finally {
-            context.closeResources(resultSet, context.getStatement(), context.getConnection());
+            context.closeResources();
         }
         return employees;
     }
@@ -105,7 +105,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         } catch (Exception e){
             error(e);
         } finally {
-            context.closeResources(resultSet, context.getStatement(), context.getConnection());
+            context.closeResources();
         }
         return employees;
     }
@@ -128,7 +128,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         } catch (Exception e){
             error(e);
         } finally {
-            context.closeResources(resultSet, context.getStatement(), context.getConnection());
+            context.closeResources();
         }
         return employee;
     }
@@ -150,7 +150,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         } catch (Exception e){
             error(e);
         } finally {
-            context.closeResources(resultSet, context.getStatement(), context.getConnection());
+            context.closeResources();
         }
         return employees;
     }
