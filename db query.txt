@@ -95,6 +95,26 @@ create table venue
         primary key (id)
 );
 
+create table booking
+(
+    id          varchar(36) null,
+    user_id     varchar(36) null,
+    venue_id    varchar(5)  null,
+    dateOrder   datetime    null,
+    dateBooked  date        null,
+    start_time  time        null,
+    end_time    time        null,
+    price       long        null,
+    isConfirmed boolean     null,
+    image       text        null,
+    constraint booking_pk
+        primary key (id),
+    constraint booking_user_id_fk
+        foreign key (user_id) references user (id),
+    constraint booking_venue_id_fk
+        foreign key (venue_id) references venue (id)
+);
+
 insert into personalia values (1, 'personalia', 'personalia123')
 
 
