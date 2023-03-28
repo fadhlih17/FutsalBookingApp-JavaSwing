@@ -28,6 +28,9 @@ public class ReportEmployeeView extends javax.swing.JFrame {
      */
     public ReportEmployeeView() {
         initComponents();
+        // custom action
+        enableFalse();
+        readTable();
     }
 
     /**
@@ -224,14 +227,6 @@ public class ReportEmployeeView extends javax.swing.JFrame {
             }
         });
 
-        // Set
-        txtId.setEnabled(false);
-        txtName.setEnabled(false);
-        txtPhoneNumber.setEnabled(false);
-        txtAddress.setEnabled(false);
-        txtDateOfBirth.setEnabled(false);
-        txtPosition.setEnabled(false);
-        readTable();
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -342,8 +337,17 @@ public class ReportEmployeeView extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void enableFalse(){
+        txtId.setEnabled(false);
+        txtName.setEnabled(false);
+        txtPhoneNumber.setEnabled(false);
+        txtAddress.setEnabled(false);
+        txtDateOfBirth.setEnabled(false);
+        txtPosition.setEnabled(false);
+    }
     public void readTable() {
         DefaultTableModel model = (DefaultTableModel) tblEmployee.getModel();
 

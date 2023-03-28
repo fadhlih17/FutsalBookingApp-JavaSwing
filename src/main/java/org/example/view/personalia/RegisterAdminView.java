@@ -37,6 +37,8 @@ public class RegisterAdminView extends javax.swing.JFrame {
      */
     public RegisterAdminView() {
         initComponents();
+        readTable();
+        fillComboBox();
     }
 
     /**
@@ -134,9 +136,7 @@ public class RegisterAdminView extends javax.swing.JFrame {
                 btnDeleteActionPerformed(evt);
             }
         });
-        // custom
-        fillComboBox();
-        readTable();
+
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -212,12 +212,15 @@ public class RegisterAdminView extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     public void readTable(){
         DefaultTableModel model = (DefaultTableModel) tblAdmin.getModel();
         int x = 0;
         List<Admin> admins = adminController.findAllAdmin();
+
+        model.setRowCount(admins.size());
         for (Admin admin : admins) {
             model.setValueAt(admin.getId(), x, 0);
             model.setValueAt(admin.getEmployee_id(), x, 1);
@@ -289,6 +292,11 @@ public class RegisterAdminView extends javax.swing.JFrame {
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
+        cmbName.setSelectedItem("Pilih Admin");
+        txtUsername.setText("");
+        txtPassword.setText("");
+        txtConfirmPassword.setText("");
+        readTable();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed

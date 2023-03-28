@@ -30,6 +30,7 @@ public class InputEmployeeData extends javax.swing.JFrame {
      */
     public InputEmployeeData() {
         initComponents();
+        readTable();
     }
 
     /**
@@ -255,7 +256,6 @@ public class InputEmployeeData extends javax.swing.JFrame {
             }
         });
 
-        readTable();
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -357,6 +357,7 @@ public class InputEmployeeData extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     public void readTable() {

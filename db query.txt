@@ -1,3 +1,4 @@
+create database futsalDb;
 create table user
 (
     id          varchar(36)  not null primary key ,
@@ -6,14 +7,17 @@ create table user
     phonenumber varchar(14)  not null unique ,
     address     varchar(100) null,
     email       varchar(50)  not null unique ,
-    password    NVARCHAR(255)    not null
+    password    VARCHAR(255)    not null
 );
 
 create table admin
 (
     id          varchar(36)  not null primary key ,
     username    varchar(25)  not null,
-    password    NVARCHAR(255)    not null
+    password    VARCHAR(255)    not null,
+    employee_id Varchar(36) not null,
+    Foreign Key (employee_id) references
+    constraint employee_id_employee_fk foreign key (employee_id) references employee (id)
 );
 
 create table user_wallet
@@ -44,7 +48,7 @@ create table personalia
         primary key (id)
 );
 
-insert into personalia values (1, 'personalia', 'personalia123')
+
 
 create table item
 (
@@ -70,22 +74,28 @@ create table employee
     address     varchar(100) not null,
     birthdate   date         null,
     phonenumber varchar(14)  not null,
-    position    int          null,
+    position    varchar(50)  null,
     constraint employee_pk
         primary key (id),
     constraint employee_pk2
         unique (phonenumber)
 );
 
-alter table admin
-    add employee_id varchar(36) null;
+create table venue
+(
+    id          varchar(36)                          null,
+    name        varchar(50)                          null,
+    description varchar(100)                         null,
+    open        time                                 null,
+    close       time                                 null,
+    price       bigint                               null,
+    category    enum ('Futsal', 'Badminton', 'Voli') null,
+    isActive    boolean,
+    constraint venues_pk
+        primary key (id)
+);
 
-alter table admin
-    add constraint admin_employee_id_fk
-        foreign key (employee_id) references employee (id);
-
-alter table employee
-    modify position varchar(50) null;
+insert into personalia values (1, 'personalia', 'personalia123')
 
 
 password : 
