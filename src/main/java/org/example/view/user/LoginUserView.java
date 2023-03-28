@@ -116,13 +116,12 @@ public class LoginUserView extends javax.swing.JFrame {
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnBackToHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btnLoginUser)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnRegisterUser))
-                                .addComponent(txtPassword)
-                                .addComponent(txtEmail)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnLoginUser)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnRegisterUser))
+                            .addComponent(txtPassword)
+                            .addComponent(txtEmail))))
                 .addContainerGap(86, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -148,6 +147,7 @@ public class LoginUserView extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed

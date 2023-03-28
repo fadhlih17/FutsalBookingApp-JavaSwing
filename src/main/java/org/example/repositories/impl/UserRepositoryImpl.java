@@ -43,7 +43,7 @@ public class UserRepositoryImpl implements UserRepository {
             error(e);
             throw new RuntimeException(e);
         } finally {
-            context.closeResources(resultSet, context.getStatement(), context.getConnection());
+            context.closeResources();
         }
         return users;
     }
@@ -56,7 +56,7 @@ public class UserRepositoryImpl implements UserRepository {
             error(e);
             throw new RuntimeException(e);
         } finally {
-            context.closeResources(context.getResultSet(), context.getStatement(), context.getConnection());
+            context.closeResources();
         }
         return user;
     }
@@ -80,7 +80,7 @@ public class UserRepositoryImpl implements UserRepository {
             error(e);
             return null;
         } finally {
-            context.closeResources(context.getResultSet(), context.getStatement(), context.getConnection());
+            context.closeResources();
         }
         return user;
     }
@@ -104,7 +104,7 @@ public class UserRepositoryImpl implements UserRepository {
             error(e);
             return null;
         } finally {
-            context.closeResources(context.getResultSet(), context.getStatement(), context.getConnection());
+            context.closeResources();
         }
         return user;
     }
@@ -118,7 +118,7 @@ public class UserRepositoryImpl implements UserRepository {
             error(e);
             return null;
         } finally {
-            context.closeResources(context.getResultSet(), context.getStatement(), context.getConnection());
+            context.closeResources();
         }
         return update;
     }
@@ -130,7 +130,7 @@ public class UserRepositoryImpl implements UserRepository {
         } catch (Exception e){
             error(e);
         } finally {
-            context.closeResources(context.getResultSet(), context.getStatement(), context.getConnection());
+            context.closeResources();
         }
     }
 }

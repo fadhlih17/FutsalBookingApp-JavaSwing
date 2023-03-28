@@ -26,7 +26,7 @@ public class OwnerWalletRepositoryImpl implements OwnerWalletRepository {
                 throw new RuntimeException(ex);
             }
         } finally {
-            context.closeResources(context.getResultSet(), context.getStatement(), context.getConnection());
+            context.closeResources();
         }
         return ownerWallet;
     }
@@ -42,7 +42,7 @@ public class OwnerWalletRepositoryImpl implements OwnerWalletRepository {
                 throw new RuntimeException(ex);
             }
         } finally {
-            context.closeResources(context.getResultSet(), context.getStatement(), context.getConnection());
+            context.closeResources();
         }
         return ownerWallet;
     }
@@ -65,7 +65,7 @@ public class OwnerWalletRepositoryImpl implements OwnerWalletRepository {
                 throw new RuntimeException(ex);
             }
         } finally {
-            context.closeResources(resultSet, context.getStatement(), context.getConnection());
+            context.closeResources();
         }
         return ownerWallet;
     }

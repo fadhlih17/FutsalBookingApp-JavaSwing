@@ -13,6 +13,9 @@ import org.example.repositories.impl.UserRepositoryImpl;
 import org.example.services.AuthService;
 import org.example.services.impl.AuthServiceImpl;
 
+import java.util.List;
+import java.util.Map;
+
 public class AuthController {
     private AppDbContext context = new AppDbContext();
     private AdminRepository adminRepository = new AdminRepositoryImpl(context);
@@ -39,4 +42,10 @@ public class AuthController {
     }
 
     public LoginResponse loginPersonalia(Personalia request){return service.loginPersonalia(request);}
+    public Map<String, String> findEmployeeWhereAdmin(){
+        return service.findEmployeeWhereAdmin();
+    }
+    public List<Admin> findAllAdmin(){
+        return service.findAllAdmin();
+    }
 }

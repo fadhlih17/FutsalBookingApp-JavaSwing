@@ -1,17 +1,25 @@
 package org.example.models;
 
 public class Admin {
-    private String id, username, password;
+    private String id, username, password, employee_id;
 
     public Admin() {
     }
 
-    public Admin(String id, String username, String password) {
+    public Admin(String id, String username, String password, String employee_id) {
         this.id = id;
         this.username = username;
         this.password = password;
+        this.employee_id = employee_id;
     }
 
+    public String getEmployee_id() {
+        return employee_id;
+    }
+
+    public void setEmployee_id(String employee_id) {
+        this.employee_id = employee_id;
+    }
     public String getId() {
         return id;
     }
