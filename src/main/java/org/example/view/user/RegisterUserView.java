@@ -15,15 +15,6 @@ import javax.swing.*;
  * @author fadhl
  */
 public class RegisterUserView extends javax.swing.JFrame {
-//    private AppDbContext context = new AppDbContext();
-//    private AdminRepository adminRepository = new AdminRepositoryImpl(context);
-//    private UserRepository userRepository = new UserRepositoryImpl(context);
-//    private UserWalletRepository userWalletRepository = new UserWalletRepositoryImpl(context);
-//    private OwnerWalletRepository ownerWalletRepository = new OwnerWalletRepositoryImpl(context);
-//    private OwnerWalletService ownerWalletService = new OwnerWalletServiceImpl(ownerWalletRepository);
-//    private UserWalletService userWalletService = new UserWalletServiceImpl(userWalletRepository, ownerWalletService);
-//    private AuthService authService = new AuthServiceImpl(userRepository, adminRepository, userWalletService, ownerWalletService);
-//    private AuthController controller = new AuthController(authService);
     AuthControllerFactory authControllerFactory = new AuthControllerFactory();
     AuthController controller = authControllerFactory.create();
 
@@ -173,11 +164,10 @@ public class RegisterUserView extends javax.swing.JFrame {
                                 .addGap(38, 38, 38)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btnCancelRegisterUser, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtEmail)
-                                        .addComponent(txtPassword)
-                                        .addComponent(txtConfirmPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                                        .addComponent(btnRegister, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
+                                    .addComponent(txtEmail)
+                                    .addComponent(txtPassword)
+                                    .addComponent(txtConfirmPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                    .addComponent(btnRegister, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
@@ -221,6 +211,7 @@ public class RegisterUserView extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtFullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFullNameActionPerformed

@@ -32,7 +32,7 @@ public class PersonaliaRepositoryImpl implements PersonaliaRepository {
             error(e);
             throw new RuntimeException(e);
         } finally {
-            context.closeResources(resultSet, context.getStatement(), context.getConnection());
+            context.closeResources();
         }
         return find;
     }
