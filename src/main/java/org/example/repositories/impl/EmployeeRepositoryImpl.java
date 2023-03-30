@@ -25,7 +25,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     }
     public Employee createEmployee(Employee employee){
         //String query = "insert into employee values id = '"+employee.getId()+"', name = '"+employee.getName()+"', address = '"+employee.getAddress()+"', birthdate = "+employee.getBirthDate()+", phonenumber = '"+employee.getPhoneNumber()+"', position = '"+employee.getPosition()+"'";
-        String query = "INSERT INTO employee (id, name, address, birthdate, phonenumber, position) VALUES ('" + employee.getId() + "', '" + employee.getName() + "', '" + employee.getAddress() + "', '" + employee.getBirthDate() + "', '" + employee.getPhoneNumber() + "', '" + employee.getPosition() + "')";
+        String query = "INSERT INTO employee (id, name, address, birthdate, phonenumber, position, sex) VALUES ('" + employee.getId() + "', '" + employee.getName() + "', '" + employee.getAddress() + "', '" + employee.getBirthDate() + "', '" + employee.getPhoneNumber() + "', '" + employee.getPosition() + "', '"+employee.getSex()+"')";
 
         try{
             context.getStatement().executeUpdate(query);
@@ -40,7 +40,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     public boolean updateEmployee(Employee employee){
         String query = "update employee set name = '"+employee.getName()+"', address = '"+employee.getAddress()+"', birthdate = '"+employee.getBirthDate()+"', phonenumber = '"+employee.getPhoneNumber()+"', " +
-                "position = '"+employee.getPosition()+"' where id = '"+employee.getId()+"'";
+                "position = '"+employee.getPosition()+"', sex = '"+employee.getSex()+"' where id = '"+employee.getId()+"'";
         try{
             context.getStatement().executeUpdate(query);
         } catch (Exception e){
@@ -74,10 +74,10 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
                 String name = resultSet.getString("name");
                 String address = resultSet.getString("address");
                 String birthdate = resultSet.getString("birthdate");
-                //String birthdate = resultSet.getString("birthdate)
-;                String phoneNumber = resultSet.getString("phonenumber");
+;               String phoneNumber = resultSet.getString("phonenumber");
                 String position = resultSet.getString("position");
-                employees.add(new Employee(id, name, address, phoneNumber, position, birthdate));
+                String sex = resultSet.getString("sex");
+                employees.add(new Employee(id, name, address, phoneNumber, position, birthdate, sex));
             }
         } catch (Exception e){
             error(e);
@@ -100,7 +100,8 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
                 String birthdate = resultSet.getString("birthdate");
                 String phoneNumber = resultSet.getString("phonenumber");
                 String position = resultSet.getString("position");
-                employees.add(new Employee(id, name, address, phoneNumber, position, birthdate));
+                String sex = resultSet.getString("sex");
+                employees.add(new Employee(id, name, address, phoneNumber, position, birthdate, sex));
             }
         } catch (Exception e){
             error(e);
@@ -123,7 +124,8 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
                 String birthdate = resultSet.getString("birthdate");
                 String phoneNumber = resultSet.getString("phonenumber");
                 String position = resultSet.getString("position");
-                employee = new Employee(id, name, address, phoneNumber, position, birthdate);
+                String sex = resultSet.getString("sex");
+                employee = new Employee(id, name, address, phoneNumber, position, birthdate, sex);
             }
         } catch (Exception e){
             error(e);

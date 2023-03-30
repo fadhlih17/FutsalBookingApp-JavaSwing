@@ -3,19 +3,28 @@ package org.example.models;
 import java.util.Date;
 
 public class Employee {
-    private String id, name, address, phoneNumber, position;
+    private String id, name, address, phoneNumber, position, sex;
     private String birthDate;
 
-    public Employee(String id, String name, String address, String phoneNumber, String position, String birthDate) {
+    public Employee(String id, String name, String address, String phoneNumber, String position, String birthDate, String sex) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.position = position;
         this.birthDate = birthDate;
+        this.sex = sex;
     }
 
     public Employee() {
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
     public String getId() {
