@@ -9,8 +9,6 @@ import org.example.repositories.PersonaliaRepository;
 import org.example.repositories.UserRepository;
 import org.example.services.AuthService;
 import org.example.services.EmployeeService;
-import org.example.services.OwnerWalletService;
-import org.example.services.UserWalletService;
 import org.mindrot.jbcrypt.BCrypt;
 
 import javax.swing.*;
@@ -20,15 +18,11 @@ public class AuthServiceImpl implements AuthService {
     UserRepository userRepository;
     AdminRepository adminRepository;
     PersonaliaRepository personaliaRepository;
-    UserWalletService userWalletService;
-    OwnerWalletService ownerWalletService;
     EmployeeService employeeService;
 
-    public AuthServiceImpl(UserRepository userRepository, AdminRepository adminRepository, UserWalletService userWalletService, OwnerWalletService ownerWalletService, PersonaliaRepository personaliaRepository, EmployeeService employeeService) {
+    public AuthServiceImpl(UserRepository userRepository, AdminRepository adminRepository, PersonaliaRepository personaliaRepository, EmployeeService employeeService) {
         this.userRepository = userRepository;
         this.adminRepository = adminRepository;
-        this.userWalletService = userWalletService;
-        this.ownerWalletService = ownerWalletService;
         this.personaliaRepository = personaliaRepository;
         this.employeeService = employeeService;
     }
@@ -87,13 +81,7 @@ public class AuthServiceImpl implements AuthService {
         request.setId(UUID.randomUUID().toString());
         Admin admin = new Admin(request.getId(), request.getUsername(), request.getPassword(), request.getEmployee_id());
         Admin saveAdmin = adminRepository.createAdmin(admin);
-        OwnerWallet ownerWallet = ownerWalletService.findOwnerWallet();
 
-        if (ownerWallet == null){
-            OwnerWallet create = new OwnerWallet();
-            create.setBalance(0);
-            ownerWalletService.createWalletOwner(create);
-        }
         return saveAdmin.getUsername();
     }
 
@@ -126,16 +114,6 @@ public class AuthServiceImpl implements AuthService {
         user.setPhoneNumber(request.getPhoneNumber());
 
         User saveUser = userRepository.createUser(user);
-        var userWallet = userWalletService.findUserWalletByUserId(saveUser.getId());
-
-        if (userWallet == null){
-
-            UserWallet create = new UserWallet();
-            create.setBalance(0);
-            create.setUserId(saveUser.getId());
-            userWalletService.createUserWallet(create);
-
-        }
 
         return saveUser.getUsername();
     }
