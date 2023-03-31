@@ -4,9 +4,7 @@
  */
 package org.example;
 
-import org.example.view.admin.LoginAdminView;
-import org.example.view.personalia.LoginPersonalia;
-import org.example.view.personalia.PersonaliaMenuView;
+import org.example.view.personalia.LoginOfficer;
 import org.example.view.user.LoginUserView;
 
 /**
@@ -33,7 +31,6 @@ public class MainApp extends javax.swing.JFrame {
 
         btnLoginUser = new javax.swing.JButton();
         btnLoginAdmin = new javax.swing.JButton();
-        btnLoginPersonalia = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,20 +47,10 @@ public class MainApp extends javax.swing.JFrame {
         btnLoginAdmin.setBackground(new java.awt.Color(0, 153, 51));
         btnLoginAdmin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnLoginAdmin.setForeground(new java.awt.Color(255, 255, 255));
-        btnLoginAdmin.setText("Login Admin");
+        btnLoginAdmin.setText("Login Officer");
         btnLoginAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginAdminActionPerformed(evt);
-            }
-        });
-
-        btnLoginPersonalia.setBackground(new java.awt.Color(255, 0, 51));
-        btnLoginPersonalia.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnLoginPersonalia.setForeground(new java.awt.Color(255, 255, 255));
-        btnLoginPersonalia.setText("Login Personalia");
-        btnLoginPersonalia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginPersonaliaActionPerformed(evt);
             }
         });
 
@@ -74,13 +61,9 @@ public class MainApp extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addComponent(btnLoginUser, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addComponent(btnLoginAdmin)
                 .addGap(54, 54, 54))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(129, 129, 129)
-                .addComponent(btnLoginPersonalia)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,9 +72,7 @@ public class MainApp extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLoginUser, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLoginAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnLoginPersonalia, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         pack();
@@ -107,14 +88,8 @@ public class MainApp extends javax.swing.JFrame {
     private void btnLoginAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginAdminActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new LoginAdminView().setVisible(true);
+        new LoginOfficer().setVisible(true);
     }//GEN-LAST:event_btnLoginAdminActionPerformed
-
-    private void btnLoginPersonaliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginPersonaliaActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-        new LoginPersonalia().setVisible(true);
-    }//GEN-LAST:event_btnLoginPersonaliaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,7 +128,6 @@ public class MainApp extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoginAdmin;
-    private javax.swing.JButton btnLoginPersonalia;
     private javax.swing.JButton btnLoginUser;
     // End of variables declaration//GEN-END:variables
 }

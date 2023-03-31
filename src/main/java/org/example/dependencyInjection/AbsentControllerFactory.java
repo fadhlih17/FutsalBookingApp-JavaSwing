@@ -19,7 +19,7 @@ public class AbsentControllerFactory {
     private AbsentRepository repository = new AbsentRepositoryImpl(context);
     private AdminRepository adminRepository = new AdminRepositoryImpl(context);
     private EmployeeRepository employeeRepository = new EmployeeRepositoryImpl(context);
-    private EmployeeService employeeService = new EmployeeServiceImpl(employeeRepository, adminRepository );
+    private EmployeeService employeeService = new EmployeeServiceImpl(employeeRepository, adminRepository, repository );
     private AbsentService service = new AbsentServiceImpl(repository, employeeService);
     public AbsentController controller(){
         return new AbsentController(service);

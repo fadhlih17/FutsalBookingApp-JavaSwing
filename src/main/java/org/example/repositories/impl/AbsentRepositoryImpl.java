@@ -32,14 +32,14 @@ public class AbsentRepositoryImpl implements AbsentRepository {
         return absent;
     }
     public List<AbsentResponse> findAllAbsent(){
-        String query = "SELECT a.employee_id, e.name, " +
-                "SUM(CASE WHEN a.information = 'Cuti' THEN 1 ELSE 0 END) AS Cuti, " +
-                "SUM(CASE WHEN a.information = 'Alpa' THEN 1 ELSE 0 END) AS Alpa, " +
-                "SUM(CASE WHEN a.information = 'Sakit' THEN 1 ELSE 0 END) AS Sakit, " +
-                "SUM(CASE WHEN a.information = 'Izin' THEN 1 ELSE 0 END) AS Izin " +
-                "FROM absent a " +
-                "JOIN employee e ON a.employee_id = e.id " +
-                "GROUP BY a.employee_id";
+        String query = "SELECT e.id as employee_id, e.name, " +
+                "IFNULL(SUM(CASE WHEN a.information = 'Cuti' THEN 1 ELSE 0 END), 0) AS Cuti, " +
+                "IFNULL(SUM(CASE WHEN a.information = 'Alpa' THEN 1 ELSE 0 END), 0) AS Alpa, " +
+                "IFNULL(SUM(CASE WHEN a.information = 'Sakit' THEN 1 ELSE 0 END), 0) AS Sakit, " +
+                "IFNULL(SUM(CASE WHEN a.information = 'Izin' THEN 1 ELSE 0 END), 0) AS Izin " +
+                "FROM employee e " +
+                "LEFT JOIN absent a ON e.id = a.employee_id " +
+                "GROUP BY e.id";
         ResultSet resultSet = null;
         List<AbsentResponse> results = new ArrayList<>();
         try {
@@ -61,15 +61,14 @@ public class AbsentRepositoryImpl implements AbsentRepository {
         return results;
     }
     public List<AbsentResponse> findAbsentByDate(int month, int year){
-        String query = "SELECT a.employee_id, e.name, " +
-                "SUM(CASE WHEN a.information = 'Cuti' THEN 1 ELSE 0 END) AS Cuti, " +
-                "SUM(CASE WHEN a.information = 'Alpa' THEN 1 ELSE 0 END) AS Alpa, " +
-                "SUM(CASE WHEN a.information = 'Sakit' THEN 1 ELSE 0 END) AS Sakit, " +
-                "SUM(CASE WHEN a.information = 'Izin' THEN 1 ELSE 0 END) AS Izin " +
-                "FROM absent a " +
-                "JOIN employee e ON a.employee_id = e.id " +
-                "WHERE MONTH(a.date) = "+month+" AND YEAR(a.date) = "+year+"" +
-                "GROUP BY a.employee_id";
+        String query = "SELECT e.id as employee_id, e.name, " +
+                "IFNULL(SUM(CASE WHEN a.information = 'Cuti' THEN 1 ELSE 0 END), 0) AS Cuti, " +
+                "IFNULL(SUM(CASE WHEN a.information = 'Alpa' THEN 1 ELSE 0 END), 0) AS Alpa, " +
+                "IFNULL(SUM(CASE WHEN a.information = 'Sakit' THEN 1 ELSE 0 END), 0) AS Sakit, " +
+                "IFNULL(SUM(CASE WHEN a.information = 'Izin' THEN 1 ELSE 0 END), 0) AS Izin " +
+                "FROM employee e " +
+                "LEFT JOIN absent a ON e.id = a.employee_id AND (MONTH(a.date) = "+month+" and YEAR(a.date) = "+year+") " +
+                "GROUP BY e.id";
         List<AbsentResponse> responses  = new ArrayList<>();
         ResultSet resultSet = null;
         try {
@@ -140,5 +139,17 @@ public class AbsentRepositoryImpl implements AbsentRepository {
             context.closeResources();
         }
         return results;
+    }
+
+    public boolean deleteAbsentByEmployeeId(String id){
+        String query = "delete from absent where employee_id = '"+ id+"'";
+        try {
+            context.getStatement().executeUpdate(query);
+        } catch (Exception e) {
+            error(e);
+        } finally {
+            context.closeResources();
+        }
+        return true;
     }
 }

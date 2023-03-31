@@ -11,4 +11,5 @@ public interface AbsentRepository {
     List<AbsentResponse> findAbsentByDate(int month, int year);
     List<AbsentResponse> findAllAbsentDetail();
     List<AbsentResponse> findAbsentDetailByDate(int date, int year);
+    boolean deleteAbsentByEmployeeId(String id);
 }

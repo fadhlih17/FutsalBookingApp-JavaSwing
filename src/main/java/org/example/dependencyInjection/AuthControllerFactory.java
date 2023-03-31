@@ -15,7 +15,8 @@ public class AuthControllerFactory {
     private UserRepository userRepository = new UserRepositoryImpl(context);
     private PersonaliaRepository personaliaRepository = new PersonaliaRepositoryImpl(context);
     private EmployeeRepository employeeRepository = new EmployeeRepositoryImpl(context);
-    private EmployeeService employeeService = new EmployeeServiceImpl(employeeRepository, adminRepository);
+    private AbsentRepository absentRepository = new AbsentRepositoryImpl(context);
+    private EmployeeService employeeService = new EmployeeServiceImpl(employeeRepository, adminRepository, absentRepository);
     private AuthService authService = new AuthServiceImpl(userRepository, adminRepository, personaliaRepository, employeeService);
 
     public AuthController create() {

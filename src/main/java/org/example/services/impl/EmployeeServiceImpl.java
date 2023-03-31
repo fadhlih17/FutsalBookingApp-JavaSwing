@@ -3,6 +3,7 @@ package org.example.services.impl;
 import org.example.exceptions.ErrorException;
 import org.example.exceptions.WarningException;
 import org.example.models.Employee;
+import org.example.repositories.AbsentRepository;
 import org.example.repositories.AdminRepository;
 import org.example.repositories.EmployeeRepository;
 import org.example.services.AdminService;
@@ -13,9 +14,11 @@ import java.util.List;
 public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeRepository employeeRepository;
     private AdminRepository adminRepository;
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository, AdminRepository adminRepository){
+    private AbsentRepository absentRepository;
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository, AdminRepository adminRepository, AbsentRepository absentRepository){
         this.employeeRepository = employeeRepository;
         this.adminRepository = adminRepository;
+        this.absentRepository = absentRepository;
     }
 
     public Employee createEmployee(Employee request){
@@ -53,6 +56,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                 throw new RuntimeException(e);
             }
         }
+        absentRepository.deleteAbsentByEmployeeId(id);
         adminRepository.deleteAdminAccountByEmployeeId(id);
         return employeeRepository.deleteEmployee(id);
     }

@@ -4,6 +4,8 @@
  */
 package org.example.view.admin;
 
+import org.example.view.personalia.LoginOfficer;
+
 /**
  *
  * @author fadhl
@@ -88,7 +90,7 @@ public class AdminMenuView extends javax.swing.JFrame {
     private void btnLogoutAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutAdminActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new LoginAdminView().setVisible(true);
+        new LoginOfficer().setVisible(true);
     }//GEN-LAST:event_btnLogoutAdminActionPerformed
 
     private void btnVenueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenueActionPerformed
