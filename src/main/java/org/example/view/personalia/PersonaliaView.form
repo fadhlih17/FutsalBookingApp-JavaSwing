@@ -134,6 +134,9 @@
                   <Image iconType="3" name="/interface-home-3.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Home"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
                 <Property name="iconTextGap" type="int" value="7"/>
               </Properties>
               <Events>
@@ -152,6 +155,9 @@
                   <Image iconType="3" name="/employee.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Manajemen Karyawan"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
                 <Property name="iconTextGap" type="int" value="5"/>
               </Properties>
               <Events>
@@ -170,6 +176,9 @@
                   <Image iconType="3" name="/adminaccount.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Register Akun Admin"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
                 <Property name="iconTextGap" type="int" value="10"/>
               </Properties>
               <Events>
@@ -188,6 +197,9 @@
                   <Image iconType="3" name="/report.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Laporan"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
                 <Property name="iconTextGap" type="int" value="5"/>
               </Properties>
               <Events>
@@ -206,6 +218,9 @@
                   <Image iconType="3" name="/logout.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Logout"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
                 <Property name="iconTextGap" type="int" value="0"/>
               </Properties>
               <Events>
@@ -810,7 +825,7 @@
                                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="247" max="32767" attributes="0"/>
+                          <EmptySpace pref="221" max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -842,7 +857,7 @@
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="132" max="32767" attributes="0"/>
+                              <EmptySpace pref="125" max="32767" attributes="0"/>
                               <Component id="employeeDataPanel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -967,7 +982,7 @@
                                   <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jScrollPane5" pref="325" max="32767" attributes="0"/>
+                              <Component id="jScrollPane5" pref="332" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>

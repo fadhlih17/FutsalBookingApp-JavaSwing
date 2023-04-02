@@ -136,6 +136,7 @@ public class PersonaliaView extends javax.swing.JFrame {
         btnHome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interface-home-3.png"))); // NOI18N
         btnHome.setText("Home");
+        btnHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnHome.setIconTextGap(7);
         btnHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,6 +148,7 @@ public class PersonaliaView extends javax.swing.JFrame {
         btnEmployee.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/employee.png"))); // NOI18N
         btnEmployee.setText("Manajemen Karyawan");
+        btnEmployee.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEmployee.setIconTextGap(5);
         btnEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,6 +160,7 @@ public class PersonaliaView extends javax.swing.JFrame {
         btnRegisterAdmin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnRegisterAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/adminaccount.png"))); // NOI18N
         btnRegisterAdmin.setText("Register Akun Admin");
+        btnRegisterAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegisterAdmin.setIconTextGap(10);
         btnRegisterAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,6 +172,7 @@ public class PersonaliaView extends javax.swing.JFrame {
         btnReport.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnReport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/report.png"))); // NOI18N
         btnReport.setText("Laporan");
+        btnReport.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnReport.setIconTextGap(5);
         btnReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,6 +184,7 @@ public class PersonaliaView extends javax.swing.JFrame {
         btnLogout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logout.png"))); // NOI18N
         btnLogout.setText("Logout");
+        btnLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogout.setIconTextGap(0);
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -758,7 +763,7 @@ public class PersonaliaView extends javax.swing.JFrame {
                     .addComponent(btnSearchEmployeeData)
                     .addComponent(jLabel15))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -976,7 +981,7 @@ public class PersonaliaView extends javax.swing.JFrame {
                     .addGroup(reportPanelLayout.createSequentialGroup()
                         .addGap(386, 386, 386)
                         .addComponent(jLabel9)))
-                .addContainerGap(247, Short.MAX_VALUE))
+                .addContainerGap(221, Short.MAX_VALUE))
             .addGroup(reportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(reportPanelLayout.createSequentialGroup()
                     .addContainerGap()
@@ -1000,7 +1005,7 @@ public class PersonaliaView extends javax.swing.JFrame {
                 .addContainerGap(465, Short.MAX_VALUE))
             .addGroup(reportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reportPanelLayout.createSequentialGroup()
-                    .addContainerGap(132, Short.MAX_VALUE)
+                    .addContainerGap(125, Short.MAX_VALUE)
                     .addComponent(employeeDataPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
             .addGroup(reportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1109,14 +1114,7 @@ public class PersonaliaView extends javax.swing.JFrame {
         nameEmployee = (tblEmployee.getValueAt(row, 1).toString());
         address = (tblEmployee.getValueAt(row, 2).toString());
         birthDate = tblEmployee.getValueAt(row, 3).toString(); // Ambil tanggal dari tabel sebagai string
-        //DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        // Tentukan format tanggal yang diinginkan
-//        try {
-//            Date dateOfBirth = format.parse(birthDate); // Konversi string ke objek Date
-//            txtDateOfBirth.setDate(dateOfBirth);
-//        } catch (ParseException e) {
-//            throw new RuntimeException(e);
-//        }
+
         phoneNumber = (tblEmployee.getValueAt(row, 4).toString());
         sex = (tblEmployee.getValueAt(row, 5).toString());
         position = tblEmployee.getValueAt(row, 6).toString();

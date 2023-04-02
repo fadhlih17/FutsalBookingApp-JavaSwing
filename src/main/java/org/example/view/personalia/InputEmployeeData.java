@@ -191,6 +191,7 @@ public class InputEmployeeData extends javax.swing.JFrame {
         txtDateOfBirth.setDate(null);
         txtPhoneNumber.setText("");
         txtPosition.setText("");
+        bgSex.clearSelection();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
