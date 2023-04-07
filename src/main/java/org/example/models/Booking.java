@@ -5,16 +5,16 @@ import java.util.Date;
 
 public class Booking {
     private String id, userId, venueId;
-    private Date dateOrder, dateBooked;
+    private String dateOrder, dateBooked;
     private Time startTime, endTime;
     private long price;
-    private boolean isConfirmed;
+    private Boolean isConfirmed;
     private String imageUrl;
 
     public Booking() {
     }
 
-    public Booking(String id, String userId, String venueId, Date dateOrder, Date dateBooked, Time startTime, Time endTime, long price, boolean isConfirmed, String imageUrl) {
+    public Booking(String id, String userId, String venueId, String dateOrder, String dateBooked, Time startTime, Time endTime, long price, Boolean isConfirmed, String imageUrl) {
         this.id = id;
         this.userId = userId;
         this.venueId = venueId;
@@ -51,19 +51,19 @@ public class Booking {
         this.venueId = venueId;
     }
 
-    public Date getDateOrder() {
+    public String getDateOrder() {
         return dateOrder;
     }
 
-    public void setDateOrder(Date dateOrder) {
+    public void setDateOrder(String dateOrder) {
         this.dateOrder = dateOrder;
     }
 
-    public Date getDateBooked() {
+    public String getDateBooked() {
         return dateBooked;
     }
 
-    public void setDateBooked(Date dateBooked) {
+    public void setDateBooked(String dateBooked) {
         this.dateBooked = dateBooked;
     }
 
@@ -91,11 +91,11 @@ public class Booking {
         this.price = price;
     }
 
-    public boolean isConfirmed() {
+    public Boolean isConfirmed() {
         return isConfirmed;
     }
 
-    public void setConfirmed(boolean confirmed) {
+    public void setConfirmed(Boolean confirmed) {
         isConfirmed = confirmed;
     }
 

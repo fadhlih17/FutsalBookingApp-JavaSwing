@@ -1,6 +1,6 @@
 package org.example.models;
 
-import org.example.dtos.ECategory;
+import java.lang.String;
 
 import java.sql.Time;
 
@@ -8,10 +8,10 @@ public class Venue {
     private String id, name, description;
     private Time open, close;
     private Long price;
-    private ECategory category;
+    private String category;
     private boolean isActive;
 
-    public Venue(String id, String name, String description, Time open, Time close, Long price, ECategory category, boolean isActive) {
+    public Venue(String id, String name, String description, Time open, Time close, Long price, String category, boolean isActive) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -79,11 +79,11 @@ public class Venue {
         this.price = price;
     }
 
-    public ECategory getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(ECategory category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 }

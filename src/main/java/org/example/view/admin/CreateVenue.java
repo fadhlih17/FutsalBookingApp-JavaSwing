@@ -4,13 +4,17 @@
  */
 package org.example.view.admin;
 
+import org.example.controllers.CategoryController;
 import org.example.controllers.VenueController;
+import org.example.dependencyInjection.CategoryControllerFactory;
 import org.example.dependencyInjection.VenueControllerFactory;
 import org.example.dtos.ECategory;
+import org.example.models.Category;
 import org.example.models.Venue;
 
 import javax.swing.*;
 import java.sql.Time;
+import java.util.List;
 
 /**
  *
@@ -18,6 +22,8 @@ import java.sql.Time;
  */
 public class CreateVenue extends javax.swing.JFrame {
     private VenueControllerFactory factory = new VenueControllerFactory();
+    private CategoryControllerFactory categoryControllerFactory = new CategoryControllerFactory();
+    private CategoryController categoryController = categoryControllerFactory.controller();
     private VenueController controller = factory.controller();
     public CreateVenue() {
         initComponents();
@@ -223,10 +229,10 @@ public class CreateVenue extends javax.swing.JFrame {
     }//GEN-LAST:event_btnResetActionPerformed
 
     public void fillCombo(){
-        for (ECategory category : ECategory.values()) {
-            if (category != ECategory.Semua) {
-                cbCategory.addItem(category);
-            }
+        List<Category> categories = categoryController.findAllCategories();
+        cbCategory.addItem("Pilih Kategori");
+        for (Category category : categories) {
+            cbCategory.addItem(category.getName());
         }
     }
     private void reset(){
@@ -243,7 +249,8 @@ public class CreateVenue extends javax.swing.JFrame {
         // TODO add your handling code here:
         Time open = Time.valueOf(""+jsOpen.getValue()+":00:00");
         Time close = Time.valueOf(""+jsClose.getValue()+":00:00");
-        ECategory category = (ECategory) cbCategory.getSelectedItem();
+        String categoryName = (String) cbCategory.getSelectedItem();
+        Category category = categoryController.findCategoryByName(categoryName);
         boolean status = true;
 
         if (rbOpen.isSelected()){
@@ -259,7 +266,7 @@ public class CreateVenue extends javax.swing.JFrame {
         venue.setPrice(Long.parseLong(txtPrice.getText()));
         venue.setOpen(open);
         venue.setClose(close);
-        venue.setCategory(category);
+        venue.setCategory(category.getId());
         venue.setActive(status);
         controller.createVenue(venue);
         JOptionPane.showMessageDialog(this, "Berhasil menambah lapangan");
@@ -306,7 +313,7 @@ public class CreateVenue extends javax.swing.JFrame {
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnSave;
-    private javax.swing.JComboBox<ECategory> cbCategory;
+    private javax.swing.JComboBox<String> cbCategory;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

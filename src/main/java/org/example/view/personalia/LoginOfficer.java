@@ -63,11 +63,22 @@ public class LoginOfficer extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Login Officer");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, 36));
+
+        txtUsername.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtUsernameKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 193, -1));
 
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPasswordActionPerformed(evt);
+            }
+        });
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
             }
         });
         getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 150, 193, -1));
@@ -79,6 +90,11 @@ public class LoginOfficer extends javax.swing.JFrame {
         btnLoginAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginAdminActionPerformed(evt);
+            }
+        });
+        btnLoginAdmin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnLoginAdminKeyPressed(evt);
             }
         });
         getContentPane().add(btnLoginAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 260, 193, -1));
@@ -245,6 +261,31 @@ public class LoginOfficer extends javax.swing.JFrame {
         this.setVisible(false);
         new MainApp().setVisible(true);
     }//GEN-LAST:event_btnBackToHomeActionPerformed
+
+    private void txtUsernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsernameKeyPressed
+        // TODO add your handling code here:
+        int kode = evt.getKeyCode();
+        if (kode==evt.VK_ENTER){
+            txtPassword.requestFocus();
+        }
+    }//GEN-LAST:event_txtUsernameKeyPressed
+
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
+        // TODO add your handling code here:
+        int kode = evt.getKeyCode();
+        if (kode == evt.VK_ENTER) {
+            btnLoginAdmin.requestFocus();
+        }
+    }//GEN-LAST:event_txtPasswordKeyPressed
+
+    private void btnLoginAdminKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLoginAdminKeyPressed
+        // TODO add your handling code here:
+        if (cbRole.getSelectedItem() == "Admin") {
+            loginAdmin();
+        } else if (cbRole.getSelectedItem() == "Personalia") {
+            loginPersonalia();
+        }
+    }//GEN-LAST:event_btnLoginAdminKeyPressed
 
     /**
      * @param args the command line arguments

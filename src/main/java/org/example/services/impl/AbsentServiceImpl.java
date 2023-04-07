@@ -1,5 +1,6 @@
 package org.example.services.impl;
 
+import org.example.dtos.AbsentDetailResponse;
 import org.example.dtos.AbsentResponse;
 import org.example.models.Absent;
 import org.example.models.Employee;
@@ -37,10 +38,10 @@ public class AbsentServiceImpl implements AbsentService {
     public List<AbsentResponse> findAllAbsentByDate(int date, int year){
         return repository.findAbsentByDate(date, year);
     }
-    public List<AbsentResponse> findAllAbsentDetails(){
+    public List<AbsentDetailResponse> findAllAbsentDetails(){
         return repository.findAllAbsentDetail();
     }
-    public List<AbsentResponse> findAllAbsentDetailByDate(int date, int year){
+    public List<AbsentDetailResponse> findAllAbsentDetailByDate(int date, int year){
         return repository.findAbsentDetailByDate(date, year);
     }
 

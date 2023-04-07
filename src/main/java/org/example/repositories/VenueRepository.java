@@ -10,5 +10,7 @@ public interface VenueRepository {
     List<Venue> findAllVenue();
     boolean updateVenue(Venue venue);
     Venue findVenueById(String venueId);
-    List<Venue> findVenueByCategory(ECategory categorySearch);
+    List<Venue> findVenueByCategory(String categorySearch);
+    List<Venue> findAllVenueWhereActive();
+    Venue findVenueByName(String venueName);
 }

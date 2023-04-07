@@ -4,13 +4,17 @@
  */
 package org.example.view.admin;
 
+import org.example.controllers.CategoryController;
 import org.example.controllers.VenueController;
+import org.example.dependencyInjection.CategoryControllerFactory;
 import org.example.dependencyInjection.VenueControllerFactory;
 import org.example.dtos.ECategory;
+import org.example.models.Category;
 import org.example.models.Venue;
 
 import javax.swing.*;
 import java.sql.Time;
+import java.util.List;
 
 /**
  *
@@ -19,6 +23,8 @@ import java.sql.Time;
 public class EditVenueView extends javax.swing.JFrame {
 
     private VenueControllerFactory factory = new VenueControllerFactory();
+    private CategoryControllerFactory categoryControllerFactory = new CategoryControllerFactory();
+    private CategoryController categoryController = categoryControllerFactory.controller();
     private VenueController controller = factory.controller();
     public EditVenueView() {
         initComponents();
@@ -223,17 +229,19 @@ public class EditVenueView extends javax.swing.JFrame {
     }//GEN-LAST:event_rbCloseEdtVenueActionPerformed
 
     public void fillComboBox(){
-        for (ECategory category : ECategory.values()) {
-            if (category != ECategory.Semua) {
-                cbCategoryEdtVenue.addItem(category);
-            }
+        List<Category> categories = categoryController.findAllCategories();
+        cbCategoryEdtVenue.addItem("Pilih Kategori");
+        for (Category category : categories) {
+            cbCategoryEdtVenue.addItem(category.getName());
         }
     }
     private void btnSaveEdtVenueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveEdtVenueActionPerformed
         // TODO add your handling code here:
         Time open = Time.valueOf(""+jsOpenEdtVenue.getValue()+":00:00");
         Time close = Time.valueOf(""+jsCloseEdtVenue.getValue()+":00:00");
-        ECategory category = (ECategory) cbCategoryEdtVenue.getSelectedItem();
+        String categoryName = (String) cbCategoryEdtVenue.getSelectedItem();
+        Category category = categoryController.findCategoryByName(categoryName);
+        String categoryId = category.getId();
 
         boolean status = true;
         if (rbOpenEdtVenue.isSelected()){
@@ -249,7 +257,7 @@ public class EditVenueView extends javax.swing.JFrame {
         venue.setPrice(Long.parseLong(txtPriceEdtVenue.getText()));
         venue.setOpen(open);
         venue.setClose(close);
-        venue.setCategory(category);
+        venue.setCategory(categoryId);
         venue.setActive(status);
         controller.updateVenue(venue);
         JOptionPane.showMessageDialog(this, "Data berhasil di perbaharui");
@@ -306,7 +314,7 @@ public class EditVenueView extends javax.swing.JFrame {
     private javax.swing.JButton btnCancelEdtVenue;
     private javax.swing.JButton btnResetEdtVenue;
     private javax.swing.JButton btnSaveEdtVenue;
-    public javax.swing.JComboBox<ECategory> cbCategoryEdtVenue;
+    public javax.swing.JComboBox<String> cbCategoryEdtVenue;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

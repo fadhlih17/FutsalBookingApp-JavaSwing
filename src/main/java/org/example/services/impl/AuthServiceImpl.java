@@ -30,23 +30,14 @@ public class AuthServiceImpl implements AuthService {
     private User loadEmailUser(String emailInput) {
         User user = userRepository.findUserByEmail(emailInput);
 
-        if (user == null) try {
-            throw new UnauthorizedException("Pengguna belum mendaftar, silahkan sign-up terlebih dahulu !");
-        } catch (UnauthorizedException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-            throw new RuntimeException(e);
-        }
+        if (user == null) throw new UnauthorizedException("Pengguna belum terdaftar");
 
         return user;
     }
     private User loadRegisterEmailUser(String email){
         User user = userRepository.findUserByEmail(email);
 
-        if (user != null) try {
-            throw new UnauthorizedException("Registrasi gagal, email sudah terdaftar !");
-        } catch (UnauthorizedException e) {
-            throw new RuntimeException(e);
-        }
+        if (user != null)  throw new UnauthorizedException("Registrasi gagal, email sudah terdaftar !");
 
         return user;
     }
@@ -54,12 +45,7 @@ public class AuthServiceImpl implements AuthService {
     private Admin loadUsernameAdmin(String employeeId) {
         Admin admin = adminRepository.findAdminByEmployeeId(employeeId);
 
-        if (admin == null) try {
-            throw new UnauthorizedException("Username atau password salah. Hubungi personalia jika ada masalah login");
-        } catch (UnauthorizedException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-            throw new RuntimeException(e);
-        }
+        if (admin == null) throw new UnauthorizedException("Username atau password salah. Hubungi personalia jika ada masalah login");
 
         return admin;
     }
@@ -67,11 +53,7 @@ public class AuthServiceImpl implements AuthService {
     private Admin loadRegisterUsernameAdmin(String usernameInput){
         Admin admin = adminRepository.findAdminByEmployeeId(usernameInput);
 
-        if (admin != null) try {
-            throw new UnauthorizedException("Registrasi gagal, admin sudah terdaftar !");
-        } catch (UnauthorizedException e) {
-            throw new RuntimeException(e);
-        }
+        if (admin != null) throw new UnauthorizedException("Registrasi gagal, admin sudah terdaftar !");
 
         return admin;
     }
@@ -89,16 +71,9 @@ public class AuthServiceImpl implements AuthService {
         Admin admin = loadUsernameAdmin(request.getUsername());
         boolean isValid = request.getPassword().equals(admin.getPassword());
 
-        if (!isValid){
-            try {
-                throw new UnauthorizedException("Email atau password salah");
-            } catch (UnauthorizedException e){
-                JOptionPane.showMessageDialog(null, e.getMessage());
-                throw new RuntimeException(e);
-            }
-        }
+        if (!isValid)throw new UnauthorizedException("Email atau password salah");
 
-        return new LoginResponse(admin.getUsername(), "Admin");
+        return new LoginResponse( admin.getId() ,admin.getUsername(), "Admin");
     }
     public String registerUser(User request){
         loadRegisterEmailUser(request.getEmail());
@@ -123,27 +98,17 @@ public class AuthServiceImpl implements AuthService {
         User user = loadEmailUser(request.getUsername());
         boolean isValid = BCrypt.checkpw(request.getPassword(), user.getPassword());
 
-        if (!isValid){
-            try {
-                throw new UnauthorizedException("Email atau password salah");
-            } catch (UnauthorizedException e){
-                JOptionPane.showMessageDialog(null, e.getMessage());
-                throw new RuntimeException(e);
-            }
-        }
-        return new LoginResponse(user.getUsername(), "User");
+        if (!isValid)throw new UnauthorizedException("Email atau password salah");
+
+        return new LoginResponse( user.getId() ,user.getUsername(), "User");
     }
 
     public LoginResponse loginPersonalia(Personalia personalia){
         final Personalia personalia1 = personaliaRepository.findPersonalia(personalia);
-        if (personalia1 == null){
-            try {
-                throw new UnauthorizedException("Username atau password salah !");
-            } catch (UnauthorizedException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        return new LoginResponse(personalia1.getUsername(), "personalia");
+
+        if (personalia1 == null)throw new UnauthorizedException("Username atau password salah !");
+
+        return new LoginResponse("1",personalia1.getUsername(), "personalia");
     }
 
     public List<Admin> findAllAdmin(){

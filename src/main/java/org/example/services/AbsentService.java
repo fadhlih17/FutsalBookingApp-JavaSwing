@@ -1,5 +1,6 @@
 package org.example.services;
 
+import org.example.dtos.AbsentDetailResponse;
 import org.example.dtos.AbsentResponse;
 import org.example.models.Absent;
 
@@ -10,6 +11,6 @@ public interface AbsentService {
     Absent createAbsent(Absent absent);
     List<AbsentResponse> findAllAbsent();
     List<AbsentResponse> findAllAbsentByDate(int date, int year);
-    List<AbsentResponse> findAllAbsentDetails();
-    List<AbsentResponse> findAllAbsentDetailByDate(int date, int year);
+    List<AbsentDetailResponse> findAllAbsentDetails();
+    List<AbsentDetailResponse> findAllAbsentDetailByDate(int date, int year);
 }

@@ -6,10 +6,10 @@ public class VenueResponse {
     private String id, name, description;
     private Time open, close;
     private Long price;
-    private ECategory category;
+    private String category;
     private String isActive;
 
-    public VenueResponse(String id, String name, String description, Time open, Time close, Long price, ECategory category, String isActive) {
+    public VenueResponse(String id, String name, String description, Time open, Time close, Long price, String category, String isActive) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -77,11 +77,11 @@ public class VenueResponse {
         this.price = price;
     }
 
-    public ECategory getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(ECategory category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 }

@@ -17,18 +17,10 @@ import org.example.MainApp;
  * @author fadhl
  */
 public class LoginUserView extends javax.swing.JFrame {
-//    private AppDbContext context = new AppDbContext();
-//    private AdminRepository adminRepository = new AdminRepositoryImpl(context);
-//    private UserRepository userRepository = new UserRepositoryImpl(context);
-//    private UserWalletRepository userWalletRepository = new UserWalletRepositoryImpl(context);
-//    private OwnerWalletRepository ownerWalletRepository = new OwnerWalletRepositoryImpl(context);
-//    private OwnerWalletService ownerWalletService = new OwnerWalletServiceImpl(ownerWalletRepository);
-//    private UserWalletService userWalletService = new UserWalletServiceImpl(userWalletRepository, ownerWalletService);
-//    private AuthService authService = new AuthServiceImpl(userRepository, adminRepository, userWalletService);
-//    private AuthController controller = new AuthController(authService);
 
     AuthControllerFactory authControllerFactory = new AuthControllerFactory();
     AuthController controller = authControllerFactory.create();
+    private UserMenuView userMenuView = new UserMenuView();
     /**
      * Creates new form LoginUserView
      */
@@ -74,6 +66,11 @@ public class LoginUserView extends javax.swing.JFrame {
                 txtEmailActionPerformed(evt);
             }
         });
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEmailKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 218, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -85,6 +82,11 @@ public class LoginUserView extends javax.swing.JFrame {
                 txtPasswordActionPerformed(evt);
             }
         });
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 219, -1));
 
         btnLoginUser.setBackground(new java.awt.Color(0, 153, 0));
@@ -94,6 +96,11 @@ public class LoginUserView extends javax.swing.JFrame {
         btnLoginUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginUserActionPerformed(evt);
+            }
+        });
+        btnLoginUser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnLoginUserKeyPressed(evt);
             }
         });
         getContentPane().add(btnLoginUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 107, -1));
@@ -142,8 +149,7 @@ public class LoginUserView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPasswordActionPerformed
 
-    private void btnLoginUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginUserActionPerformed
-        // TODO add your handling code here:
+    private void loginUser(){
         String email = txtEmail.getText().toString();
         String password = txtPassword.getText().toString();
         LoginRequest request = new LoginRequest();
@@ -155,11 +161,18 @@ public class LoginUserView extends javax.swing.JFrame {
 
             if (loginResponse != null){
                 this.setVisible(false);
-                new UserMenuView().setVisible(true);
+                userMenuView.setVisible(true);
+                userMenuView.txtUserId.setText(loginResponse.getUserId());
+                userMenuView.txtUsername.setText("Selamat datang "+loginResponse.getUsername());
             }
         } else if (email.trim().equals("") || password.trim().equals("")) {
             JOptionPane.showMessageDialog(this, "Field tidak boleh ada yang kosong !", "Login", JOptionPane.WARNING_MESSAGE);
         }
+    }
+
+    private void btnLoginUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginUserActionPerformed
+        // TODO add your handling code here:
+        loginUser();
     }//GEN-LAST:event_btnLoginUserActionPerformed
 
     private void btnRegisterUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterUserActionPerformed
@@ -173,6 +186,27 @@ public class LoginUserView extends javax.swing.JFrame {
         this.setVisible(false);
         new MainApp().setVisible(true);
     }//GEN-LAST:event_btnBackToHomeActionPerformed
+
+    private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
+        // TODO add your handling code here:
+        int kode = evt.getKeyCode();
+        if (kode == evt.VK_ENTER) {
+            txtPassword.requestFocus();
+        }
+    }//GEN-LAST:event_txtEmailKeyPressed
+
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
+        // TODO add your handling code here:
+        int kode = evt.getKeyCode();
+        if (kode == evt.VK_ENTER) {
+            btnLoginUser.requestFocus();
+        }
+    }//GEN-LAST:event_txtPasswordKeyPressed
+
+    private void btnLoginUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLoginUserKeyPressed
+        // TODO add your handling code here:
+        loginUser();
+    }//GEN-LAST:event_btnLoginUserKeyPressed
 
     /**
      * @param args the command line arguments

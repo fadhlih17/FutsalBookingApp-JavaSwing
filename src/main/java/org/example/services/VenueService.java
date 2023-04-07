@@ -10,5 +10,10 @@ public interface VenueService {
     Venue createVenue(Venue venue);
     boolean updateVenue(Venue venue);
     List<VenueResponse> findAllVenues();
-    List<VenueResponse> findVenueByCategory(ECategory category);
+    List<VenueResponse> findVenueByCategory(String category);
+    List<Venue> findVenuesWhereActive();
+    Venue findVenueId(String venueId);
+    List<String> findListTime(String id);
+    Venue findVenueByName(String venueName);
+    List<String> findRandomTime();
 }

@@ -2,7 +2,7 @@ package org.example.exceptions;
 
 import javax.swing.*;
 
-public class UnauthorizedException extends Exception{
+public class UnauthorizedException extends RuntimeException{
     public UnauthorizedException(){};
     public UnauthorizedException(String message){
         super(message);

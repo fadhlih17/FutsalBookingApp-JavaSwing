@@ -22,25 +22,15 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     public Employee createEmployee(Employee request){
-        if (employeeRepository.findAllEmployeeById(request.getId()) != null){
-            try {
-                throw new WarningException("Gagal membuat data karyawan, Id Karyawan sudah tersedia !");
-            } catch (WarningException e) {
-                throw new RuntimeException(e);
-            }
-        }
+        if (employeeRepository.findAllEmployeeById(request.getId()) != null)throw new WarningException("Gagal membuat data karyawan, Id Karyawan sudah tersedia !");
         return employeeRepository.createEmployee(request);
     }
 
     public boolean updateEmployee(Employee employee){
         Employee emp = employeeRepository.findAllEmployeeById(employee.getId());
-        if ( emp == null){
-            try {
-                throw new WarningException("Gagal merubah data karyawan, id tidak ditemukan !");
-            } catch (WarningException e) {
-                throw new RuntimeException(e);
-            }
-        }
+
+        if ( emp == null)throw new WarningException("Gagal merubah data karyawan, id tidak ditemukan !");
+
         return employeeRepository.updateEmployee(employee);
     }
 
@@ -49,13 +39,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     public boolean deleteEmployee(String id){
-        if (employeeRepository.findAllEmployeeById(id) == null){
-            try {
-                throw new WarningException("Gagal menghapus data, id karyawan tidak ditemukan");
-            } catch (WarningException e) {
-                throw new RuntimeException(e);
-            }
-        }
+        if (employeeRepository.findAllEmployeeById(id) == null)throw new WarningException("Gagal menghapus data, id karyawan tidak ditemukan");
         absentRepository.deleteAbsentByEmployeeId(id);
         adminRepository.deleteAdminAccountByEmployeeId(id);
         return employeeRepository.deleteEmployee(id);

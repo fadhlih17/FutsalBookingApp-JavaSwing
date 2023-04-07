@@ -22,7 +22,22 @@ public class VenueController {
     public List<VenueResponse> findAllVenues(){
         return service.findAllVenues();
     }
-    public List<VenueResponse> findVenueByCategory(ECategory category){
+    public List<VenueResponse> findVenueByCategory(String category){
         return service.findVenueByCategory(category);
+    }
+    public List<String> findListTime(String venueName){
+        return service.findListTime(venueName);
+    }
+
+    public List<String> findRandomTime(){
+        return service.findRandomTime();
+    }
+
+    public Venue findVenueById(String id){
+        return service.findVenueId(id);
+    }
+
+    public Venue findVenueByName(String name){
+        return service.findVenueByName(name);
     }
 }

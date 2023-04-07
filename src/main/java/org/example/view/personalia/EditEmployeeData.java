@@ -69,6 +69,12 @@ public class EditEmployeeData extends javax.swing.JFrame {
 
         jLabel1.setText("Nama");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 112, -1, -1));
+
+        txtNameEdit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNameEditKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtNameEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 109, 153, -1));
 
         jLabel2.setText("Alamat");
@@ -76,6 +82,11 @@ public class EditEmployeeData extends javax.swing.JFrame {
 
         txtAddressEdit.setColumns(20);
         txtAddressEdit.setRows(5);
+        txtAddressEdit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtAddressEditKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(txtAddressEdit);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 143, -1, 98));
@@ -86,10 +97,22 @@ public class EditEmployeeData extends javax.swing.JFrame {
 
         jLabel4.setText("Nomor Hp");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 290, -1, -1));
+
+        txtPhoneNumberEdit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPhoneNumberEditKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtPhoneNumberEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 287, 156, -1));
 
         jLabel5.setText("Jabatan");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 330, -1, -1));
+
+        txtPositionEdit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPositionEditKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtPositionEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 327, 156, -1));
 
         btnSaveEdit.setBackground(new java.awt.Color(0, 102, 0));
@@ -138,7 +161,7 @@ public class EditEmployeeData extends javax.swing.JFrame {
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/test1.jpg"))); // NOI18N
         jLabel9.setText("jLabel9");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 480));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 480));
 
         pack();
         setLocationRelativeTo(null);
@@ -177,6 +200,22 @@ public class EditEmployeeData extends javax.swing.JFrame {
     private void rbWomenEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbWomenEditActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbWomenEditActionPerformed
+
+    private void txtNameEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameEditKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameEditKeyPressed
+
+    private void txtAddressEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAddressEditKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAddressEditKeyPressed
+
+    private void txtPhoneNumberEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneNumberEditKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPhoneNumberEditKeyPressed
+
+    private void txtPositionEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPositionEditKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPositionEditKeyPressed
 
     /**
      * @param args the command line arguments

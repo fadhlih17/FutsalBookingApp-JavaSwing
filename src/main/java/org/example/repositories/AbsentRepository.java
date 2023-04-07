@@ -1,5 +1,6 @@
 package org.example.repositories;
 
+import org.example.dtos.AbsentDetailResponse;
 import org.example.dtos.AbsentResponse;
 import org.example.models.Absent;
 
@@ -9,7 +10,7 @@ public interface AbsentRepository {
     Absent createAbsent(Absent absent);
     List<AbsentResponse> findAllAbsent();
     List<AbsentResponse> findAbsentByDate(int month, int year);
-    List<AbsentResponse> findAllAbsentDetail();
-    List<AbsentResponse> findAbsentDetailByDate(int date, int year);
+    List<AbsentDetailResponse> findAllAbsentDetail();
+    List<AbsentDetailResponse> findAbsentDetailByDate(int date, int year);
     boolean deleteAbsentByEmployeeId(String id);
 }

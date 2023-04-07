@@ -15,6 +15,7 @@ public class UserMenuView extends javax.swing.JFrame {
      */
     public UserMenuView() {
         initComponents();
+        txtUserId.setVisible(false);
     }
 
     /**
@@ -28,6 +29,13 @@ public class UserMenuView extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         btnLogoutUser = new javax.swing.JButton();
+        txtUsername = new javax.swing.JLabel();
+        txtUserId = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        btnSeeVenues = new javax.swing.JButton();
+        btnCreateBooking = new javax.swing.JButton();
+        btnSeeStatus = new javax.swing.JButton();
+        btnReportTransaction = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,30 +48,92 @@ public class UserMenuView extends javax.swing.JFrame {
             }
         });
 
+        txtUsername.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtUsername.setText("Selamat datang ");
+
+        txtUserId.setText(" userId");
+
+        jButton1.setText("Home");
+
+        btnSeeVenues.setText("Lihat Daftar Lapangan");
+        btnSeeVenues.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSeeVenuesActionPerformed(evt);
+            }
+        });
+
+        btnCreateBooking.setText("Lakukan Pemesanan");
+        btnCreateBooking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateBookingActionPerformed(evt);
+            }
+        });
+
+        btnSeeStatus.setText("Status Pemesanan");
+        btnSeeStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSeeStatusActionPerformed(evt);
+            }
+        });
+
+        btnReportTransaction.setText("Laporan Transaksi");
+        btnReportTransaction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportTransactionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(172, 172, 172)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLogoutUser)
+                .addGap(26, 26, 26))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtUserId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnSeeVenues)
+                    .addComponent(btnCreateBooking)
+                    .addComponent(btnSeeStatus)
+                    .addComponent(btnReportTransaction))
+                .addGap(0, 355, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(229, 229, 229)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(167, Short.MAX_VALUE)
-                .addComponent(btnLogoutUser)
-                .addGap(161, 161, 161))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(42, 42, 42)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogoutUser)
-                .addContainerGap(213, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtUsername)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtUserId)
+                .addGap(29, 29, 29)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
+                .addComponent(btnSeeVenues)
+                .addGap(18, 18, 18)
+                .addComponent(btnCreateBooking)
+                .addGap(18, 18, 18)
+                .addComponent(btnSeeStatus)
+                .addGap(18, 18, 18)
+                .addComponent(btnReportTransaction)
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogoutUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutUserActionPerformed
@@ -71,6 +141,26 @@ public class UserMenuView extends javax.swing.JFrame {
         this.setVisible(false);
         new LoginUserView().setVisible(true);
     }//GEN-LAST:event_btnLogoutUserActionPerformed
+
+    private void btnSeeVenuesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeeVenuesActionPerformed
+        // TODO add your handling code here:
+        new ListVenues().setVisible(true);
+    }//GEN-LAST:event_btnSeeVenuesActionPerformed
+
+    private void btnCreateBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateBookingActionPerformed
+        // TODO add your handling code here:
+        new BookingTransactionView(txtUserId.getText()).setVisible(true);
+    }//GEN-LAST:event_btnCreateBookingActionPerformed
+
+    private void btnSeeStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeeStatusActionPerformed
+        // TODO add your handling code here:
+        new BookingStatus(txtUserId.getText()).setVisible(true);
+    }//GEN-LAST:event_btnSeeStatusActionPerformed
+
+    private void btnReportTransactionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportTransactionActionPerformed
+        // TODO add your handling code here:
+        new ReportTransaction(txtUserId.getText()).setVisible(true);
+    }//GEN-LAST:event_btnReportTransactionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -108,7 +198,14 @@ public class UserMenuView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCreateBooking;
     private javax.swing.JButton btnLogoutUser;
+    private javax.swing.JButton btnReportTransaction;
+    private javax.swing.JButton btnSeeStatus;
+    private javax.swing.JButton btnSeeVenues;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel txtUserId;
+    public javax.swing.JLabel txtUsername;
     // End of variables declaration//GEN-END:variables
 }

@@ -152,7 +152,7 @@ public class RegisterUserView extends javax.swing.JFrame {
         getContentPane().add(btnCancelRegisterUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 454, 140, -1));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/17580.jpg"))); // NOI18N
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 500));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 510));
 
         pack();
         setLocationRelativeTo(null);

@@ -1,6 +1,7 @@
 package org.example.repositories.impl;
 
 import org.example.database.AppDbContext;
+import org.example.dtos.AbsentDetailResponse;
 import org.example.dtos.AbsentResponse;
 import org.example.models.Absent;
 import org.example.repositories.AbsentRepository;
@@ -90,22 +91,20 @@ public class AbsentRepositoryImpl implements AbsentRepository {
         return responses;
     }
 
-    public List<AbsentResponse> findAllAbsentDetail(){
+    public List<AbsentDetailResponse> findAllAbsentDetail(){
         String query = "SELECT a.employee_id, e.name, a.date, a.information\n" +
                 "FROM absent a\n" +
                 "JOIN employee e ON a.employee_id = e.id\n";
         ResultSet resultSet = null;
-        List<AbsentResponse> results = new ArrayList<>();
+        List<AbsentDetailResponse> results = new ArrayList<>();
         try {
             resultSet = context.setResultSet(context.getStatement().executeQuery(query));
             while (resultSet.next()){
                 String employeeId = resultSet.getString("employee_id");
                 String name = resultSet.getString("name");
-                int leave = resultSet.getInt("Cuti");
-                int alpha = resultSet.getInt("Alpa");
-                int sick = resultSet.getInt("Sakit");
-                int permission = resultSet.getInt("Izin");
-                results.add(new AbsentResponse(employeeId, name, leave, alpha, sick, permission));
+                String datee = resultSet.getString("date");
+                String information = resultSet.getString("information");
+                results.add(new AbsentDetailResponse(employeeId, name, datee, information));
             }
         } catch (Exception e) {
             error(e);
@@ -115,23 +114,21 @@ public class AbsentRepositoryImpl implements AbsentRepository {
         return results;
     }
 
-    public List<AbsentResponse> findAbsentDetailByDate(int date, int year){
+    public List<AbsentDetailResponse> findAbsentDetailByDate(int date, int year){
         String query = "SELECT a.employee_id, e.name, a.date, a.information\n" +
                 "FROM absent a\n" +
                 "JOIN employee e ON a.employee_id = e.id\n" +
                 "WHERE MONTH(a.date) = "+date+" AND YEAR(a.date) = "+year+"";
         ResultSet resultSet = null;
-        List<AbsentResponse> results = new ArrayList<>();
+        List<AbsentDetailResponse> results = new ArrayList<>();
         try {
             resultSet = context.setResultSet(context.getStatement().executeQuery(query));
             while (resultSet.next()){
                 String employeeId = resultSet.getString("employee_id");
                 String name = resultSet.getString("name");
-                int leave = resultSet.getInt("Cuti");
-                int alpha = resultSet.getInt("Alpa");
-                int sick = resultSet.getInt("Sakit");
-                int permission = resultSet.getInt("Izin");
-                results.add(new AbsentResponse(employeeId, name, leave, alpha, sick, permission));
+                String datee = resultSet.getString("date");
+                String information = resultSet.getString("information");
+                results.add(new AbsentDetailResponse(employeeId, name, datee, information));
             }
         } catch (Exception e) {
             error(e);

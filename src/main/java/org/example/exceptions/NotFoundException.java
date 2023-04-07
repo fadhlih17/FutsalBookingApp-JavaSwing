@@ -2,7 +2,7 @@ package org.example.exceptions;
 
 import javax.swing.*;
 
-public class NotFoundException extends Exception{
+public class NotFoundException extends RuntimeException{
     public NotFoundException(){}
     public NotFoundException(String message){
         super(message);

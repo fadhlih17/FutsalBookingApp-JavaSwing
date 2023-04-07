@@ -1,5 +1,6 @@
 package org.example.controllers;
 
+import org.example.dtos.AbsentDetailResponse;
 import org.example.dtos.AbsentResponse;
 import org.example.models.Absent;
 import org.example.services.AbsentService;
@@ -23,10 +24,10 @@ public class AbsentController {
     public List<AbsentResponse> findAllByDate(int date, int year){
         return service.findAllAbsentByDate(date, year);
     }
-    public List<AbsentResponse> findAllAbsentDetails(){
+    public List<AbsentDetailResponse> findAllAbsentDetails(){
         return service.findAllAbsentDetails();
     }
-    public List<AbsentResponse> findAllAbsentDetailByDate(int date, int year){
+    public List<AbsentDetailResponse> findAllAbsentDetailByDate(int date, int year){
         return service.findAllAbsentDetailByDate(date, year);
     }
 }

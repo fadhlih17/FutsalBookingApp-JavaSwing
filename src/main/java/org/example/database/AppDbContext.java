@@ -20,21 +20,24 @@ public class AppDbContext {
         this.resultSet = resultSet;
         return resultSet;
     }
-    public Connection getConnection() {
+//    public Connection getConnection() {
+//        Connection connection = null;
+//        try {
+//            Class.forName(driver);
+//            connection = DriverManager.getConnection(url, user, "");
+//        } catch (Exception e){
+//            System.out.println(e.getMessage());
+//            throw new RuntimeException(e);
+//        }
+//        return connection;
+//    }
+    public Statement getStatement(){
+        Statement statement = null;
         Connection connection = null;
         try {
             Class.forName(driver);
             connection = DriverManager.getConnection(url, user, "");
-        } catch (Exception e){
-            System.out.println(e.getMessage());
-            throw new RuntimeException(e);
-        }
-        return connection;
-    }
-    public Statement getStatement(){
-        Statement statement = null;
-        try {
-            statement = getConnection().createStatement();
+            statement = connection.createStatement();
         } catch (Exception e){
             System.out.println(e.getMessage());
             throw new RuntimeException(e);
@@ -45,7 +48,6 @@ public class AppDbContext {
         try {
             getResultSet().close();
             getStatement().close();
-            getConnection().close();
         } catch (Exception e){
             System.out.println(e);
         }
