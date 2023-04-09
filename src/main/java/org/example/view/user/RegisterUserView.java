@@ -9,6 +9,7 @@ import org.example.dependencyInjection.AuthControllerFactory;
 import org.example.models.User;
 
 import javax.swing.*;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -65,9 +66,9 @@ public class RegisterUserView extends javax.swing.JFrame {
         jLabel2.setText("Username");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
-        txtUsername.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUsernameActionPerformed(evt);
+        txtUsername.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtUsernameKeyPressed(evt);
             }
         });
         getContentPane().add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 60, 140, -1));
@@ -75,16 +76,16 @@ public class RegisterUserView extends javax.swing.JFrame {
         jLabel3.setText("Full Name");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
-        txtFullName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFullNameActionPerformed(evt);
+        txtFullName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtFullNameKeyPressed(evt);
             }
         });
         getContentPane().add(txtFullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 100, 140, -1));
 
-        txtPhoneNumber.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPhoneNumberActionPerformed(evt);
+        txtPhoneNumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPhoneNumberKeyPressed(evt);
             }
         });
         getContentPane().add(txtPhoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 140, 140, -1));
@@ -95,9 +96,9 @@ public class RegisterUserView extends javax.swing.JFrame {
         jLabel5.setText("Alamat");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
-        txtEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailActionPerformed(evt);
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEmailKeyPressed(evt);
             }
         });
         getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 295, 140, -1));
@@ -107,6 +108,11 @@ public class RegisterUserView extends javax.swing.JFrame {
 
         txtAddress.setColumns(20);
         txtAddress.setRows(5);
+        txtAddress.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtAddressKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(txtAddress);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 183, -1, -1));
@@ -117,16 +123,16 @@ public class RegisterUserView extends javax.swing.JFrame {
         jLabel8.setText("Konfirmasi Password");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 385, -1, -1));
 
-        txtPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPasswordActionPerformed(evt);
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
             }
         });
         getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 340, 140, -1));
 
-        txtConfirmPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtConfirmPasswordActionPerformed(evt);
+        txtConfirmPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtConfirmPasswordKeyPressed(evt);
             }
         });
         getContentPane().add(txtConfirmPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 385, 140, -1));
@@ -137,6 +143,11 @@ public class RegisterUserView extends javax.swing.JFrame {
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterActionPerformed(evt);
+            }
+        });
+        btnRegister.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnRegisterKeyPressed(evt);
             }
         });
         getContentPane().add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 425, 140, -1));
@@ -158,33 +169,17 @@ public class RegisterUserView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtFullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFullNameActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_txtFullNameActionPerformed
-
-    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUsernameActionPerformed
-
-    private void txtPhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneNumberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPhoneNumberActionPerformed
-
-    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailActionPerformed
-
-    private void txtConfirmPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtConfirmPasswordActionPerformed
-
-    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPasswordActionPerformed
-
-    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        // TODO add your handling code here:
+    private void reset(){
+        txtUsername.setText("");
+        txtEmail.setText("");
+        txtEmail.setText("");
+        txtPassword.setText("");
+        txtConfirmPassword.setText("");
+        txtAddress.setText("");
+        txtPhoneNumber.setText("");
+        txtFullName.setText("");
+    }
+    private void registerUser(){
         String username = txtUsername.getText().toString();
         String fullName = txtFullName.getText().toString();
         String phoneNumber = txtPhoneNumber.getText().toString();
@@ -216,6 +211,7 @@ public class RegisterUserView extends javax.swing.JFrame {
                 if (s.length() > 0) {
                     JOptionPane.showMessageDialog(null, "Berhasil registrasi, silahkan login");
                     final int i = JOptionPane.showConfirmDialog(this, "Ingin ke halaman login ? ");
+                    reset();
                     if (i == 0) {
                         this.setVisible(false);
                         new LoginUserView().setVisible(true);
@@ -227,8 +223,10 @@ public class RegisterUserView extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Konfirmasi password tidak sesuai", "Register", JOptionPane.PLAIN_MESSAGE);
             }
         }
-
-
+    }
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        // TODO add your handling code here:
+        registerUser();
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnCancelRegisterUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelRegisterUserActionPerformed
@@ -236,6 +234,59 @@ public class RegisterUserView extends javax.swing.JFrame {
         this.setVisible(false);
         new LoginUserView().setVisible(true);
     }//GEN-LAST:event_btnCancelRegisterUserActionPerformed
+
+    private void txtUsernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsernameKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == evt.VK_ENTER){
+            txtFullName.requestFocus();
+        }
+    }//GEN-LAST:event_txtUsernameKeyPressed
+
+    private void txtFullNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFullNameKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == evt.VK_ENTER){
+            txtPhoneNumber.requestFocus();
+        }
+    }//GEN-LAST:event_txtFullNameKeyPressed
+
+    private void txtPhoneNumberKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneNumberKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == evt.VK_ENTER){
+            txtAddress.requestFocus();
+        }
+    }//GEN-LAST:event_txtPhoneNumberKeyPressed
+
+    private void txtAddressKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAddressKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == evt.VK_ENTER){
+            txtEmail.requestFocus();
+        }
+    }//GEN-LAST:event_txtAddressKeyPressed
+
+    private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == evt.VK_ENTER){
+            txtPassword.requestFocus();
+        }
+    }//GEN-LAST:event_txtEmailKeyPressed
+
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == evt.VK_ENTER){
+            txtConfirmPassword.requestFocus();
+        }
+    }//GEN-LAST:event_txtPasswordKeyPressed
+
+    private void txtConfirmPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtConfirmPasswordKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == evt.VK_ENTER){
+            registerUser();
+        }
+    }//GEN-LAST:event_txtConfirmPasswordKeyPressed
+
+    private void btnRegisterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnRegisterKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegisterKeyPressed
 
     /**
      * @param args the command line arguments

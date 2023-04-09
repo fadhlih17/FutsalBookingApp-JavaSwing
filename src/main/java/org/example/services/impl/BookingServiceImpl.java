@@ -76,7 +76,7 @@ public class BookingServiceImpl implements BookingService {
         }
 
 
-        throw new WarningException("Maaf jadwal sudah terisi, silahkan atur jadwal yang lain");
+        throw new WarningException("Maaf jadwal sudah terisi atau sedang dalam proses, silahkan atur jadwal yang lain");
 
     }
 
@@ -121,10 +121,9 @@ public class BookingServiceImpl implements BookingService {
             return 0;
         }
         long venuePrice = venue.getPrice();
-        long price = (long) (venuePrice * 0.3);
         long duration = endTime.getTime() - startTime.getTime();
         long hours = duration / (60 * 60 * 1000);
-        long total = price * hours;
+        long total = venuePrice * hours;
         return total;
     }
 

@@ -478,10 +478,22 @@ public class PersonaliaView extends javax.swing.JFrame {
             }
         });
         registerAdminPanel.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(443, 226, 144, -1));
+
+        txtConfirmPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtConfirmPasswordKeyPressed(evt);
+            }
+        });
         registerAdminPanel.add(txtConfirmPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(443, 186, 144, -1));
 
         jLabel5.setText("Konfirmasi Password");
         registerAdminPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 189, -1, -1));
+
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
+            }
+        });
         registerAdminPanel.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(443, 146, 144, -1));
 
         jLabel6.setText("Password");
@@ -496,6 +508,12 @@ public class PersonaliaView extends javax.swing.JFrame {
             }
         });
         registerAdminPanel.add(btnDelete1, new org.netbeans.lib.awtextra.AbsoluteConstraints(443, 284, 144, -1));
+
+        txtUsername.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtUsernameKeyPressed(evt);
+            }
+        });
         registerAdminPanel.add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(443, 106, 144, -1));
 
         btnRefresh1.setBackground(new java.awt.Color(0, 153, 51));
@@ -1173,6 +1191,7 @@ public class PersonaliaView extends javax.swing.JFrame {
         // TODO add your handling code here:
         employeeId = null;
         txtSearch.setText("");
+        tblEmployee.clearSelection();
         readTableEmployee();
     }//GEN-LAST:event_btnRefreshActionPerformed
     // ############################################# END EMPLOYEE PANEL ################################################
@@ -1242,8 +1261,7 @@ public class PersonaliaView extends javax.swing.JFrame {
         Map<String, String> employeeMap = adminController.findEmployeeWhereAdmin();
         return employeeMap.get(selectedName);
     }
-    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        // TODO add your handling code here:
+    private void createAdmin(){
         String employeeId = getCmbSelectedEmployeeId();
         String username = txtUsername.getText().toString();
         String password = txtPassword.getText().toString();
@@ -1275,7 +1293,10 @@ public class PersonaliaView extends javax.swing.JFrame {
             }
             readTableAdmin();
         }
-
+    }
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        // TODO add your handling code here:
+        createAdmin();
     }//GEN-LAST:event_btnRegisterActionPerformed
     private void btnDelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelete1ActionPerformed
         // TODO add your handling code here:
@@ -1299,6 +1320,7 @@ public class PersonaliaView extends javax.swing.JFrame {
         txtUsername.setText("");
         txtPassword.setText("");
         txtConfirmPassword.setText("");
+        tblAdmin.clearSelection();
         readTableAdmin();
     }//GEN-LAST:event_btnRefresh1ActionPerformed
 
@@ -1309,6 +1331,27 @@ public class PersonaliaView extends javax.swing.JFrame {
         txtUsername.setText(tblAdmin.getValueAt(row, 2).toString());
         txtPassword.setText(tblAdmin.getValueAt(row,3).toString());
     }//GEN-LAST:event_tblAdminMouseClicked
+
+    private void txtUsernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsernameKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            txtPassword.requestFocus();
+        }
+    }//GEN-LAST:event_txtUsernameKeyPressed
+
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            txtConfirmPassword.requestFocus();
+        }
+    }//GEN-LAST:event_txtPasswordKeyPressed
+
+    private void txtConfirmPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtConfirmPasswordKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            createAdmin();
+        }
+    }//GEN-LAST:event_txtConfirmPasswordKeyPressed
     // ################################################ END REGISTER ADMIN ACCOUNT ################################################
 
     // ===================================================== Logout ==================================================
@@ -1407,6 +1450,7 @@ public class PersonaliaView extends javax.swing.JFrame {
     private void btnRefreshEmployeeDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshEmployeeDataActionPerformed
         // TODO add your handling code here:
         readTableEmployeeData();
+        tblEmployeeData.clearSelection();
         txtSearchEmployeeData.setText("");
     }//GEN-LAST:event_btnRefreshEmployeeDataActionPerformed
 
@@ -1442,10 +1486,10 @@ public class PersonaliaView extends javax.swing.JFrame {
         for (AbsentResponse absent : absents) {
             model.setValueAt(absent.getEmployeeId(), x, 0);
             model.setValueAt(absent.getEmployeeName(), x, 1);
-            model.setValueAt(absent.getLeave(), x, 2);
-            model.setValueAt(absent.getAlpha(), x, 3);
-            model.setValueAt(absent.getSick(), x, 4);
-            model.setValueAt(absent.getPermission(), x, 5);
+            model.setValueAt(0, x, 2);
+            model.setValueAt(0, x, 3);
+            model.setValueAt(0, x, 4);
+            model.setValueAt(0, x, 5);
             x++;
         }
     }
@@ -1500,6 +1544,7 @@ public class PersonaliaView extends javax.swing.JFrame {
     private void btnRefreshAbsentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshAbsentActionPerformed
         // TODO add your handling code here:
         readTableAbsent();
+        tblAbsentEmployee.clearSelection();
         cbMonth.setSelectedItem("Pilih Bulan");
         cbYear.setSelectedItem("Pilih Tahun");
     }//GEN-LAST:event_btnRefreshAbsentActionPerformed
@@ -1507,7 +1552,8 @@ public class PersonaliaView extends javax.swing.JFrame {
     private void btnPrintEmployeeAbsentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintEmployeeAbsentActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPrintEmployeeAbsentActionPerformed
-    // ############################################# END EMPLOYEE DATA #####################################################
+
+    // ############################################# END EMPLOYEE ABSENT DATA #####################################################
 
     /**
      * @param args the command line arguments

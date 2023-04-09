@@ -597,8 +597,13 @@ public class UserView extends javax.swing.JFrame {
         btnAskPayment.setBackground(new java.awt.Color(255, 51, 51));
         btnAskPayment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAskPayment.setForeground(new java.awt.Color(255, 255, 255));
-        btnAskPayment.setText("Cara Pembayaran ?");
-        BookingTransactionPanel.add(btnAskPayment, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 60, -1, -1));
+        btnAskPayment.setText("Pilihan Pembayaran ?");
+        btnAskPayment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAskPaymentActionPerformed(evt);
+            }
+        });
+        BookingTransactionPanel.add(btnAskPayment, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 60, -1, -1));
         BookingTransactionPanel.add(txtDateSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 260, 132, -1));
 
         jLabel12.setText("Cari tanggal");
@@ -1116,8 +1121,9 @@ public class UserView extends javax.swing.JFrame {
         this.fileName = file.getAbsolutePath();
     }
     private void createBooking(){
-        if (!cbCategoryInput.getSelectedItem().equals("Pilih Kategori") || !cbVenue.getSelectedItem().equals("Pilih Lapangan") ||
-                txtDateBooking.getDate() != null || !cbStart.getSelectedItem().equals(cbEnd.getSelectedItem()) || !txtUploadPhoto.getText().equals("")){
+        if (!cbCategoryInput.getSelectedItem().equals("Pilih Kategori") && !cbVenue.getSelectedItem().equals("Pilih Lapangan") &&
+                txtDateBooking.getDate() != null && !cbStart.getSelectedItem().equals(cbEnd.getSelectedItem()) && !txtUploadPhoto.getText().equals("") &&
+                !txtUploadPhoto.getText().equals("") && !txtTotalPrice.getText().equals("")){
 
             String userId = txtUserId.getText();
             String venueId = venueId();
@@ -1362,13 +1368,21 @@ public class UserView extends javax.swing.JFrame {
 
     private void btnLogoutUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutUserActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
-        new LoginUserView().setVisible(true);
+        int i = JOptionPane.showConfirmDialog(null, "Anda yakin ingin keluar ?");
+        if (i == JOptionPane.YES_OPTION){
+            this.setVisible(false);
+            new LoginUserView().setVisible(true);
+        }
     }//GEN-LAST:event_btnLogoutUserActionPerformed
 
     private void cbCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCategoryActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbCategoryActionPerformed
+
+    private void btnAskPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAskPaymentActionPerformed
+        // TODO add your handling code here:
+        new PaymentChooseView().setVisible(true);
+    }//GEN-LAST:event_btnAskPaymentActionPerformed
     // ################################################# END REPORT STATUS ##############################################
 
     /**

@@ -75,6 +75,12 @@ public class InputEmployeeData extends javax.swing.JFrame {
 
         jLabel1.setText("Nama");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 112, -1, -1));
+
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNameKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 109, 153, -1));
 
         jLabel2.setText("Alamat");
@@ -82,20 +88,43 @@ public class InputEmployeeData extends javax.swing.JFrame {
 
         txtAddress.setColumns(20);
         txtAddress.setRows(5);
+        txtAddress.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtAddressKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(txtAddress);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 143, -1, 98));
 
         jLabel3.setText("Tanggal Lahir");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 247, -1, -1));
+
+        txtDateOfBirth.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtDateOfBirthKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtDateOfBirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 247, 156, -1));
 
         jLabel4.setText("Nomor Hp");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 290, -1, -1));
+
+        txtPhoneNumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPhoneNumberKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtPhoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 287, 156, -1));
 
         jLabel5.setText("Jabatan");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 330, -1, -1));
+
+        txtPosition.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPositionKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtPosition, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 327, 156, -1));
 
         btnSave.setBackground(new java.awt.Color(0, 102, 0));
@@ -123,6 +152,12 @@ public class InputEmployeeData extends javax.swing.JFrame {
 
         jLabel7.setText("Id Karyawan");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 72, -1, -1));
+
+        txtEmployeeId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEmployeeIdKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtEmployeeId, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 69, 153, -1));
 
         btnCancel.setBackground(new java.awt.Color(255, 0, 0));
@@ -159,28 +194,40 @@ public class InputEmployeeData extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void inputEmployee(){
+
+        if (!txtEmployeeId.getText().equals("") && !txtName.getText().equals("") && !txtAddress.getText().equals("") &&
+            txtDateOfBirth.getDate() != null && !txtPhoneNumber.getText().equals("") && !txtPosition.getText().equals("")
+            && (rbMan.isSelected() == true || rbWomen.isSelected() == true)){
+
+            String id = txtEmployeeId.getText();
+            String name = txtName.getText();
+            String address = txtAddress.getText();
+            Date birthDate = txtDateOfBirth.getDate();
+            String phoneNumber = txtPhoneNumber.getText();
+            String position = txtPosition.getText();
+            String sex = "";
+            if (rbMan.isSelected()){
+                sex = "Laki-Laki";
+            } else if (rbWomen.isSelected()) {
+                sex = "Perempuan";
+            }
+
+            // Konversi tanggal ke dalam string
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String birthDateString = dateFormat.format(birthDate);
+
+            Employee employee = new Employee(id, name, address, phoneNumber, position, birthDateString, sex);
+            controller.createEmployee(employee);
+            JOptionPane.showMessageDialog(this, "Berhasil membuat data karyawan baru");
+            this.dispose();
+            return;
+        }
+        JOptionPane.showMessageDialog(null, "Input tidak boleh kosong !", "Invalid input", JOptionPane.WARNING_MESSAGE);
+    }
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        String id = txtEmployeeId.getText();
-        String name = txtName.getText();
-        String address = txtAddress.getText();
-        Date birthDate = txtDateOfBirth.getDate();
-        String phoneNumber = txtPhoneNumber.getText();
-        String position = txtPosition.getText();
-        String sex = "";
-        if (rbMan.isSelected()){
-            sex = "Laki-Laki";
-        } else if (rbWomen.isSelected()) {
-            sex = "Perempuan";
-        }
-        // Konversi tanggal ke dalam string
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String birthDateString = dateFormat.format(birthDate);
-
-        Employee employee = new Employee(id, name, address, phoneNumber, position, birthDateString, sex);
-        controller.createEmployee(employee);
-        JOptionPane.showMessageDialog(this, "Berhasil membuat data karyawan baru");
-        this.dispose();
+        inputEmployee();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
@@ -203,6 +250,48 @@ public class InputEmployeeData extends javax.swing.JFrame {
     private void rbWomenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbWomenActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbWomenActionPerformed
+
+    private void txtEmployeeIdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmployeeIdKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == evt.VK_ENTER){
+            txtName.requestFocus();
+        }
+    }//GEN-LAST:event_txtEmployeeIdKeyPressed
+
+    private void txtNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == evt.VK_ENTER){
+            txtAddress.requestFocus();
+        }
+    }//GEN-LAST:event_txtNameKeyPressed
+
+    private void txtAddressKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAddressKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == evt.VK_ENTER){
+            txtDateOfBirth.requestFocus();
+        }
+    }//GEN-LAST:event_txtAddressKeyPressed
+
+    private void txtDateOfBirthKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDateOfBirthKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == evt.VK_ENTER){
+            txtPhoneNumber.requestFocus();
+        }
+    }//GEN-LAST:event_txtDateOfBirthKeyPressed
+
+    private void txtPhoneNumberKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneNumberKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == evt.VK_ENTER){
+            txtPosition.requestFocus();
+        }
+    }//GEN-LAST:event_txtPhoneNumberKeyPressed
+
+    private void txtPositionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPositionKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == evt.VK_ENTER){
+            rbMan.setSelected(true);
+        }
+    }//GEN-LAST:event_txtPositionKeyPressed
 
     /**
      * @param args the command line arguments

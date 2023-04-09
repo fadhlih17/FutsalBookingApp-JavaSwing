@@ -46,21 +46,21 @@ public class AbsentFormView extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Input Absen Karyawan");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 6, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
 
         jLabel2.setText("Nama Karyawan");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 64, -1, -1));
-        getContentPane().add(cbEmployees, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 61, 128, -1));
+        getContentPane().add(cbEmployees, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 61, 160, -1));
 
         jLabel3.setText("Tanggal ");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 101, -1, -1));
-        getContentPane().add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 101, 128, -1));
+        getContentPane().add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 101, 160, -1));
 
         jLabel4.setText("Keterangan");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 141, -1, -1));
 
         cbInformation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Keterangan", "Alpa", "Sakit", "Cuti", "Izin" }));
-        getContentPane().add(cbInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 141, 128, -1));
+        getContentPane().add(cbInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 141, 160, -1));
 
         btnSave.setBackground(new java.awt.Color(0, 153, 51));
         btnSave.setForeground(new java.awt.Color(255, 255, 255));
@@ -70,7 +70,7 @@ public class AbsentFormView extends javax.swing.JFrame {
                 btnSaveActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 181, 128, -1));
+        getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 181, 160, -1));
 
         btnCancel.setBackground(new java.awt.Color(255, 0, 0));
         btnCancel.setForeground(new java.awt.Color(255, 255, 255));
@@ -80,7 +80,7 @@ public class AbsentFormView extends javax.swing.JFrame {
                 btnCancelActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 216, 128, -1));
+        getContentPane().add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 216, 160, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/test1.jpg"))); // NOI18N
         jLabel5.setText("jLabel5");

@@ -53,7 +53,7 @@ public class BookingRepositoryImpl implements BookingRepository {
     public String findBookingTransaction(String venueId, String dateBooking, Time startTime, Time endTime){
         String query = "select * from Booking where venue_id = '"+venueId+"' and dateBooked = '"+dateBooking+"' and ((start_time >= '"+startTime+"' and start_time < '"+startTime+"')" +
                 "or (end_time > '"+endTime+"' and end_time <= '"+endTime+"')" +
-                "or (start_time <= '"+startTime+"' and end_time >= '"+endTime+"'))";
+                "or (start_time <= '"+startTime+"' and end_time >= '"+endTime+"')) and isConfirmed  = false ";
         Booking book = new Booking();
         try{
             ResultSet resultSet = context.getStatement().executeQuery(query);
