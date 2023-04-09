@@ -88,11 +88,15 @@ public class Main {
 //            System.out.println(status.getUserEmail());
 //
 //        }
-        List<BookingDetail> bookingDetails = service.userHistoriesSuccess("229b0f84-b8e4-416f-9a69-32d49c0fdffe");
-        for (BookingDetail bookingDetail : bookingDetails) {
-            System.out.println(bookingDetail.getBookedId());
-            System.out.println(bookingDetail.getPrice());
-        }
+//        List<BookingStatusDetail> bookingDetails = service.findBookingStatus("229b0f84-b8e4-416f-9a69-32d49c0fdffe");
+//        for (BookingStatusDetail bookingDetail : bookingDetails) {
+//            System.out.println(bookingDetail.getStatus());
+//            System.out.println(bookingDetail.getName());
+//        }
+
+        BookingDetail bookingDetail = service.reportBookingStruck("BK99-082447");
+        System.out.println(bookingDetail.getBookedId());
+        System.out.println(bookingDetail.getImageUrl());
     }
 
 

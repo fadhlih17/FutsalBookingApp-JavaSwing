@@ -2,6 +2,7 @@ package org.example.services;
 
 import org.example.dtos.*;
 import org.example.dtos.responses.BookingStatusDetail;
+import org.example.models.Booking;
 import org.example.models.Venue;
 
 import java.sql.Time;
@@ -22,4 +23,5 @@ public interface BookingService {
     List<BookingDetail> userHistoriesSuccessByDate(String userId, int month, int year);
     List<BookingDetail> userHistoriesSuccessByYear(String userId, int year);
     BookingDetail reportBookingStruck(String bookingId);
+    Booking findBookingById(String id);
 }

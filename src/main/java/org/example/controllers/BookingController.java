@@ -2,6 +2,7 @@ package org.example.controllers;
 
 import org.example.dtos.*;
 import org.example.dtos.responses.BookingStatusDetail;
+import org.example.models.Booking;
 import org.example.models.Venue;
 import org.example.services.BookingService;
 
@@ -70,5 +71,8 @@ public class BookingController {
     }
     public BookingDetail reportBookingStruck(String bookingId){
         return bookingService.reportBookingStruck(bookingId);
+    }
+    public Booking findBookingById(String bookingId){
+        return bookingService.findBookingById(bookingId);
     }
 }

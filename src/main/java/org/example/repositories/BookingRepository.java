@@ -13,7 +13,7 @@ public interface BookingRepository {
     Booking createBooking(Booking book);
     boolean updateStatusBooked(boolean status);
     String findBookingTransaction(String venueId, String dateBooking, Time startTime, Time endTime);
-    Booking findBookingWhereId(String idVenue);
+    Booking findBookingWhereId(String bookedId);
     List<BookedVenuesResponse> findBookedVenues();
     List<BookedVenuesResponse> findBookedVenuesByDateCategory(String date, String categoryReq);
     List<BookingDetail> findBookedVenuesStatusByUserId(String userId);
@@ -25,5 +25,4 @@ public interface BookingRepository {
     List<BookingDetail> userBookingHistoriesSuccessByDate(String userId, int month, int year);
     List<BookingDetail> userBookingHistoriesSuccessByYear(String userId, int year);
     BookingDetail reportBookingStruck(String bookingId);
-
 }

@@ -20,7 +20,7 @@ public class LoginUserView extends javax.swing.JFrame {
 
     AuthControllerFactory authControllerFactory = new AuthControllerFactory();
     AuthController controller = authControllerFactory.create();
-    private UserMenuView userMenuView = new UserMenuView();
+    private UserView userMenuView = new UserView();
     /**
      * Creates new form LoginUserView
      */
@@ -163,7 +163,8 @@ public class LoginUserView extends javax.swing.JFrame {
                 this.setVisible(false);
                 userMenuView.setVisible(true);
                 userMenuView.txtUserId.setText(loginResponse.getUserId());
-                userMenuView.txtUsername.setText("Selamat datang "+loginResponse.getUsername());
+                userMenuView.txtUsername.setText("Hallo "+loginResponse.getUsername());
+                userMenuView.lblWelcome.setText("Selamat Datang "+ loginResponse.getUsername() +" di ABC Sport");
             }
         } else if (email.trim().equals("") || password.trim().equals("")) {
             JOptionPane.showMessageDialog(this, "Field tidak boleh ada yang kosong !", "Login", JOptionPane.WARNING_MESSAGE);
@@ -199,7 +200,7 @@ public class LoginUserView extends javax.swing.JFrame {
         // TODO add your handling code here:
         int kode = evt.getKeyCode();
         if (kode == evt.VK_ENTER) {
-            btnLoginUser.requestFocus();
+            loginUser();
         }
     }//GEN-LAST:event_txtPasswordKeyPressed
 

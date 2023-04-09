@@ -23,6 +23,7 @@ import java.util.Random;
 public class BookingServiceImpl implements BookingService {
     private BookingRepository bookingRepository;
     private VenueService venueService;
+    private UploadPhotoService uploadPhotoService = new UploadPhotoService();
     public BookingServiceImpl(BookingRepository bookingRepository, VenueService venueService) {
         this.bookingRepository = bookingRepository;
         this.venueService = venueService;
@@ -48,7 +49,7 @@ public class BookingServiceImpl implements BookingService {
             }
 
             LocalDate nowDate = LocalDate.now();
-            String datee = nowDate.format(DateTimeFormatter.ofPattern("MM"));
+            String datee = nowDate.format(DateTimeFormatter.ofPattern("dd"));
             LocalTime now = LocalTime.now();
             String time = now.format(DateTimeFormatter.ofPattern("hhmmss"));
             String id = "BK"+datee+"-"+time;
@@ -57,12 +58,15 @@ public class BookingServiceImpl implements BookingService {
             LocalDate order = LocalDate.now();
             String date = order.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
+            // Upload photo
+            String imageUrl = uploadPhotoService.UploadPhoto(bookingReq.getImageUrl());
+
             booking.setId(id);
             booking.setDateOrder(date);
             booking.setUserId(bookingReq.getUserId());
             booking.setPrice(bookingReq.getPrice());
             booking.setDateBooked(bookingReq.getDateBooked());
-            booking.setImageUrl(bookingReq.getImageUrl());
+            booking.setImageUrl(imageUrl);
             booking.setStartTime(bookingReq.getStartTime());
             booking.setEndTime(bookingReq.getEndTime());
             booking.setVenueId(bookingReq.getVenueId());
@@ -147,4 +151,7 @@ public class BookingServiceImpl implements BookingService {
         return bookingRepository.findBookedVenuesByDate(date);
     }
 
+    public Booking findBookingById(String id){
+        return bookingRepository.findBookingWhereId(id);
+    }
 }

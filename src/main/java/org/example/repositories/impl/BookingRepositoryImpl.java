@@ -77,8 +77,8 @@ public class BookingRepositoryImpl implements BookingRepository {
         return book.getId();
     }
 
-    public Booking findBookingWhereId(String idVenue){
-        String query = "select * from booking where id = '"+idVenue+"'";
+    public Booking findBookingWhereId(String bookedId){
+        String query = "select * from booking where id = '"+bookedId+"'";
         ResultSet resultSet = null;
         Booking booking = null;
         //List<Booking> bookings = new ArrayList<>();
