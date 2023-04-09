@@ -1054,7 +1054,7 @@ public class PersonaliaView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    // ***** Home Panel *****
+    // =============================================== Home Panel ======================================================
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         // TODO add your handling code here:
         mainPanel.removeAll();
@@ -1065,8 +1065,9 @@ public class PersonaliaView extends javax.swing.JFrame {
         mainPanel.repaint();
         mainPanel.revalidate();
     }//GEN-LAST:event_btnHomeActionPerformed
+    // ############################################# END HOME PANEL ##############################################
 
-    // ***** Employee Panel *****
+    // ============================================= Employee Panel ====================================================
     private void employeeFill(){
         readTableEmployee();
     }
@@ -1174,8 +1175,9 @@ public class PersonaliaView extends javax.swing.JFrame {
         txtSearch.setText("");
         readTableEmployee();
     }//GEN-LAST:event_btnRefreshActionPerformed
+    // ############################################# END EMPLOYEE PANEL ################################################
 
-    // *** Register Admin Account ***
+    // ===================================================== Register Admin Account ===========================================
     private void adminFill(){
         readTableAdmin();
         fillComboBoxAdmin();
@@ -1307,8 +1309,9 @@ public class PersonaliaView extends javax.swing.JFrame {
         txtUsername.setText(tblAdmin.getValueAt(row, 2).toString());
         txtPassword.setText(tblAdmin.getValueAt(row,3).toString());
     }//GEN-LAST:event_tblAdminMouseClicked
+    // ################################################ END REGISTER ADMIN ACCOUNT ################################################
 
-    // *** Logout ****
+    // ===================================================== Logout ==================================================
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
         int confirm = JOptionPane.showConfirmDialog(null, "Anda yakin ingin keluar ?");
@@ -1322,8 +1325,9 @@ public class PersonaliaView extends javax.swing.JFrame {
         // TODO add your handling code here:
         new AbsentFormView().setVisible(true);
     }//GEN-LAST:event_btnInputAbsenActionPerformed
+    // #################################################### END LOGOUT #################################################
 
-    // *** Report Panel ****
+    // ==================================================== Report Panel =============================================================
     private void reportFill(){
         readTableEmployeeData();
         readTableAbsent();
@@ -1350,8 +1354,9 @@ public class PersonaliaView extends javax.swing.JFrame {
         reportPanel.repaint();
         reportPanel.revalidate();
     }//GEN-LAST:event_btnSeeEmployeesActionPerformed
+    // ###################################################### END REPORT PANEL #######################################################
 
-    // ### Employee Data ###
+    // =========================================================== Employee Data =====================================================
     protected void readTableEmployeeData() {
         DefaultTableModel model = (DefaultTableModel) tblEmployeeData.getModel();
         int x = 0;
@@ -1408,8 +1413,9 @@ public class PersonaliaView extends javax.swing.JFrame {
     private void btnPrintEmployeeDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintEmployeeDataActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPrintEmployeeDataActionPerformed
+    // ################################################## END EMPLOYEE DATA ############################################
 
-    // ### Employee Absent Data ###
+    // ============================================== Employee Absent Data ====================================================
     private void btnSeeAbsentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeeAbsentActionPerformed
         // TODO add your handling code here:
         reportPanel.remove(employeeDataPanel);
@@ -1501,9 +1507,7 @@ public class PersonaliaView extends javax.swing.JFrame {
     private void btnPrintEmployeeAbsentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintEmployeeAbsentActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPrintEmployeeAbsentActionPerformed
-
-
-
+    // ############################################# END EMPLOYEE DATA #####################################################
 
     /**
      * @param args the command line arguments

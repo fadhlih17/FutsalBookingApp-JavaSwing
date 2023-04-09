@@ -969,7 +969,7 @@ public class UserView extends javax.swing.JFrame {
         MainUserPanel.repaint();
         MainUserPanel.revalidate();
     }//GEN-LAST:event_btnHomeActionPerformed
-// ============================== END HOME PANEL ========================================
+// ############################## END HOME PANEL ########################################
 
     // =========================== List Venues =================================
     private void listVenuesContainer(){
@@ -1032,7 +1032,7 @@ public class UserView extends javax.swing.JFrame {
         MainUserPanel.repaint();
         MainUserPanel.revalidate();
     }//GEN-LAST:event_btnGotoBookingActionPerformed
-// ================================ END LIST VENUES =================================
+// ##################################### END LIST VENUES ################################
 
     // ======================================== Create Transaction ==========================================
     private void createTransactionContainer(){
@@ -1135,7 +1135,6 @@ public class UserView extends javax.swing.JFrame {
         }
         JOptionPane.showMessageDialog(null, "Maaf, mohon lengkapi form transaksi terlebih dahulu", "Invalid input", JOptionPane.WARNING_MESSAGE);
     }
-
     private void resetBookingTransaction(){
         txtUploadPhoto.setText("");
         txtDateBooking.setDate(null);
@@ -1145,7 +1144,6 @@ public class UserView extends javax.swing.JFrame {
         cbCategoryInput.setSelectedItem("Pilih Kategori");
         cbCategorySearch.setSelectedItem("Semua");
     }
-
     private void readTableBookingTransaction() {
         DefaultTableModel model = (DefaultTableModel) tblBookedList.getModel();
         int row = 0;
@@ -1236,7 +1234,7 @@ public class UserView extends javax.swing.JFrame {
         // TODO add your handling code here:
         resetBookingTransaction();
     }//GEN-LAST:event_btnResetActionPerformed
-// ==================================================== END CREATE BOOKING ==============================================
+// ############################################## END CREATE BOOKING ################################################
 
 
     // ========================================== See Status ===========================================
@@ -1292,7 +1290,7 @@ public class UserView extends javax.swing.JFrame {
         int row = tblStatusBooking.getSelectedRow();
         bookingKode = tblStatusBooking.getValueAt(row, 0).toString();
     }//GEN-LAST:event_tblStatusBookingMouseClicked
-// =================================================== END STATUS ======================================================
+// ################################################## END SEE STATUS ##########################################
 
     // ========================================= Report Transaction =======================================
     private void btnReportTransactionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportTransactionActionPerformed
@@ -1371,7 +1369,7 @@ public class UserView extends javax.swing.JFrame {
     private void cbCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCategoryActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbCategoryActionPerformed
-
+    // ################################################# END REPORT STATUS ##############################################
 
     /**
      * @param args the command line arguments

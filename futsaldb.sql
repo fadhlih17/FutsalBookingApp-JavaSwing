@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2023 at 02:03 AM
+-- Generation Time: Apr 09, 2023 at 03:54 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.0.17
 
@@ -40,7 +40,6 @@ CREATE TABLE `absent` (
 
 INSERT INTO `absent` (`id`, `employee_id`, `date`, `information`) VALUES
 ('28e43589-b4d9-40ac-aace-fb325d0ab3d5', 'K0001', '2023-03-16', 'Izin'),
-('d7ac6be1-003d-4c45-a3b7-40af53225abb', 'K0004', '2023-03-30', 'Izin'),
 ('e63512d2-2ed7-4d9b-a5f4-18363d17972a', 'K0002', '2023-03-02', 'Sakit');
 
 -- --------------------------------------------------------
@@ -61,8 +60,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `employee_id`) VALUES
-('4af7ca54-7290-4bae-9be7-759bdb28622e', 'indra', 'admin123', 'K0001'),
-('b981d531-d9ef-461b-b82a-da22b0eb5625', 'rio', 'admin123', 'K0003');
+('4af7ca54-7290-4bae-9be7-759bdb28622e', 'indra', 'admin123', 'K0001');
 
 -- --------------------------------------------------------
 
@@ -74,14 +72,35 @@ CREATE TABLE `booking` (
   `id` varchar(36) NOT NULL,
   `user_id` varchar(36) DEFAULT NULL,
   `venue_id` varchar(5) DEFAULT NULL,
-  `dateOrder` datetime DEFAULT NULL,
+  `dateOrder` date DEFAULT NULL,
   `dateBooked` date DEFAULT NULL,
   `start_time` time DEFAULT NULL,
   `end_time` time DEFAULT NULL,
-  `price` mediumtext DEFAULT NULL,
+  `price` bigint(20) DEFAULT NULL,
   `isConfirmed` tinyint(1) DEFAULT NULL,
   `image` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `id` varchar(36) NOT NULL,
+  `name` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`id`, `name`) VALUES
+('119f52f2-e693-4e60-a72c-697a7074ae98', 'Badminton'),
+('1cc42e31-41d3-485e-8d0e-86f1cd22df69', 'Basket'),
+('50f5bf32-af8a-48e0-9a91-5db199f1fee5', 'Voli'),
+('ae293b7d-b524-472a-b920-1efd2d24272e', 'Futsal');
 
 -- --------------------------------------------------------
 
@@ -106,8 +125,9 @@ CREATE TABLE `employee` (
 INSERT INTO `employee` (`id`, `name`, `address`, `birthdate`, `phonenumber`, `position`, `sex`) VALUES
 ('K0001', 'Indra Putra', 'Jakasetia, Bekasi', '2000-03-10', '08976456534', 'Admin', 'Laki-Laki'),
 ('K0002', 'Ajeng Purnasari', 'Cikarang, Bekasi', '1999-03-30', '08976436534', 'Supervisor', 'Perempuan'),
-('K0003', 'Rio Ferdinand', 'Majalengka, Jawa Barat', '2003-09-08', '081324433434', 'Admin', 'Laki-Laki'),
-('K0004', 'Adnan Putra Idrid', 'Cakung, Jakarta', '2023-03-04', '085674545', 'It', 'Laki-Laki');
+('K0003', 'Sinaga', 'Jakarta Utara', '2000-03-16', '08976453654', 'Manager', 'Laki-Laki'),
+('K0004', 'Ryan Anggoro', 'Bekasi, Jawa Barat', '2000-03-04', '081343545455', 'Admin', 'Laki-Laki'),
+('K0005', 'Rendi Nugraha', 'Cakung, Jakarta timur', '2000-04-07', '0865763443', 'Personalia', 'Laki-Laki');
 
 -- --------------------------------------------------------
 
@@ -167,7 +187,7 @@ CREATE TABLE `venue` (
   `open` time DEFAULT NULL,
   `close` time DEFAULT NULL,
   `price` bigint(20) DEFAULT NULL,
-  `category` enum('Futsal','Badminton','Voli') DEFAULT NULL,
+  `category_id` varchar(36) DEFAULT NULL,
   `isActive` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -175,13 +195,10 @@ CREATE TABLE `venue` (
 -- Dumping data for table `venue`
 --
 
-INSERT INTO `venue` (`id`, `name`, `description`, `open`, `close`, `price`, `category`, `isActive`) VALUES
-('BD001', 'Badminton 1', 'Semen', '09:00:00', '21:00:00', 50000, 'Badminton', 1),
-('BD002', 'Badminton 2', 'Lapangan Bagus', '09:00:00', '21:00:00', 50000, 'Badminton', 1),
-('FT001', 'Futsal 1', 'Finil', '09:00:00', '20:00:00', 150000, 'Futsal', 1),
-('FT002', 'Futsal 2', 'Finil', '09:00:00', '21:00:00', 190000, 'Futsal', 1),
-('VL001', 'Voli 1', 'Finil', '09:00:00', '22:00:00', 120000, 'Voli', 1),
-('VL002', 'Voli 2', 'Bagus', '09:00:00', '22:00:00', 150000, 'Voli', 1);
+INSERT INTO `venue` (`id`, `name`, `description`, `open`, `close`, `price`, `category_id`, `isActive`) VALUES
+('BD001', 'Badminton 1', 'Good', '08:00:00', '20:00:00', 50000, '119f52f2-e693-4e60-a72c-697a7074ae98', 1),
+('FT001', 'Futsal 1', 'Finil', '08:00:00', '20:00:00', 150000, 'ae293b7d-b524-472a-b920-1efd2d24272e', 1),
+('FT002', 'Futsal 2', 'Sintetis', '08:00:00', '22:00:00', 200000, 'ae293b7d-b524-472a-b920-1efd2d24272e', 1);
 
 --
 -- Indexes for dumped tables
@@ -210,6 +227,12 @@ ALTER TABLE `booking`
   ADD KEY `booking_venue_id_fk` (`venue_id`);
 
 --
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `employee`
 --
 ALTER TABLE `employee`
@@ -234,7 +257,8 @@ ALTER TABLE `user`
 -- Indexes for table `venue`
 --
 ALTER TABLE `venue`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `venue_category_id_fk` (`category_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -268,6 +292,12 @@ ALTER TABLE `admin`
 ALTER TABLE `booking`
   ADD CONSTRAINT `booking_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
   ADD CONSTRAINT `booking_venue_id_fk` FOREIGN KEY (`venue_id`) REFERENCES `venue` (`id`);
+
+--
+-- Constraints for table `venue`
+--
+ALTER TABLE `venue`
+  ADD CONSTRAINT `venue_category_id_fk` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
