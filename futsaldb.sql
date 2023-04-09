@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2023 at 03:54 AM
+-- Generation Time: Apr 09, 2023 at 05:45 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.0.17
 
@@ -60,7 +60,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `employee_id`) VALUES
-('4af7ca54-7290-4bae-9be7-759bdb28622e', 'indra', 'admin123', 'K0001');
+('4af7ca54-7290-4bae-9be7-759bdb28622e', 'indra', 'admin123', 'K0001'),
+('5874b68d-6311-4097-9359-91783ff91561', 'ryan', 'admin123', 'K0004');
 
 -- --------------------------------------------------------
 
@@ -127,7 +128,8 @@ INSERT INTO `employee` (`id`, `name`, `address`, `birthdate`, `phonenumber`, `po
 ('K0002', 'Ajeng Purnasari', 'Cikarang, Bekasi', '1999-03-30', '08976436534', 'Supervisor', 'Perempuan'),
 ('K0003', 'Sinaga', 'Jakarta Utara', '2000-03-16', '08976453654', 'Manager', 'Laki-Laki'),
 ('K0004', 'Ryan Anggoro', 'Bekasi, Jawa Barat', '2000-03-04', '081343545455', 'Admin', 'Laki-Laki'),
-('K0005', 'Rendi Nugraha', 'Cakung, Jakarta timur', '2000-04-07', '0865763443', 'Personalia', 'Laki-Laki');
+('K0005', 'Rendi Nugraha', 'Cakung, Jakarta timur', '2000-04-07', '0865763443', 'Personalia', 'Laki-Laki'),
+('K0006', 'Putri Anindita', 'Pluit, Jakarta Utara\n', '1998-04-16', '0877787872', 'Warehouse', 'Perempuan');
 
 -- --------------------------------------------------------
 
@@ -169,10 +171,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `fullname`, `phonenumber`, `address`, `email`, `password`) VALUES
-('229b0f84-b8e4-416f-9a69-32d49c0fdffe', 'fadhlih', 'fadhlih girindra', '08999888777', 'jl bonjol, bekasi', 'fadhlih@email.com', '$2a$10$hENSZakjE.hqgD9fwoaa6OgXvgohdAfXQhwG99TnPBPiiJp3Pr7Gu'),
-('56514c43-69d4-4ad3-8cee-74bb5da1b197', 'ajeng', 'ajeng putri', '08766636', 'Bekasi', 'ajeng@email.com', '$2a$10$UIDIE4Q23esevd1RY6Ogu.VB9WyBf6z.D9QZyj/gj1XtRhAwPMcci'),
-('5e11802c-f27f-4f1c-bded-8c6e11d7f361', 'angga', 'angga putra', '0866453332', 'Bekasi', 'angga@email.com', '$2a$10$LhVhFXpdoZqdC4xZZstbNu/U8JHa2Yb.5Oyty0EQwpPJxaDlB8y4G'),
-('d0728a90-4430-49d4-aab5-310be2183768', 'saputra', 'saputra rizki', '089766453', 'bekasi', 'saputra@email.com', '$2a$10$ePEf1uPLQwrP183h4p4mWubn0n2L3jDAXC/P44zn5iiH/wAEOu/Om');
+('346e6034-b660-452d-869e-501195a2385f', 'Putra22', 'Ahmad Putra', '08774676344', 'Tanjung Priuk, Jakarta\n', 'putra@email.com', '$2a$10$92z0BrRm9Y7G7sgE86.wJO9obukMhlM.wNXCyTmU1gg1JY1Nc/ctG'),
+('db720d4a-07e0-4402-acee-fd4fb5f15527', 'Angga', 'Angga Yunandar', '0897665463323', 'Bekasi Timur, Bekasi', 'angga@email.com', '$2a$10$OKKKiSTo71q6aybjGpQl4u06/BJzWiaHit9oV2VTI.xs/gYjHBo.e');
 
 -- --------------------------------------------------------
 
