@@ -75,4 +75,10 @@ public class BookingController {
     public Booking findBookingById(String bookingId){
         return bookingService.findBookingById(bookingId);
     }
+    public List<BookingDetail> listBookings(){
+        return bookingService.listBookings();
+    }
+    public boolean updateStatusBooked(boolean status, String bookingId){
+        return bookingService.updateStatusBooked(status, bookingId);
+    }
 }

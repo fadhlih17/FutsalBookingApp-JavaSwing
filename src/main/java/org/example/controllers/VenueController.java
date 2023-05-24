@@ -1,6 +1,5 @@
 package org.example.controllers;
 
-import org.example.dtos.ECategory;
 import org.example.dtos.VenueResponse;
 import org.example.models.Venue;
 import org.example.services.VenueService;

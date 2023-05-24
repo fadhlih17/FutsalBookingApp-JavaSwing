@@ -39,6 +39,7 @@ public class CreateCategoryView extends javax.swing.JFrame {
         btnClear = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Tambah Kategori");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -128,7 +129,7 @@ public class CreateCategoryView extends javax.swing.JFrame {
     private void saveCategory(){
         String categoryName = txtCategoryName.getText();
         Category category = new Category();
-        int i = JOptionPane.showConfirmDialog(this, "Yakin ingin menyimpan " + categoryName + " ?");
+        int i = JOptionPane.showConfirmDialog(this, "Yakin ingin menambah " + categoryName + " ?");
         if (i == JOptionPane.YES_OPTION) {
             category.setName(categoryName);
             controller.createCategory(category);

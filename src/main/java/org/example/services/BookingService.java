@@ -24,4 +24,6 @@ public interface BookingService {
     List<BookingDetail> userHistoriesSuccessByYear(String userId, int year);
     BookingDetail reportBookingStruck(String bookingId);
     Booking findBookingById(String id);
+    List<BookingDetail> listBookings();
+    boolean updateStatusBooked(boolean status, String bookingId);
 }

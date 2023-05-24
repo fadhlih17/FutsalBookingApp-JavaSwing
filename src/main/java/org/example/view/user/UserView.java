@@ -4,6 +4,7 @@
  */
 package org.example.view.user;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -966,6 +967,8 @@ public class UserView extends javax.swing.JFrame {
     // ============================= HOME PANEL =============================
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         // TODO add your handling code here:
+        btnHome.setBackground(Color.red);
+        btnSeeVenues.setBackground(null);
         MainUserPanel.removeAll();
         MainUserPanel.repaint();
         MainUserPanel.revalidate();
@@ -973,6 +976,7 @@ public class UserView extends javax.swing.JFrame {
         MainUserPanel.add(HomePanel);
         MainUserPanel.repaint();
         MainUserPanel.revalidate();
+
     }//GEN-LAST:event_btnHomeActionPerformed
 // ############################## END HOME PANEL ########################################
 
@@ -982,6 +986,8 @@ public class UserView extends javax.swing.JFrame {
     }
     private void btnSeeVenuesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeeVenuesActionPerformed
         // TODO add your handling code here:
+        btnSeeVenues.setBackground(Color.red);
+        btnHome.setBackground(null);
         MainUserPanel.removeAll();
         MainUserPanel.repaint();
         MainUserPanel.revalidate();
@@ -989,6 +995,7 @@ public class UserView extends javax.swing.JFrame {
         MainUserPanel.add(ListVenuesPanel);
         MainUserPanel.repaint();
         MainUserPanel.revalidate();
+
     }//GEN-LAST:event_btnSeeVenuesActionPerformed
     private void readVenuesTable() {
         DefaultTableModel model = (DefaultTableModel) tblVenues.getModel();
@@ -1282,9 +1289,6 @@ public class UserView extends javax.swing.JFrame {
         int row = tblStatusBooking.getSelectedRow();
         if (bookingKode == null){
             JOptionPane.showMessageDialog(null, "Pilih data pada tabel terlebih dahulu");
-            return;
-        } if (!tblStatusBooking.getValueAt(row, 7).toString().equals("Berhasil")){
-            JOptionPane.showMessageDialog(null, "Maaf, hanya status pemesanan yang berhasil yang dapat mencetak struk", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         } else {
             new BookingStrukView(bookingKode).setVisible(true);

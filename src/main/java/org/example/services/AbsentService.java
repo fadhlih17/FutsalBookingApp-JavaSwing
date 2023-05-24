@@ -13,4 +13,5 @@ public interface AbsentService {
     List<AbsentResponse> findAllAbsentByDate(int date, int year);
     List<AbsentDetailResponse> findAllAbsentDetails();
     List<AbsentDetailResponse> findAllAbsentDetailByDate(int date, int year);
+    List<AbsentResponse> findAbsentByYear(int year);
 }

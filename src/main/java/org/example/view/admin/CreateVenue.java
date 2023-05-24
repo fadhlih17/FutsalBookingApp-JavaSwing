@@ -8,7 +8,6 @@ import org.example.controllers.CategoryController;
 import org.example.controllers.VenueController;
 import org.example.dependencyInjection.CategoryControllerFactory;
 import org.example.dependencyInjection.VenueControllerFactory;
-import org.example.dtos.ECategory;
 import org.example.models.Category;
 import org.example.models.Venue;
 

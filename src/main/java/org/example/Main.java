@@ -3,15 +3,14 @@ package org.example;
 import org.example.controllers.CategoryController;
 import org.example.database.AppDbContext;
 import org.example.dependencyInjection.CategoryControllerFactory;
-import org.example.dtos.BookedVenuesResponse;
-import org.example.dtos.BookingDetail;
-import org.example.dtos.BookingRequest;
-import org.example.dtos.VenueResponse;
+import org.example.dtos.*;
 import org.example.dtos.responses.BookingStatusDetail;
 import org.example.models.Category;
 import org.example.models.Venue;
+import org.example.repositories.AbsentRepository;
 import org.example.repositories.BookingRepository;
 import org.example.repositories.VenueRepository;
+import org.example.repositories.impl.AbsentRepositoryImpl;
 import org.example.repositories.impl.BookingRepositoryImpl;
 import org.example.repositories.impl.VenueRepositoryImpl;
 import org.example.services.BookingService;
@@ -34,10 +33,16 @@ public class Main {
         VenueRepository venueRepository = new VenueRepositoryImpl(context);
         VenueService venueService = new VenueServiceImpl(venueRepository);
         BookingServiceImpl service = new BookingServiceImpl(repo, venueService);
+        AbsentRepository absentRepository = new AbsentRepositoryImpl(context);
 
         CategoryControllerFactory factory = new CategoryControllerFactory();
         CategoryController categoryController = factory.controller();
 
+        BookingRepositoryImpl bookingRepository = new BookingRepositoryImpl(context);
+
+        for (AbsentResponse absentDetailResponse : absentRepository.findAbsentByYear(2023)) {
+            System.out.println(absentDetailResponse.getPermission());
+        }
 //        final List<BookingStatusDetail> bookingStatus = service.findBookingStatus("229b0f84-b8e4-416f-9a69-32d49c0fdffe");
 //        for (BookingStatusDetail status : bookingStatus) {
 //            System.out.println(status.getId());
@@ -94,9 +99,15 @@ public class Main {
 //            System.out.println(bookingDetail.getName());
 //        }
 
-        BookingDetail bookingDetail = service.reportBookingStruck("BK99-082447");
-        System.out.println(bookingDetail.getBookedId());
-        System.out.println(bookingDetail.getImageUrl());
+//        BookingDetail bookingDetail = service.reportBookingStruck("BK99-082447");
+//        System.out.println(bookingDetail.getBookedId());
+//        System.out.println(bookingDetail.getImageUrl());
+
+//        List<BookingDetail> bookingDetails = bookingRepository.listBookings();
+//        for (BookingDetail bookingDetail : bookingDetails) {
+//            System.out.println(bookingDetail.getEmailUser());
+//            System.out.println(bookingDetail.getPrice());
+//        }
     }
 
 

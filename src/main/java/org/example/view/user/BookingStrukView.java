@@ -46,7 +46,6 @@ public class BookingStrukView extends javax.swing.JFrame {
         lblStart = new javax.swing.JLabel();
         lblEnd = new javax.swing.JLabel();
         lblTotal = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         lblBookingKode1 = new javax.swing.JLabel();
         lblTotal1 = new javax.swing.JLabel();
         lblEnd1 = new javax.swing.JLabel();
@@ -55,6 +54,8 @@ public class BookingStrukView extends javax.swing.JFrame {
         lblVenueName1 = new javax.swing.JLabel();
         lblVenueKode1 = new javax.swing.JLabel();
         lblDateOrder1 = new javax.swing.JLabel();
+        lblEnd2 = new javax.swing.JLabel();
+        lblStatus = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Struk Pemesanan");
@@ -86,8 +87,6 @@ public class BookingStrukView extends javax.swing.JFrame {
         lblTotal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblTotal.setText("Total ");
 
-        jButton1.setText("Cetak");
-
         lblBookingKode1.setText("kode Booking");
 
         lblTotal1.setText("Total ");
@@ -104,19 +103,14 @@ public class BookingStrukView extends javax.swing.JFrame {
 
         lblDateOrder1.setText("Tgl Transaksi");
 
+        lblEnd2.setText("Status");
+
+        lblStatus.setText("Berhasil");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(117, 117, 117)
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
-                        .addComponent(jButton1)))
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
@@ -124,11 +118,6 @@ public class BookingStrukView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(152, 152, 152)
                         .addComponent(jLabel3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(lblDateOrder1)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblDateOrder))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(54, 54, 54)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,7 +127,8 @@ public class BookingStrukView extends javax.swing.JFrame {
                             .addComponent(lblStart1)
                             .addComponent(lblDateBooked1)
                             .addComponent(lblVenueName1)
-                            .addComponent(lblVenueKode1))
+                            .addComponent(lblVenueKode1)
+                            .addComponent(lblEnd2))
                         .addGap(95, 95, 95)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblBookingKode)
@@ -147,7 +137,16 @@ public class BookingStrukView extends javax.swing.JFrame {
                             .addComponent(lblDateBooked)
                             .addComponent(lblStart)
                             .addComponent(lblEnd)
-                            .addComponent(lblTotal))))
+                            .addComponent(lblTotal)
+                            .addComponent(lblStatus)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(lblDateOrder1)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblDateOrder))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(jLabel4)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -179,6 +178,8 @@ public class BookingStrukView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblEnd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblStatus)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblTotal))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblBookingKode1)
@@ -193,10 +194,10 @@ public class BookingStrukView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblEnd1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblEnd2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblTotal1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(30, 30, 30))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         pack();
@@ -238,6 +239,7 @@ public class BookingStrukView extends javax.swing.JFrame {
         });
     }
     private void setStruk(){
+        String status = "";
         BookingDetail bookingDetail = bookingController.reportBookingStruck(this.bookingKode);
         lblDateOrder.setText(bookingDetail.getDateOrder());
         lblDateOrder.setText(bookingDetail.getDateBooked());
@@ -247,9 +249,16 @@ public class BookingStrukView extends javax.swing.JFrame {
         lblStart.setText(bookingDetail.getStartTime());
         lblEnd.setText(bookingDetail.getEndTime());
         lblTotal.setText(bookingDetail.getPrice().toString());
+        if (bookingDetail.isConfirmed() == null){
+            status = "Belum Terkonfirmasi";
+        } else if (bookingDetail.isConfirmed() == true) {
+            status = "Berhasil";
+        } else if (bookingDetail.isConfirmed() == false) {
+            status = "Ditolak";
+        }
+        lblStatus.setText(status);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -262,8 +271,10 @@ public class BookingStrukView extends javax.swing.JFrame {
     private javax.swing.JLabel lblDateOrder1;
     private javax.swing.JLabel lblEnd;
     private javax.swing.JLabel lblEnd1;
+    private javax.swing.JLabel lblEnd2;
     private javax.swing.JLabel lblStart;
     private javax.swing.JLabel lblStart1;
+    private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lblTotal;
     private javax.swing.JLabel lblTotal1;
     private javax.swing.JLabel lblVenueKode;

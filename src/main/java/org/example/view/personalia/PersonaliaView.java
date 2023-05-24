@@ -4,24 +4,35 @@
  */
 package org.example.view.personalia;
 
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import org.example.controllers.AbsentController;
 import org.example.controllers.AdminController;
 import org.example.controllers.AuthController;
 import org.example.controllers.EmployeeController;
+import org.example.database.AppDbContext;
 import org.example.dependencyInjection.AbsentControllerFactory;
 import org.example.dependencyInjection.AdminControllerFactory;
 import org.example.dependencyInjection.AuthControllerFactory;
 import org.example.dependencyInjection.EmployeeControllerFactory;
 import org.example.dtos.AbsentResponse;
+import org.example.exceptions.ErrorException;
 import org.example.models.Admin;
 import org.example.models.Employee;
+import org.example.services.impl.ReportService;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.sql.Connection;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -45,6 +56,7 @@ public class PersonaliaView extends javax.swing.JFrame {
     private AuthController authController = authControllerFactory.create();
     private AbsentControllerFactory absentControllerFactory = new AbsentControllerFactory();
     private AbsentController absentController = absentControllerFactory.controller();
+    private ReportService reportService = new ReportService();
 
     private String employeeId, nameEmployee, address, phoneNumber, position, sex, birthDate;
 
@@ -122,7 +134,6 @@ public class PersonaliaView extends javax.swing.JFrame {
         cbMonth = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         cbYear = new javax.swing.JComboBox<>();
-        btnSearchAbsent = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Personalia");
@@ -586,7 +597,7 @@ public class PersonaliaView extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel9.setText("Laporan");
 
-        employeeDataPanel.setBackground(new java.awt.Color(204, 255, 204));
+        employeeDataPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel11.setText("List Data Karyawan");
@@ -785,7 +796,7 @@ public class PersonaliaView extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        absenDataPanel.setBackground(new java.awt.Color(204, 255, 255));
+        absenDataPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         btnPrintEmployeeAbsent.setBackground(new java.awt.Color(0, 153, 153));
         btnPrintEmployeeAbsent.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -923,18 +934,18 @@ public class PersonaliaView extends javax.swing.JFrame {
         jLabel13.setText("Bulan");
 
         cbMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Bulan", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" }));
+        cbMonth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbMonthActionPerformed(evt);
+            }
+        });
 
         jLabel14.setText("Tahun");
 
-        cbYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Tahun", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033", "2034", "2035" }));
-
-        btnSearchAbsent.setBackground(new java.awt.Color(0, 204, 0));
-        btnSearchAbsent.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnSearchAbsent.setForeground(new java.awt.Color(255, 255, 255));
-        btnSearchAbsent.setText("Cari");
-        btnSearchAbsent.addActionListener(new java.awt.event.ActionListener() {
+        cbYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033", "2034", "2035" }));
+        cbYear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchAbsentActionPerformed(evt);
+                cbYearActionPerformed(evt);
             }
         });
 
@@ -944,7 +955,7 @@ public class PersonaliaView extends javax.swing.JFrame {
             absenDataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, absenDataPanelLayout.createSequentialGroup()
-                .addGap(0, 340, Short.MAX_VALUE)
+                .addGap(0, 366, Short.MAX_VALUE)
                 .addGroup(absenDataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, absenDataPanelLayout.createSequentialGroup()
                         .addComponent(jLabel12)
@@ -959,9 +970,7 @@ public class PersonaliaView extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbYear, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSearchAbsent)))
+                        .addComponent(cbYear, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         absenDataPanelLayout.setVerticalGroup(
@@ -977,7 +986,6 @@ public class PersonaliaView extends javax.swing.JFrame {
                     .addComponent(cbMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14)
                     .addComponent(cbYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearchAbsent)
                     .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -998,7 +1006,7 @@ public class PersonaliaView extends javax.swing.JFrame {
                     .addGroup(reportPanelLayout.createSequentialGroup()
                         .addGap(386, 386, 386)
                         .addComponent(jLabel9)))
-                .addContainerGap(221, Short.MAX_VALUE))
+                .addContainerGap(247, Short.MAX_VALUE))
             .addGroup(reportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(reportPanelLayout.createSequentialGroup()
                     .addContainerGap()
@@ -1308,6 +1316,8 @@ public class PersonaliaView extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Akun berhsil di hapus");
                 readTableAdmin();
                 return;
+            } else {
+                return;
             }
         }
         JOptionPane.showMessageDialog(this, "Gagal menghapus, anda belum memilih data");
@@ -1456,6 +1466,18 @@ public class PersonaliaView extends javax.swing.JFrame {
 
     private void btnPrintEmployeeDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintEmployeeDataActionPerformed
         // TODO add your handling code here:
+        try {
+            AppDbContext context = new AppDbContext();
+            Connection conn = context.getConnection();
+            String filePath = "src/main/java/org/example/reports/EmployeeData/EmployeeData.jasper";
+            //HashMap parameter = new HashMap();
+            //JasperReport jReport = (JasperReport) JRLoader.loadObjectFromFile(filePath);
+            JasperReport jasperReport = JasperCompileManager.compileReport(filePath);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, conn);
+            JasperViewer.viewReport(jasperPrint, false);
+        } catch (Exception e) {
+            throw new ErrorException(e.getMessage());
+        }
     }//GEN-LAST:event_btnPrintEmployeeDataActionPerformed
     // ################################################## END EMPLOYEE DATA ############################################
 
@@ -1475,40 +1497,11 @@ public class PersonaliaView extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tblAbsentEmployee.getModel();
         int x = 0;
         List<AbsentResponse> absents = null;
-
-        try {
-            absents = absentController.findAllAbsent();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
-        model.setRowCount(absents.size());
-        for (AbsentResponse absent : absents) {
-            model.setValueAt(absent.getEmployeeId(), x, 0);
-            model.setValueAt(absent.getEmployeeName(), x, 1);
-            model.setValueAt(0, x, 2);
-            model.setValueAt(0, x, 3);
-            model.setValueAt(0, x, 4);
-            model.setValueAt(0, x, 5);
-            x++;
-        }
-    }
-    private void btnSearchAbsentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchAbsentActionPerformed
-        // TODO add your handling code here:
-        if (cbMonth.getSelectedItem() == "Pilih Bulan" || cbYear.getSelectedItem() == "Pilih Tahun"){
-            JOptionPane.showMessageDialog(this, "Input bulan dan tahun tidak boleh kosong", "Kesalahan Input", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        DefaultTableModel model = (DefaultTableModel) tblAbsentEmployee.getModel();
-        int x = 0;
-        List<AbsentResponse> absents = null;
-        String date = (String) cbMonth.getSelectedItem();
+        String monthString = (String) cbMonth.getSelectedItem();
         String yearString = (String) cbYear.getSelectedItem();
         int month = 0;
         int year = Integer.parseInt(yearString);
-
-        switch (date){
+        switch (monthString) {
             case "Januari" -> month = 1;
             case "Februari" -> month = 2;
             case "Maret" -> month = 3;
@@ -1523,11 +1516,17 @@ public class PersonaliaView extends javax.swing.JFrame {
             case "Desember" -> month = 12;
         }
 
-        try {
+        if (cbMonth.getSelectedItem().equals("Pilih Bulan")) {
+            absents = absentController.findAbsentByYear(year);
+        } else {
             absents = absentController.findAllByDate(month, year);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
         }
+
+//        try {
+//            absents = absentController.findAllAbsent();
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
 
         model.setRowCount(absents.size());
         for (AbsentResponse absent : absents) {
@@ -1539,8 +1538,7 @@ public class PersonaliaView extends javax.swing.JFrame {
             model.setValueAt(absent.getPermission(), x, 5);
             x++;
         }
-    }//GEN-LAST:event_btnSearchAbsentActionPerformed
-
+    }
     private void btnRefreshAbsentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshAbsentActionPerformed
         // TODO add your handling code here:
         readTableAbsent();
@@ -1552,6 +1550,16 @@ public class PersonaliaView extends javax.swing.JFrame {
     private void btnPrintEmployeeAbsentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintEmployeeAbsentActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPrintEmployeeAbsentActionPerformed
+
+    private void cbYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbYearActionPerformed
+        // TODO add your handling code here:
+        readTableAbsent();
+    }//GEN-LAST:event_cbYearActionPerformed
+
+    private void cbMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMonthActionPerformed
+        // TODO add your handling code here:
+        readTableAbsent();
+    }//GEN-LAST:event_cbMonthActionPerformed
 
     // ############################################# END EMPLOYEE ABSENT DATA #####################################################
 
@@ -1607,7 +1615,6 @@ public class PersonaliaView extends javax.swing.JFrame {
     private javax.swing.JButton btnRegisterAdmin;
     private javax.swing.JButton btnReport;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JButton btnSearchAbsent;
     private javax.swing.JButton btnSearchEmployeeData;
     private javax.swing.JButton btnSeeAbsent;
     private javax.swing.JButton btnSeeEmployees;

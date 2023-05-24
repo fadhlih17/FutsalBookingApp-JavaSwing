@@ -153,4 +153,42 @@ public class BookingServiceImpl implements BookingService {
     public Booking findBookingById(String id){
         return bookingRepository.findBookingWhereId(id);
     }
+
+    @Override
+    public List<BookingDetail> listBookings() {
+        List<BookingDetail> bookingDetails = bookingRepository.listBookings();
+        List<BookingDetail> result = new ArrayList<BookingDetail>();
+        for (BookingDetail bookingDetail : bookingDetails) {
+            BookingDetail detail = new BookingDetail();
+            detail.setBookedId(bookingDetail.getBookedId());
+            detail.setBookedId(bookingDetail.getBookedId());
+            detail.setVenueName(bookingDetail.getVenueName());
+            detail.setVenueId(bookingDetail.getVenueId());
+            detail.setCategory(bookingDetail.getCategory());
+            detail.setEmailUser(bookingDetail.getEmailUser());
+            detail.setPhoneNumber(bookingDetail.getPhoneNumber());
+            detail.setDateOrder(bookingDetail.getDateOrder());
+            detail.setDateBooked(bookingDetail.getDateBooked());
+            detail.setStartTime(bookingDetail.getStartTime());
+            detail.setEndTime(bookingDetail.getEndTime());
+            detail.setPrice(bookingDetail.getPrice());
+            String status = "";
+            if (bookingDetail.isConfirmed() != null){
+                if (bookingDetail.isConfirmed() == true){
+                    status = "Berhasil";
+                } else if (bookingDetail.isConfirmed() == false){
+                    status = "Ditolak";
+                }
+            } else {
+                status = "Belum Terkonfirmasi";
+            }
+            detail.setStatus(status);
+            result.add(detail);
+        }
+        return result;
+    }
+
+    public boolean updateStatusBooked(boolean status, String bookingId){
+        return bookingRepository.updateStatusBooked(status, bookingId);
+    }
 }

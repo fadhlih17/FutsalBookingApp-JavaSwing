@@ -1,12 +1,10 @@
 package org.example.repositories.impl;
 
 import org.example.database.AppDbContext;
-import org.example.dtos.ECategory;
 import org.example.exceptions.ErrorException;
 import org.example.models.Venue;
 import org.example.repositories.VenueRepository;
 
-import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -83,7 +81,7 @@ public class VenueRepositoryImpl implements VenueRepository {
 
     public boolean updateVenue(Venue venue){
         String query = "update venue set name = '"+venue.getName()+"', description = '"+venue.getDescription()+"', open = '"+venue.getOpen()+"', " +
-                "close = '"+venue.getClose()+"', price = "+venue.getPrice()+", category_id = '"+venue.getCategory()+"', isActive = "+venue.isActive()+" where id = '1'";
+                "close = '"+venue.getClose()+"', price = "+venue.getPrice()+", category_id = '"+venue.getCategory()+"', isActive = "+venue.isActive()+" where id = '"+venue.getId()+"'";
         try{
             context.getStatement().executeUpdate(query);
         } catch(Exception e){

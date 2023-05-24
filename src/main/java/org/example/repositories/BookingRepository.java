@@ -2,16 +2,14 @@ package org.example.repositories;
 
 import org.example.dtos.BookedVenuesResponse;
 import org.example.dtos.BookingDetail;
-import org.example.dtos.ECategory;
 import org.example.models.Booking;
 
 import java.sql.Time;
-import java.util.Date;
 import java.util.List;
 
 public interface BookingRepository {
     Booking createBooking(Booking book);
-    boolean updateStatusBooked(boolean status);
+    boolean updateStatusBooked(boolean status, String bookingId);
     String findBookingTransaction(String venueId, String dateBooking, Time startTime, Time endTime);
     Booking findBookingWhereId(String bookedId);
     List<BookedVenuesResponse> findBookedVenues();
@@ -25,4 +23,5 @@ public interface BookingRepository {
     List<BookingDetail> userBookingHistoriesSuccessByDate(String userId, int month, int year);
     List<BookingDetail> userBookingHistoriesSuccessByYear(String userId, int year);
     BookingDetail reportBookingStruck(String bookingId);
+    List<BookingDetail> listBookings();
 }

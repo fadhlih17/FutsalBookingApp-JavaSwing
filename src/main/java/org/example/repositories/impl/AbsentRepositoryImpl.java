@@ -91,6 +91,36 @@ public class AbsentRepositoryImpl implements AbsentRepository {
         return responses;
     }
 
+    public List<AbsentResponse> findAbsentByYear(int year){
+        String query = "SELECT e.id as employee_id, e.name, " +
+                "IFNULL(SUM(CASE WHEN a.information = 'Cuti' THEN 1 ELSE 0 END), 0) AS Cuti, " +
+                "IFNULL(SUM(CASE WHEN a.information = 'Alpa' THEN 1 ELSE 0 END), 0) AS Alpa, " +
+                "IFNULL(SUM(CASE WHEN a.information = 'Sakit' THEN 1 ELSE 0 END), 0) AS Sakit, " +
+                "IFNULL(SUM(CASE WHEN a.information = 'Izin' THEN 1 ELSE 0 END), 0) AS Izin " +
+                "FROM employee e " +
+                "LEFT JOIN absent a ON e.id = a.employee_id AND (YEAR(a.date) = "+year+") " +
+                "GROUP BY e.id";
+        List<AbsentResponse> responses  = new ArrayList<>();
+        ResultSet resultSet = null;
+        try {
+            resultSet = context.setResultSet(context.getStatement().executeQuery(query));
+            while (resultSet.next()){
+                String employeeId = resultSet.getString("employee_id");
+                String name = resultSet.getString("name");
+                int leave = resultSet.getInt("Cuti");
+                int alpha = resultSet.getInt("Alpa");
+                int sick = resultSet.getInt("Sakit");
+                int permission = resultSet.getInt("Izin");
+                responses.add(new AbsentResponse(employeeId, name, leave, alpha, sick, permission));
+            }
+        } catch (Exception e) {
+            error(e);
+        } finally {
+            context.closeResources();
+        }
+        return responses;
+    }
+
     public List<AbsentDetailResponse> findAllAbsentDetail(){
         String query = "SELECT a.employee_id, e.name, a.date, a.information\n" +
                 "FROM absent a\n" +

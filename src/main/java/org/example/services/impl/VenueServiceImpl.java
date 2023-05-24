@@ -1,9 +1,7 @@
 package org.example.services.impl;
 
-import org.example.dtos.ECategory;
 import org.example.dtos.VenueResponse;
 import org.example.exceptions.WarningException;
-import org.example.models.Booking;
 import org.example.models.Venue;
 import org.example.repositories.VenueRepository;
 import org.example.services.VenueService;

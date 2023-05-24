@@ -8,18 +8,13 @@ import org.example.controllers.CategoryController;
 import org.example.controllers.VenueController;
 import org.example.dependencyInjection.CategoryControllerFactory;
 import org.example.dependencyInjection.VenueControllerFactory;
-import org.example.dtos.ECategory;
 import org.example.dtos.VenueResponse;
 import org.example.models.Category;
-import org.example.models.Venue;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -33,6 +28,8 @@ public class VenuePage extends javax.swing.JFrame {
     private VenueController controller = factory.controller();
     private CategoryController categoryController = categoryControllerFactory.controller();
     EditVenueView edit = new EditVenueView();
+    private String id, name, description, price, category, status;
+    private int open, close;
     public VenuePage() {
         initComponents();
         //custom
@@ -55,7 +52,8 @@ public class VenuePage extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
         btnAddCategory = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Halaman Lapangan");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Halaman Lapangan");
@@ -320,7 +318,12 @@ public class VenuePage extends javax.swing.JFrame {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-        edit.setVisible(true);
+        if (id != null) {
+            edit.setVisible(true);
+            fillEditForm();
+            return;
+        }
+        JOptionPane.showMessageDialog(this, "Anda belum memilih lapangan", "warning", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void cbCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCategoryActionPerformed
@@ -335,6 +338,7 @@ public class VenuePage extends javax.swing.JFrame {
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
+        tblVenues.clearSelection();
         cbCategory.setSelectedItem("Semua");
         readTable();
     }//GEN-LAST:event_btnRefreshActionPerformed
@@ -354,21 +358,30 @@ public class VenuePage extends javax.swing.JFrame {
             throw new RuntimeException(e);
         }
 
-        edit.txtIdEdtVenue.setText(tblVenues.getValueAt(row, 0).toString());
-        edit.txtNameEdtVenue.setText(tblVenues.getValueAt(row, 1).toString());
-        edit.txtDescriptionEdtVenue.setText(tblVenues.getValueAt(row, 2).toString());
-        edit.jsOpenEdtVenue.setValue(openHours);
-        edit.jsCloseEdtVenue.setValue(closeHours);
-        edit.txtPriceEdtVenue.setText(tblVenues.getValueAt(row, 5).toString());
-        edit.cbCategoryEdtVenue.setSelectedItem(tblVenues.getValueAt(row, 6));
-        if (tblVenues.getValueAt(row, 7).equals("Aktif")){
+        id = (tblVenues.getValueAt(row, 0).toString());
+        name = (tblVenues.getValueAt(row, 1).toString());
+        description = (tblVenues.getValueAt(row, 2).toString());
+        open = openHours;
+        close = closeHours;
+        price = (tblVenues.getValueAt(row, 5).toString());
+        category = (tblVenues.getValueAt(row, 6).toString());
+        status = (tblVenues.getValueAt(row, 7).toString());
+    }//GEN-LAST:event_tblVenuesMouseClicked
+
+    private void fillEditForm () {
+        edit.txtIdEdtVenue.setText(id);
+        edit.txtNameEdtVenue.setText(name);
+        edit.txtDescriptionEdtVenue.setText(description);
+        edit.jsOpenEdtVenue.setValue(open);
+        edit.jsCloseEdtVenue.setValue(close);
+        edit.txtPriceEdtVenue.setText(price);
+        edit.cbCategoryEdtVenue.setSelectedItem(category);
+        if (status.equals("Aktif")){
             edit.rbOpenEdtVenue.setSelected(true);
         } else {
             edit.rbCloseEdtVenue.setSelected(true);
         }
-        //edit.setVisible(true);
-    }//GEN-LAST:event_tblVenuesMouseClicked
-
+    }
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         this.dispose();

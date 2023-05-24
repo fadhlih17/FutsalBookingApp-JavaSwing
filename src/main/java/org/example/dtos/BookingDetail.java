@@ -1,7 +1,36 @@
 package org.example.dtos;
 
 public class BookingDetail {
-    private String bookedId, venueId, venueName, category, emailUser, dateOrder, dateBooked, startTime, endTime, imageUrl, phoneNumber;
+    private String bookedId;
+    private String venueId;
+    private String venueName;
+    private String category;
+    private String emailUser;
+    private String dateOrder;
+    private String dateBooked;
+    private String startTime;
+    private String endTime;
+    private String imageUrl;
+    private String phoneNumber;
+    private String fullName;
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    private String status;
     private Boolean isConfirmed;
     private Long price;
     public BookingDetail() {

@@ -24,6 +24,9 @@ public class AbsentController {
     public List<AbsentResponse> findAllByDate(int date, int year){
         return service.findAllAbsentByDate(date, year);
     }
+    public List<AbsentResponse> findAbsentByYear(int year) {
+        return service.findAbsentByYear(year);
+    }
     public List<AbsentDetailResponse> findAllAbsentDetails(){
         return service.findAllAbsentDetails();
     }

@@ -23,6 +23,7 @@ public class AdminMenuView extends javax.swing.JFrame {
         btnLogoutAdmin = new javax.swing.JButton();
         btnVenue = new javax.swing.JButton();
         btnItem = new javax.swing.JButton();
+        btnTransactionManagement = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,6 +50,13 @@ public class AdminMenuView extends javax.swing.JFrame {
             }
         });
 
+        btnTransactionManagement.setText("Manajemen Transaksi");
+        btnTransactionManagement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTransactionManagementActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -61,13 +69,17 @@ public class AdminMenuView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnVenue, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(35, 35, 35)
-                                .addComponent(btnItem, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1))
-                        .addGap(0, 163, Short.MAX_VALUE)))
+                                .addComponent(btnItem, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 16, Short.MAX_VALUE)
+                .addComponent(btnTransactionManagement)
+                .addGap(241, 241, 241))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,7 +92,9 @@ public class AdminMenuView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVenue, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnItem, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnTransactionManagement, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         pack();
@@ -95,13 +109,16 @@ public class AdminMenuView extends javax.swing.JFrame {
 
     private void btnVenueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenueActionPerformed
         // TODO add your handling code here:
-        this.dispose();
         new VenuePage().setVisible(true);
     }//GEN-LAST:event_btnVenueActionPerformed
 
     private void btnItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnItemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnItemActionPerformed
+
+    private void btnTransactionManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransactionManagementActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTransactionManagementActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,6 +158,7 @@ public class AdminMenuView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnItem;
     private javax.swing.JButton btnLogoutAdmin;
+    private javax.swing.JButton btnTransactionManagement;
     private javax.swing.JButton btnVenue;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

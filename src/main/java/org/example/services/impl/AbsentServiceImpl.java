@@ -38,6 +38,9 @@ public class AbsentServiceImpl implements AbsentService {
     public List<AbsentResponse> findAllAbsentByDate(int date, int year){
         return repository.findAbsentByDate(date, year);
     }
+    public List<AbsentResponse> findAbsentByYear(int year) {
+        return repository.findAbsentByYear(year);
+    }
     public List<AbsentDetailResponse> findAllAbsentDetails(){
         return repository.findAllAbsentDetail();
     }

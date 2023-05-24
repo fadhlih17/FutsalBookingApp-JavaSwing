@@ -1,6 +1,5 @@
 package org.example.repositories;
 
-import org.example.dtos.ECategory;
 import org.example.models.Venue;
 
 import java.util.List;

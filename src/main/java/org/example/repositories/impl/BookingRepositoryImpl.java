@@ -3,7 +3,6 @@ package org.example.repositories.impl;
 import org.example.database.AppDbContext;
 import org.example.dtos.BookedVenuesResponse;
 import org.example.dtos.BookingDetail;
-import org.example.dtos.ECategory;
 import org.example.models.Booking;
 import org.example.repositories.BookingRepository;
 
@@ -11,7 +10,6 @@ import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class BookingRepositoryImpl implements BookingRepository {
@@ -39,8 +37,8 @@ public class BookingRepositoryImpl implements BookingRepository {
         return book;
     }
 
-    public boolean updateStatusBooked(boolean status){
-        String query = "update booking set isConfirmed = "+status+"";
+    public boolean updateStatusBooked(boolean status, String bookingId){
+        String query = "update booking set isConfirmed = "+status+" where id = '"+bookingId+"'";
         try {
             context.getStatement().executeUpdate(query);
         } catch (Exception e) {
@@ -53,7 +51,8 @@ public class BookingRepositoryImpl implements BookingRepository {
     public String findBookingTransaction(String venueId, String dateBooking, Time startTime, Time endTime){
         String query = "select * from Booking where venue_id = '"+venueId+"' and dateBooked = '"+dateBooking+"' and ((start_time >= '"+startTime+"' and start_time < '"+startTime+"')" +
                 "or (end_time > '"+endTime+"' and end_time <= '"+endTime+"')" +
-                "or (start_time <= '"+startTime+"' and end_time >= '"+endTime+"')) and isConfirmed  = false ";
+                "or (start_time <= '"+startTime+"' and end_time >= '"+endTime+"') " +
+                "or (start_time = '"+startTime+"')) and isConfirmed != false";
         Booking book = new Booking();
         try{
             ResultSet resultSet = context.getStatement().executeQuery(query);
@@ -410,12 +409,11 @@ public class BookingRepositoryImpl implements BookingRepository {
     }
 
     public BookingDetail reportBookingStruck(String bookingId){
-        String query = "select b.id, b.venue_id, v.name, c.name as category, u.email, b.dateOrder, b.dateBooked, b.start_time, b.end_time, u.phoneNumber, b.price " +
+        String query = "select b.id, b.venue_id, v.name, c.name as category, b.image, u.email, u.fullname, b.dateOrder, b.dateBooked, b.start_time, b.end_time, u.phoneNumber, b.price, b.isConfirmed " +
                 "from booking b " +
                 "join user u on b.user_id = u.id " +
                 "join venue v on b.venue_id = v.id " +
-                "join category c on v.category_id = c.id " +
-                "where b.isConfirmed = true ";
+                "join category c on v.category_id = c.id where b.id = '"+bookingId+"'";
         ResultSet resultSet = null;
         BookingDetail bookDetail = new BookingDetail();
         try {
@@ -426,12 +424,15 @@ public class BookingRepositoryImpl implements BookingRepository {
                 bookDetail.setVenueId(resultSet.getString("venue_id"));
                 bookDetail.setCategory(resultSet.getString("category"));
                 bookDetail.setEmailUser(resultSet.getString("email"));
+                bookDetail.setFullName(resultSet.getString("fullname"));
                 bookDetail.setPhoneNumber(resultSet.getString("phoneNumber"));
                 bookDetail.setDateOrder(resultSet.getString("dateOrder"));
                 bookDetail.setDateBooked(resultSet.getString("dateBooked"));
                 bookDetail.setStartTime(resultSet.getString("start_time"));
                 bookDetail.setEndTime(resultSet.getString("end_time"));
                 bookDetail.setPrice(resultSet.getLong("price"));
+                bookDetail.setImageUrl(resultSet.getString("image"));
+                bookDetail.setConfirmed(resultSet.getObject("isConfirmed") != null ? resultSet.getBoolean("isConfirmed") : null);
             }
         } catch (Exception e){
             error(e);
@@ -442,7 +443,7 @@ public class BookingRepositoryImpl implements BookingRepository {
     }
     // For Admin
     public List<BookingDetail> reportBookings(){
-        String query = "select b.id, v.name, c.name as category, u.email, b.dateOrder, b.dateBooked, b.start_time, b.end_time, u.phoneNumber " +
+        String query = "select b.id, v.name, v.id as venue_id, c.name as category, u.email, u.fullname, b.dateOrder, b.dateBooked, b.start_time, b.end_time, u.phoneNumber " +
                 "from booking b " +
                 "join user u on b.user_id = u.id " +
                 "join venue v on b.venue_id = v.id " +
@@ -456,6 +457,40 @@ public class BookingRepositoryImpl implements BookingRepository {
                 BookingDetail bookDetail = new BookingDetail();
                 bookDetail.setBookedId(resultSet.getString("id"));
                 bookDetail.setVenueName(resultSet.getString("name"));
+                bookDetail.setVenueId(resultSet.getString("venue_id"));
+                bookDetail.setCategory(resultSet.getString("category"));
+                bookDetail.setEmailUser(resultSet.getString("email"));
+                bookDetail.setFullName(resultSet.getString("fullname"));
+                bookDetail.setPhoneNumber(resultSet.getString("phoneNumber"));
+                bookDetail.setDateOrder(resultSet.getString("dateOrder"));
+                bookDetail.setDateBooked(resultSet.getString("dateBooked"));
+                bookDetail.setStartTime(resultSet.getString("start_time"));
+                bookDetail.setEndTime(resultSet.getString("end_time"));
+                bookings.add(bookDetail);
+            }
+        } catch (Exception e){
+            error(e);
+        } finally {
+            context.closeResources();
+        }
+        return bookings;
+    }
+
+    public List<BookingDetail> listBookings(){
+        String query = "select b.id, v.name, v.id as venue_id, c.name as category, u.email, b.dateOrder, b.dateBooked, b.start_time, b.end_time, u.phoneNumber, b.isConfirmed, b.price " +
+                "from booking b " +
+                "join user u on b.user_id = u.id " +
+                "join venue v on b.venue_id = v.id " +
+                "join category c on v.category_id = c.id ";
+        ResultSet resultSet = null;
+        List<BookingDetail> bookings = new ArrayList<>();
+        try {
+            resultSet = context.setResultSet(context.getStatement().executeQuery(query));
+            while (resultSet.next()) {
+                BookingDetail bookDetail = new BookingDetail();
+                bookDetail.setBookedId(resultSet.getString("id"));
+                bookDetail.setVenueName(resultSet.getString("name"));
+                bookDetail.setVenueId(resultSet.getString("venue_id"));
                 bookDetail.setCategory(resultSet.getString("category"));
                 bookDetail.setEmailUser(resultSet.getString("email"));
                 bookDetail.setPhoneNumber(resultSet.getString("phoneNumber"));
@@ -463,6 +498,8 @@ public class BookingRepositoryImpl implements BookingRepository {
                 bookDetail.setDateBooked(resultSet.getString("dateBooked"));
                 bookDetail.setStartTime(resultSet.getString("start_time"));
                 bookDetail.setEndTime(resultSet.getString("end_time"));
+                bookDetail.setPrice(resultSet.getLong("price"));
+                bookDetail.setConfirmed(resultSet.getObject("isConfirmed") != null ? resultSet.getBoolean("isConfirmed") : null);
                 bookings.add(bookDetail);
             }
         } catch (Exception e){
