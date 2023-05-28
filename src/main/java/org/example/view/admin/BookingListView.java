@@ -37,7 +37,7 @@ public class BookingListView extends javax.swing.JFrame {
         tblBookingListAdmin = new javax.swing.JTable();
         btnChoose = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Data Pesanan");
 
         tblBookingListAdmin.setModel(new javax.swing.table.DefaultTableModel(
@@ -209,6 +209,7 @@ public class BookingListView extends javax.swing.JFrame {
     private void btnChooseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChooseActionPerformed
         // TODO add your handling code here:
         new ConfirmationView(bookingId).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnChooseActionPerformed
 
     private void tblBookingListAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBookingListAdminMouseClicked

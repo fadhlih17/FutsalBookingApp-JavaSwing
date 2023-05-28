@@ -1469,7 +1469,7 @@ public class PersonaliaView extends javax.swing.JFrame {
         try {
             AppDbContext context = new AppDbContext();
             Connection conn = context.getConnection();
-            String filePath = "src/main/java/org/example/reports/EmployeeData/EmployeeData.jasper";
+            String filePath = "src/main/java/org/example/reports/EmployeeData/EmployeeData.jrxml";
             //HashMap parameter = new HashMap();
             //JasperReport jReport = (JasperReport) JRLoader.loadObjectFromFile(filePath);
             JasperReport jasperReport = JasperCompileManager.compileReport(filePath);

@@ -28,9 +28,15 @@ public class ConfirmationView extends javax.swing.JFrame {
         this.bookingId = bookingId;
         initComponents();
         fillData();
+        validateButton();
     }
-
-
+    
+    private void validateButton() {
+        if (!lblStatus.getText().equals("Belum Terkonfirmasi")){
+            btnConfirm.setEnabled(false);
+            btnReject.setEnabled(false);
+        }
+    }
     private void fillData(){
         BookingDetail bookingDetail = bookingController.reportBookingStruck(bookingId);
         String status = "";
@@ -99,12 +105,13 @@ public class ConfirmationView extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         lblPhoto = new javax.swing.JLabel();
         btnConfirm = new javax.swing.JButton();
-        btnReject = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        btnReject = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Konfirmasi Pesanan");
 
         ConfirmationPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -231,18 +238,17 @@ public class ConfirmationView extends javax.swing.JFrame {
                 btnConfirmActionPerformed(evt);
             }
         });
-        ConfirmationPanel.add(btnConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 440, 152, 39));
+        ConfirmationPanel.add(btnConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 152, 39));
 
-        btnReject.setBackground(new java.awt.Color(255, 0, 0));
-        btnReject.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnReject.setForeground(new java.awt.Color(255, 255, 255));
-        btnReject.setText("Tolak");
-        btnReject.addActionListener(new java.awt.event.ActionListener() {
+        btnCancel.setBackground(new java.awt.Color(204, 255, 255));
+        btnCancel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCancel.setText("Batal");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRejectActionPerformed(evt);
+                btnCancelActionPerformed(evt);
             }
         });
-        ConfirmationPanel.add(btnReject, new org.netbeans.lib.awtextra.AbsoluteConstraints(337, 440, 145, 39));
+        ConfirmationPanel.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 430, 145, 39));
 
         jLabel28.setText("==============================================================================");
         ConfirmationPanel.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 50, -1, -1));
@@ -253,6 +259,17 @@ public class ConfirmationView extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Konfirmasi Pesanan");
         ConfirmationPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
+
+        btnReject.setBackground(new java.awt.Color(255, 0, 0));
+        btnReject.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnReject.setForeground(new java.awt.Color(255, 255, 255));
+        btnReject.setText("Tolak");
+        btnReject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRejectActionPerformed(evt);
+            }
+        });
+        ConfirmationPanel.add(btnReject, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 430, 145, 39));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -276,14 +293,22 @@ public class ConfirmationView extends javax.swing.JFrame {
         int i = JOptionPane.showConfirmDialog(null, "Yakin ingin konfirmasi transaksi ?");
         if (i == JOptionPane.YES_OPTION){
             bookingController.updateStatusBooked(true, bookingId);
+            this.setVisible(false);
+            new BookingListView().setVisible(true);
             JOptionPane.showMessageDialog(null, "Berhasil konfirmasi transaksi");
         }
     }//GEN-LAST:event_btnConfirmActionPerformed
 
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new BookingListView().setVisible(true);
+    }//GEN-LAST:event_btnCancelActionPerformed
+
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
         // TODO add your handling code here:
         int i = JOptionPane.showConfirmDialog(null, "Pastikan hubungi customer sebelumnya, Yakin ingin menolak transaksi ?");
-        if (i == JOptionPane.YES_OPTION){
+        if (i == JOptionPane.YES_OPTION) {
             bookingController.updateStatusBooked(false, bookingId);
             JOptionPane.showMessageDialog(null, "Berhasil menolak transaksi");
         }
@@ -326,6 +351,7 @@ public class ConfirmationView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ConfirmationPanel;
+    private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnConfirm;
     private javax.swing.JButton btnReject;
     private javax.swing.JLabel jLabel1;

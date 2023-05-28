@@ -118,6 +118,7 @@ public class AdminMenuView extends javax.swing.JFrame {
 
     private void btnTransactionManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransactionManagementActionPerformed
         // TODO add your handling code here:
+        new BookingListView().setVisible(true);
     }//GEN-LAST:event_btnTransactionManagementActionPerformed
 
     /**

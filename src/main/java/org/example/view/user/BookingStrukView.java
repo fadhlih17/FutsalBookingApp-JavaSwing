@@ -242,7 +242,7 @@ public class BookingStrukView extends javax.swing.JFrame {
         String status = "";
         BookingDetail bookingDetail = bookingController.reportBookingStruck(this.bookingKode);
         lblDateOrder.setText(bookingDetail.getDateOrder());
-        lblDateOrder.setText(bookingDetail.getDateBooked());
+        lblDateBooked.setText(bookingDetail.getDateBooked());
         lblBookingKode.setText(bookingDetail.getBookedId());
         lblVenueKode.setText(bookingDetail.getVenueId());
         lblVenueName.setText(bookingDetail.getVenueName());
