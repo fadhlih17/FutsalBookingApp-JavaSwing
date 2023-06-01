@@ -10,7 +10,7 @@ public interface VenueService {
     boolean updateVenue(Venue venue);
     List<VenueResponse> findAllVenues();
     List<VenueResponse> findVenueByCategory(String category);
-    List<Venue> findVenuesWhereActive();
+    List<VenueResponse> findVenuesWhereActive();
     Venue findVenueId(String venueId);
     List<String> findListTime(String id);
     Venue findVenueByName(String venueName);

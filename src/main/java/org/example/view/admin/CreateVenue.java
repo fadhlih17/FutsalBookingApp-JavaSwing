@@ -58,35 +58,71 @@ public class CreateVenue extends javax.swing.JFrame {
         btnReset = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Input Lapangan");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Input Lapangan");
 
         jLabel2.setText("Id");
 
+        txtId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtIdKeyPressed(evt);
+            }
+        });
+
         jLabel3.setText("Nama");
+
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNameKeyPressed(evt);
+            }
+        });
 
         jLabel4.setText("Deskripsi");
 
         txtDescription.setColumns(20);
         txtDescription.setRows(5);
+        txtDescription.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtDescriptionKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(txtDescription);
 
         jLabel5.setText("Jam Buka");
 
+        jsOpen.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jsOpenKeyPressed(evt);
+            }
+        });
+
         jLabel6.setText("Jam Tutup");
 
+        jsClose.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jsCloseKeyPressed(evt);
+            }
+        });
+
         jLabel7.setText("Harga");
+
+        txtPrice.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPriceKeyPressed(evt);
+            }
+        });
 
         jLabel8.setText("Kategori");
 
         jLabel9.setText("Status");
 
         bgStatus.add(rbOpen);
-        rbOpen.setText("Aktif");
+        rbOpen.setText("Buka");
 
         bgStatus.add(rbClose);
-        rbClose.setText("Non Aktif");
+        rbClose.setText("Tutup");
         rbClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbCloseActionPerformed(evt);
@@ -111,7 +147,7 @@ public class CreateVenue extends javax.swing.JFrame {
             }
         });
 
-        btnReset.setText("Reset");
+        btnReset.setText("Bersihkan");
         btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResetActionPerformed(evt);
@@ -272,6 +308,48 @@ public class CreateVenue extends javax.swing.JFrame {
         reset();
 
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void txtIdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            txtName.requestFocus();
+        }
+    }//GEN-LAST:event_txtIdKeyPressed
+
+    private void txtNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == evt.VK_ENTER) {
+            txtDescription.requestFocus();
+        }
+    }//GEN-LAST:event_txtNameKeyPressed
+
+    private void txtDescriptionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescriptionKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            jsOpen.requestFocus();
+        }
+    }//GEN-LAST:event_txtDescriptionKeyPressed
+
+    private void jsOpenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jsOpenKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            jsClose.requestFocus();
+        }
+    }//GEN-LAST:event_jsOpenKeyPressed
+
+    private void jsCloseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jsCloseKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            txtPrice.requestFocus();
+        }
+    }//GEN-LAST:event_jsCloseKeyPressed
+
+    private void txtPriceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPriceKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            cbCategory.requestFocus();
+        }
+    }//GEN-LAST:event_txtPriceKeyPressed
 
     /**
      * @param args the command line arguments

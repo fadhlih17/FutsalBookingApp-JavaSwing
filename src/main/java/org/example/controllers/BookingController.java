@@ -15,9 +15,9 @@ public class BookingController {
         this.bookingService = bookingService;
     }
 
-    public List<Venue> findAllVenueList(){
-        return bookingService.findAllVenueList();
-    }
+//    public List<Venue> findAllVenueList(){
+//        return bookingService.findAllVenueList();
+//    }
 
 //    public List<BookedVenuesResponse> findBookedVenues(){
 //        return bookingService.findBookedVenues();

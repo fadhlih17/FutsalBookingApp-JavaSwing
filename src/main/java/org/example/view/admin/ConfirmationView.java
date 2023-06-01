@@ -294,7 +294,6 @@ public class ConfirmationView extends javax.swing.JFrame {
         if (i == JOptionPane.YES_OPTION){
             bookingController.updateStatusBooked(true, bookingId);
             this.setVisible(false);
-            new BookingListView().setVisible(true);
             JOptionPane.showMessageDialog(null, "Berhasil konfirmasi transaksi");
         }
     }//GEN-LAST:event_btnConfirmActionPerformed
@@ -302,7 +301,6 @@ public class ConfirmationView extends javax.swing.JFrame {
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new BookingListView().setVisible(true);
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed

@@ -67,8 +67,21 @@ public class VenueServiceImpl implements VenueService {
         return result;
     }
 
-    public List<Venue> findVenuesWhereActive(){
-        return repository.findAllVenueWhereActive();
+    public List<VenueResponse> findVenuesWhereActive(){
+        List<Venue> venues = repository.findAllVenueWhereActive();
+        List<VenueResponse> result = new ArrayList<>();
+        for (Venue venue : venues) {
+            String id = venue.getId();
+            String name = venue.getName();
+            String description = venue.getDescription();
+            Time open = venue.getOpen();
+            Time close = venue.getClose();
+            long price = venue.getPrice();
+            String category = venue.getCategory();
+            String status = (venue.isActive() ? "Aktif" : "Tidak Aktif");
+            result.add(new VenueResponse(id, name, description, open, close, price, category, status));
+        }
+        return result;
     }
 
     public Venue findVenueByName(String venueName){

@@ -199,11 +199,11 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Edit Data Karyawan"/>
+        <Property name="text" type="java.lang.String" value="Perbarui Data Karyawan"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="117" y="6" width="-1" height="-1"/>
+          <AbsoluteConstraints x="110" y="10" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

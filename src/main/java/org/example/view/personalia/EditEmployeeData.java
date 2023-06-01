@@ -126,8 +126,8 @@ public class EditEmployeeData extends javax.swing.JFrame {
         getContentPane().add(btnSaveEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(141, 406, 156, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel6.setText("Edit Data Karyawan");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 6, -1, -1));
+        jLabel6.setText("Perbarui Data Karyawan");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
 
         jLabel7.setText("Id Karyawan");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 72, -1, -1));

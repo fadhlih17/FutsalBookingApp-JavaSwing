@@ -169,7 +169,7 @@ public class UserView extends javax.swing.JFrame {
         btnHome.setBackground(new java.awt.Color(0, 102, 255));
         btnHome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnHome.setForeground(new java.awt.Color(255, 255, 255));
-        btnHome.setText("Home");
+        btnHome.setText("Beranda");
         btnHome.setBorder(null);
         btnHome.setBorderPainted(false);
         btnHome.setContentAreaFilled(false);
@@ -229,7 +229,7 @@ public class UserView extends javax.swing.JFrame {
         btnLogoutUser.setBackground(new java.awt.Color(204, 204, 255));
         btnLogoutUser.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnLogoutUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logout.png"))); // NOI18N
-        btnLogoutUser.setText("Logout");
+        btnLogoutUser.setText("Keluar");
         btnLogoutUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutUserActionPerformed(evt);
@@ -260,8 +260,8 @@ public class UserView extends javax.swing.JFrame {
 
         ListVenuesPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("Filter by category");
-        ListVenuesPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 100, -1, -1));
+        jLabel2.setText("Filter berdasarkan kategori");
+        ListVenuesPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 100, -1, -1));
 
         tblVenues.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -587,13 +587,13 @@ public class UserView extends javax.swing.JFrame {
 
         btnSubmit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSubmit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/transaction.png"))); // NOI18N
-        btnSubmit.setText("Pesan");
+        btnSubmit.setText("Pesan Sekarang");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitActionPerformed(evt);
             }
         });
-        BookingTransactionPanel.add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, 120, 40));
+        BookingTransactionPanel.add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, 150, 40));
 
         btnAskPayment.setBackground(new java.awt.Color(255, 51, 51));
         btnAskPayment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -622,20 +622,20 @@ public class UserView extends javax.swing.JFrame {
         BookingTransactionPanel.add(cbCategorySearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 260, 124, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel14.setText("List Jadwal yang sudah terisi");
+        jLabel14.setText("Daftar Jadwal yang sudah terisi");
         BookingTransactionPanel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
 
         btnReset.setBackground(new java.awt.Color(255, 102, 0));
         btnReset.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnReset.setForeground(new java.awt.Color(255, 255, 255));
         btnReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/refresh.png"))); // NOI18N
-        btnReset.setText("Refresh");
+        btnReset.setText("Segarkan");
         btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResetActionPerformed(evt);
             }
         });
-        BookingTransactionPanel.add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 112, 40));
+        BookingTransactionPanel.add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, 112, 40));
 
         jLabel15.setForeground(new java.awt.Color(255, 0, 0));
         jLabel15.setText("* Sertakan bukti pembayaran sebelum membuat pesanan");
@@ -1004,7 +1004,7 @@ public class UserView extends javax.swing.JFrame {
 
         String category = (String) cbCategory.getSelectedItem();
         if (category.equals("Semua")) {
-            venues = venueController.findAllVenues();
+            venues = venueController.findVenuesWhereActive();
         } else {
             Category categoryByName = categoryController.findCategoryByName(category);
             venues = venueController.findVenueByCategory(categoryByName.getName());

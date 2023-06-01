@@ -119,7 +119,7 @@ public class LoginUserView extends javax.swing.JFrame {
         btnBackToHome.setBackground(new java.awt.Color(255, 0, 0));
         btnBackToHome.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnBackToHome.setForeground(new java.awt.Color(255, 255, 255));
-        btnBackToHome.setText("Back to home");
+        btnBackToHome.setText("Batal");
         btnBackToHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackToHomeActionPerformed(evt);

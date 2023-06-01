@@ -118,7 +118,7 @@ public class EditVenueView extends javax.swing.JFrame {
         jLabel2.setText("Id");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("Edit Lapangan");
+        jLabel1.setText("Perbarui Lapangan");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

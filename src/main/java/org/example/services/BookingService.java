@@ -9,7 +9,7 @@ import java.sql.Time;
 import java.util.List;
 
 public interface BookingService {
-    List<Venue> findAllVenueList();
+    //List<Venue> findAllVenueList();
     List<BookedVenuesResponse> findBookedVenues();
     boolean createBooking(BookingRequest bookingReq);
     List<BookingStatusDetail> findBookingStatus(String userId);

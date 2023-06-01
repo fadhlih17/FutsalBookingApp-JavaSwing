@@ -5,16 +5,16 @@
 package org.example.view.personalia;
 
 import org.example.MainApp;
+import org.example.view.admin.AdminMenuView;
 import org.example.controllers.AuthController;
 import org.example.dependencyInjection.AuthControllerFactory;
 import org.example.dtos.LoginRequest;
 import org.example.dtos.LoginResponse;
 import org.example.models.Personalia;
-import org.example.view.admin.AdminMenuView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-
+import admin.view.menu_utama;
 /**
  *
  * @author fadhl
@@ -86,7 +86,7 @@ public class LoginOfficer extends javax.swing.JFrame {
         btnLoginAdmin.setBackground(new java.awt.Color(0, 153, 0));
         btnLoginAdmin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnLoginAdmin.setForeground(new java.awt.Color(255, 255, 255));
-        btnLoginAdmin.setText("Login");
+        btnLoginAdmin.setText("Masuk");
         btnLoginAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginAdminActionPerformed(evt);
@@ -102,7 +102,7 @@ public class LoginOfficer extends javax.swing.JFrame {
         btnBackToHome.setBackground(new java.awt.Color(255, 0, 0));
         btnBackToHome.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnBackToHome.setForeground(new java.awt.Color(255, 255, 255));
-        btnBackToHome.setText("Back to Home");
+        btnBackToHome.setText("Batal");
         btnBackToHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackToHomeActionPerformed(evt);
@@ -223,7 +223,7 @@ public class LoginOfficer extends javax.swing.JFrame {
 
             if (loginResponse != null){
                 this.setVisible(false);
-                new AdminMenuView().setVisible(true);
+                new menu_utama().setVisible(true);
             }
         } else if (email.trim().equals("") || password.trim().equals("")) {
             JOptionPane.showMessageDialog(this, "Field tidak boleh ada yang kosong !", "Login", JOptionPane.WARNING_MESSAGE);

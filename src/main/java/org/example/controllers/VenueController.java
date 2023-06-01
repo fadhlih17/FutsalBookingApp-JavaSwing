@@ -21,6 +21,9 @@ public class VenueController {
     public List<VenueResponse> findAllVenues(){
         return service.findAllVenues();
     }
+    public List<VenueResponse> findVenuesWhereActive() {
+        return service.findVenuesWhereActive();
+    }
     public List<VenueResponse> findVenueByCategory(String category){
         return service.findVenueByCategory(category);
     }

@@ -29,9 +29,9 @@ public class BookingServiceImpl implements BookingService {
         this.venueService = venueService;
     }
 
-    public List<Venue> findAllVenueList(){
-        return venueService.findVenuesWhereActive();
-    }
+//    public List<Venue> findAllVenueList(){
+//        return venueService.findVenuesWhereActive();
+//    }
 
     public List<BookedVenuesResponse> findBookedVenues(){
         return bookingRepository.findBookedVenues();

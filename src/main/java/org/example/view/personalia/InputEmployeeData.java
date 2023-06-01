@@ -24,7 +24,6 @@ import java.util.List;
 public class InputEmployeeData extends javax.swing.JFrame {
     private EmployeeControllerFactory factory = new EmployeeControllerFactory();
     private EmployeeController controller = factory.controller();
-
     private PersonaliaView personaliaView = new PersonaliaView();
     public InputEmployeeData() {
         initComponents();
@@ -142,7 +141,7 @@ public class InputEmployeeData extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 6, -1, -1));
 
         btnRefresh.setBackground(new java.awt.Color(255, 204, 0));
-        btnRefresh.setText("Refresh");
+        btnRefresh.setText("Segarkan");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRefreshActionPerformed(evt);
@@ -168,7 +167,7 @@ public class InputEmployeeData extends javax.swing.JFrame {
                 btnCancelActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(141, 435, 156, -1));
+        getContentPane().add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(141, 435, 170, -1));
 
         jLabel8.setText("Jenis Kelamin");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 369, -1, -1));
@@ -223,7 +222,7 @@ public class InputEmployeeData extends javax.swing.JFrame {
             this.dispose();
             return;
         }
-        JOptionPane.showMessageDialog(null, "Input tidak boleh kosong !", "Invalid input", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Input tidak boleh kosong !", "Kesalahan Input", JOptionPane.WARNING_MESSAGE);
     }
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:

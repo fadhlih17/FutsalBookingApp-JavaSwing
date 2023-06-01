@@ -146,7 +146,7 @@ public class PersonaliaView extends javax.swing.JFrame {
         btnHome.setBackground(new java.awt.Color(85, 239, 196));
         btnHome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interface-home-3.png"))); // NOI18N
-        btnHome.setText("Home");
+        btnHome.setText("Beranda");
         btnHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnHome.setIconTextGap(7);
         btnHome.addActionListener(new java.awt.event.ActionListener() {
@@ -170,7 +170,7 @@ public class PersonaliaView extends javax.swing.JFrame {
         btnRegisterAdmin.setBackground(new java.awt.Color(85, 239, 196));
         btnRegisterAdmin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnRegisterAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/adminaccount.png"))); // NOI18N
-        btnRegisterAdmin.setText("Register Akun Admin");
+        btnRegisterAdmin.setText("Daftarkan Akun Admin");
         btnRegisterAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegisterAdmin.setIconTextGap(10);
         btnRegisterAdmin.addActionListener(new java.awt.event.ActionListener() {
@@ -194,7 +194,7 @@ public class PersonaliaView extends javax.swing.JFrame {
         btnLogout.setBackground(new java.awt.Color(85, 239, 196));
         btnLogout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logout.png"))); // NOI18N
-        btnLogout.setText("Logout");
+        btnLogout.setText("Keluar");
         btnLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogout.setIconTextGap(0);
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -439,7 +439,7 @@ public class PersonaliaView extends javax.swing.JFrame {
         btnRefresh.setBackground(new java.awt.Color(255, 204, 0));
         btnRefresh.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/refresh.png"))); // NOI18N
-        btnRefresh.setText("Refresh");
+        btnRefresh.setText("Segarkan");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRefreshActionPerformed(evt);
@@ -529,7 +529,7 @@ public class PersonaliaView extends javax.swing.JFrame {
 
         btnRefresh1.setBackground(new java.awt.Color(0, 153, 51));
         btnRefresh1.setForeground(new java.awt.Color(255, 255, 255));
-        btnRefresh1.setText("Reset");
+        btnRefresh1.setText("Segarkan");
         btnRefresh1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRefresh1ActionPerformed(evt);
@@ -600,7 +600,7 @@ public class PersonaliaView extends javax.swing.JFrame {
         employeeDataPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel11.setText("List Data Karyawan");
+        jLabel11.setText("Daftar Data Karyawan");
 
         btnPrintEmployeeData.setBackground(new java.awt.Color(0, 153, 153));
         btnPrintEmployeeData.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -742,7 +742,7 @@ public class PersonaliaView extends javax.swing.JFrame {
         btnRefreshEmployeeData.setBackground(new java.awt.Color(255, 153, 0));
         btnRefreshEmployeeData.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnRefreshEmployeeData.setIcon(new javax.swing.ImageIcon(getClass().getResource("/refresh.png"))); // NOI18N
-        btnRefreshEmployeeData.setText("Refresh");
+        btnRefreshEmployeeData.setText("Segarkan");
         btnRefreshEmployeeData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRefreshEmployeeDataActionPerformed(evt);
@@ -758,7 +758,7 @@ public class PersonaliaView extends javax.swing.JFrame {
                 .addGroup(employeeDataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane5)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employeeDataPanelLayout.createSequentialGroup()
-                        .addGap(0, 376, Short.MAX_VALUE)
+                        .addGap(0, 360, Short.MAX_VALUE)
                         .addGroup(employeeDataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employeeDataPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel15)
@@ -768,8 +768,8 @@ public class PersonaliaView extends javax.swing.JFrame {
                                 .addComponent(btnSearchEmployeeData))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employeeDataPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel11)
-                                .addGap(162, 162, 162)
-                                .addComponent(btnRefreshEmployeeData, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(156, 156, 156)
+                                .addComponent(btnRefreshEmployeeData)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnPrintEmployeeData, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
@@ -810,7 +810,7 @@ public class PersonaliaView extends javax.swing.JFrame {
         });
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel12.setText("List Data Absen Karyawan");
+        jLabel12.setText("Daftar Data Absen Karyawan");
 
         tblAbsentEmployee.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -924,7 +924,7 @@ public class PersonaliaView extends javax.swing.JFrame {
         btnRefreshAbsent.setBackground(new java.awt.Color(255, 153, 0));
         btnRefreshAbsent.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnRefreshAbsent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/refresh.png"))); // NOI18N
-        btnRefreshAbsent.setText("Refresh");
+        btnRefreshAbsent.setText("Segarkan");
         btnRefreshAbsent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRefreshAbsentActionPerformed(evt);
@@ -955,12 +955,12 @@ public class PersonaliaView extends javax.swing.JFrame {
             absenDataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, absenDataPanelLayout.createSequentialGroup()
-                .addGap(0, 366, Short.MAX_VALUE)
+                .addGap(0, 349, Short.MAX_VALUE)
                 .addGroup(absenDataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, absenDataPanelLayout.createSequentialGroup()
                         .addComponent(jLabel12)
-                        .addGap(134, 134, 134)
-                        .addComponent(btnRefreshAbsent, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(128, 128, 128)
+                        .addComponent(btnRefreshAbsent)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnPrintEmployeeAbsent, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, absenDataPanelLayout.createSequentialGroup()
@@ -1050,7 +1050,7 @@ public class PersonaliaView extends javax.swing.JFrame {
                 .addComponent(menuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 863, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         bodyPanelLayout.setVerticalGroup(
             bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1146,6 +1146,21 @@ public class PersonaliaView extends javax.swing.JFrame {
         position = tblEmployee.getValueAt(row, 6).toString();
     }//GEN-LAST:event_tblEmployeeMouseClicked
 
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        if (employeeId != null){
+            int confirm = JOptionPane.showConfirmDialog(null, "Yakin ingin menghapus data "+nameEmployee+" ?");
+            if (confirm == JOptionPane.YES_OPTION){
+                controller.deleteEmployee(employeeId);
+                JOptionPane.showMessageDialog(null, "Berhasil Menghapus data");
+                readTableEmployee();
+                refreshRegisterAdmin();
+            }
+            return;
+        }
+        JOptionPane.showMessageDialog(null, "Anda belum memilih karyawan", "Warning", JOptionPane.WARNING_MESSAGE);
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) tblEmployee.getModel();
@@ -1190,6 +1205,7 @@ public class PersonaliaView extends javax.swing.JFrame {
         if (employeeId != null){
             editEmployeeData.setVisible(true);
             fillFormEdit();
+            readTableEmployee();
             return;
         }
         JOptionPane.showMessageDialog(null, "Anda belum memilih karyawan", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -1201,11 +1217,17 @@ public class PersonaliaView extends javax.swing.JFrame {
         txtSearch.setText("");
         tblEmployee.clearSelection();
         readTableEmployee();
+        refreshRegisterAdmin();
     }//GEN-LAST:event_btnRefreshActionPerformed
-    // ############################################# END EMPLOYEE PANEL ################################################
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        new InputEmployeeData().setVisible(true);
+    }
+// ############################################# END EMPLOYEE PANEL ################################################
 
     // ===================================================== Register Admin Account ===========================================
-    private void adminFill(){
+    public void adminFill(){
         readTableAdmin();
         fillComboBoxAdmin();
     }
@@ -1220,24 +1242,6 @@ public class PersonaliaView extends javax.swing.JFrame {
         mainPanel.revalidate();
         readTableAdmin();
     }//GEN-LAST:event_btnRegisterAdminActionPerformed
-
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
-        if (employeeId != null){
-            int confirm = JOptionPane.showConfirmDialog(null, "Yakin ingin menghapus data "+nameEmployee+" ?");
-            if (confirm == JOptionPane.YES_OPTION){
-                controller.deleteEmployee(employeeId);
-                JOptionPane.showMessageDialog(null, "Berhasil Menghapus data");
-            }
-            return;
-        }
-        JOptionPane.showMessageDialog(null, "Anda belum memilih karyawan", "Warning", JOptionPane.WARNING_MESSAGE);
-    }//GEN-LAST:event_btnDeleteActionPerformed
-
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
-        new InputEmployeeData().setVisible(true);
-    }//GEN-LAST:event_btnAddActionPerformed
 
     private void cmbNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNameActionPerformed
         // TODO add your handling code here:
@@ -1324,14 +1328,19 @@ public class PersonaliaView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnDelete1ActionPerformed
 
-    private void btnRefresh1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefresh1ActionPerformed
-        // TODO add your handling code here:
+    private void refreshRegisterAdmin() {
         cmbName.setSelectedItem("Pilih Admin");
         txtUsername.setText("");
         txtPassword.setText("");
         txtConfirmPassword.setText("");
         tblAdmin.clearSelection();
         readTableAdmin();
+        cmbName.removeAllItems();
+        fillComboBoxAdmin();
+    }
+    private void btnRefresh1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefresh1ActionPerformed
+        // TODO add your handling code here:
+        refreshRegisterAdmin();
     }//GEN-LAST:event_btnRefresh1ActionPerformed
 
     private void tblAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAdminMouseClicked

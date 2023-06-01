@@ -58,14 +58,14 @@ public class VenuePage extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Halaman Lapangan");
 
-        btnCreate.setText("Create New");
+        btnCreate.setText("Tambah Lapangan");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateActionPerformed(evt);
             }
         });
 
-        btnEdit.setText("Edit");
+        btnEdit.setText("Perbarui");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditActionPerformed(evt);
@@ -186,20 +186,20 @@ public class VenuePage extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblVenues);
 
-        cbCategory.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                //cbCategoryItemStateChanged(evt);
-            }
-        });
+//        cbCategory.addItemListener(new java.awt.event.ItemListener() {
+//            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+//                cbCategoryItemStateChanged(evt);
+//            }
+//        });
         cbCategory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbCategoryActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Filter by category");
+        jLabel2.setText("Filter Berdasarkan Kategori");
 
-        btnRefresh.setText("Refresh");
+        btnRefresh.setText("Segarkan");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRefreshActionPerformed(evt);
@@ -237,7 +237,7 @@ public class VenuePage extends javax.swing.JFrame {
                                 .addComponent(cbCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCreate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -246,7 +246,7 @@ public class VenuePage extends javax.swing.JFrame {
                         .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 181, Short.MAX_VALUE)))
+                        .addGap(0, 172, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(324, 324, 324)
