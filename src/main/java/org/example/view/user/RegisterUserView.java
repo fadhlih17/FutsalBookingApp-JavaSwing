@@ -73,7 +73,7 @@ public class RegisterUserView extends javax.swing.JFrame {
         });
         getContentPane().add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 60, 140, -1));
 
-        jLabel3.setText("Full Name");
+        jLabel3.setText("Nama Lengkap");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         txtFullName.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -154,7 +154,7 @@ public class RegisterUserView extends javax.swing.JFrame {
 
         btnCancelRegisterUser.setBackground(new java.awt.Color(255, 51, 51));
         btnCancelRegisterUser.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancelRegisterUser.setText("Cancel");
+        btnCancelRegisterUser.setText("Batal");
         btnCancelRegisterUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelRegisterUserActionPerformed(evt);

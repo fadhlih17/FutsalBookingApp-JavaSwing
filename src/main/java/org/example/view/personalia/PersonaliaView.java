@@ -792,7 +792,7 @@ public class PersonaliaView extends javax.swing.JFrame {
                     .addComponent(btnSearchEmployeeData)
                     .addComponent(jLabel15))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -955,13 +955,13 @@ public class PersonaliaView extends javax.swing.JFrame {
             absenDataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, absenDataPanelLayout.createSequentialGroup()
-                .addGap(0, 349, Short.MAX_VALUE)
+                .addGap(0, 323, Short.MAX_VALUE)
                 .addGroup(absenDataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, absenDataPanelLayout.createSequentialGroup()
                         .addComponent(jLabel12)
-                        .addGap(128, 128, 128)
+                        .addGap(134, 134, 134)
                         .addComponent(btnRefreshAbsent)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPrintEmployeeAbsent, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, absenDataPanelLayout.createSequentialGroup()
                         .addComponent(jLabel13)
@@ -1006,7 +1006,7 @@ public class PersonaliaView extends javax.swing.JFrame {
                     .addGroup(reportPanelLayout.createSequentialGroup()
                         .addGap(386, 386, 386)
                         .addComponent(jLabel9)))
-                .addContainerGap(247, Short.MAX_VALUE))
+                .addContainerGap(221, Short.MAX_VALUE))
             .addGroup(reportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(reportPanelLayout.createSequentialGroup()
                     .addContainerGap()
@@ -1030,7 +1030,7 @@ public class PersonaliaView extends javax.swing.JFrame {
                 .addContainerGap(465, Short.MAX_VALUE))
             .addGroup(reportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reportPanelLayout.createSequentialGroup()
-                    .addContainerGap(125, Short.MAX_VALUE)
+                    .addContainerGap(123, Short.MAX_VALUE)
                     .addComponent(employeeDataPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
             .addGroup(reportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1405,6 +1405,14 @@ public class PersonaliaView extends javax.swing.JFrame {
         mainPanel.revalidate();
         readTableAbsent();
         readTableEmployeeData();
+        
+        reportPanel.remove(absenDataPanel);
+        reportPanel.repaint();
+        reportPanel.revalidate();
+
+        reportPanel.add(employeeDataPanel);
+        reportPanel.repaint();
+        reportPanel.revalidate();
     }//GEN-LAST:event_btnReportActionPerformed
     private void btnSeeEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeeEmployeesActionPerformed
         // TODO add your handling code here:

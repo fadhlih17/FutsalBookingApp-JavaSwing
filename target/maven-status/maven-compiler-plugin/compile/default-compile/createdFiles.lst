@@ -1,6 +1,7 @@
 org\example\models\Employee.class
 org\example\view\personalia\InputEmployeeData$5.class
 admin\view\menu_utama.class
+org\example\view\user\LoginUserView$11.class
 org\example\view\user\RegisterUserView$9.class
 org\example\view\personalia\PersonaliaView$11.class
 org\example\view\user\LoginUserView$5.class
@@ -10,6 +11,7 @@ org\example\dependencyInjection\EmployeeControllerFactory.class
 org\example\view\user\UserView$14.class
 org\example\view\personalia\PersonaliaView$24.class
 org\example\view\admin\BookingListView$2.class
+org\example\MainApp$6.class
 org\example\services\impl\EmployeeServiceImpl.class
 org\example\view\admin\CreateCategoryView.class
 org\example\models\Item.class
@@ -47,6 +49,7 @@ org\example\view\personalia\LoginOfficer$2.class
 org\example\view\admin\BookingListView.class
 org\example\view\user\RegisterUserView$10.class
 org\example\MainApp$1.class
+org\example\view\user\LoginUserView$12.class
 admin\view\form_stok.class
 org\example\view\admin\VenuePage$6.class
 admin\view\menu_utama$1.class
@@ -113,6 +116,7 @@ org\example\repositories\UserRepository.class
 org\example\repositories\PersonaliaRepository.class
 org\example\view\admin\AdminMenuView$1.class
 org\example\view\personalia\EditEmployeeData$8.class
+org\example\view\user\LoginUserView$10.class
 org\example\view\personalia\InputEmployeeData.class
 admin\view\form_lapangan.class
 org\example\repositories\AbsentRepository.class
@@ -192,6 +196,7 @@ org\example\repositories\impl\EmployeeRepositoryImpl.class
 org\example\repositories\impl\BookingRepositoryImpl.class
 org\example\view\admin\AdminMenuView$4.class
 admin\view\form_lapangan$10.class
+org\example\view\user\LoginUserView$13.class
 org\example\view\personalia\LoginOfficer$1.class
 org\example\view\user\RegisterUserView$11.class
 org\example\view\personalia\InputEmployeeData$8.class
@@ -229,6 +234,7 @@ org\example\view\user\RegisterUserView$5.class
 admin\view\menu_item$1.class
 org\example\view\admin\EditVenueView$5.class
 org\example\view\personalia\PersonaliaView$23.class
+org\example\MainApp$5.class
 org\example\view\user\LoginUserView$1.class
 org\example\view\admin\VenuePage$2.class
 org\example\dtos\AbsentDetailResponse.class
@@ -251,6 +257,7 @@ admin\view\menu_item$2.class
 org\example\MainApp.class
 admin\view\form_barang$6.class
 org\example\view\admin\CreateVenue$11.class
+org\example\MainApp$4.class
 org\example\view\personalia\AbsentFormView$1.class
 org\example\view\user\UserView$22.class
 org\example\view\admin\CreateVenue$6.class
