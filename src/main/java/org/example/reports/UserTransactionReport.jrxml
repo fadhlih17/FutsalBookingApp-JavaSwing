@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fb97bd72-b847-47c6-8c3a-4c2b9cb2119b">
-	<property name="ireport.zoom" value="1.1"/>
+	<property name="ireport.zoom" value="0.9090909090909091"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
@@ -17,7 +17,7 @@
 	<parameter name="month" class="java.lang.String"/>
 	<parameter name="year" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select b.id, v.name, c.name as category, b.dateOrder, b.dateBooked, b.start_time, b.end_time, b.price 
+		<![CDATA[select b.id, v.name, c.name as category, b.dateOrder, b.dateBooked, b.start_time, b.end_time, b.price, u.fullname
 from booking b
 join user u on b.user_id = u.id
 join venue v on b.venue_id = v.id
@@ -46,39 +46,60 @@ where b.user_id = $P{userId} and isConfirmed = true and (MONTH(b.dateOrder) = $P
 	<field name="price" class="java.lang.Long">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="fullname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="102" splitType="Stretch">
-			<frame>
-				<reportElement mode="Opaque" x="4" y="3" width="793" height="66" backcolor="#000000" uuid="7970a2c8-ddd3-4b0d-b690-2e343a23b835"/>
-				<staticText>
-					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="bef79e22-d68c-4210-82bb-88878b423c55"/>
-					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
-					<textElement verticalAlignment="Bottom">
-						<font isBold="false"/>
-					</textElement>
-					<text><![CDATA[ABC Sport]]></text>
-				</staticText>
-			</frame>
-			<frame>
-				<reportElement mode="Opaque" x="0" y="70" width="797" height="32" forecolor="#000000" backcolor="#CC0000" uuid="c9db0877-20ff-4f4d-8975-873027f92524"/>
-				<staticText>
-					<reportElement style="SubTitle" x="171" y="0" width="225" height="29" forecolor="#FFFFFF" uuid="1b693185-08dd-4e7b-b641-2d90c540d7ae"/>
-					<textElement textAlignment="Right">
-						<font fontName="SansSerif" size="22" isBold="true"/>
-					</textElement>
-					<text><![CDATA[Laporan Transaksi]]></text>
-				</staticText>
-			</frame>
-			<textField pattern="MMMMM-yy">
-				<reportElement x="401" y="69" width="180" height="30" forecolor="#FFFFFF" uuid="0b667953-eadd-464c-ad89-bc9bbc6ba200"/>
+		<band height="169" splitType="Stretch">
+			<textField pattern="MMMMM yy">
+				<reportElement x="390" y="123" width="180" height="20" forecolor="#000000" uuid="0b667953-eadd-464c-ad89-bc9bbc6ba200"/>
 				<textElement>
-					<font size="22" isBold="true"/>
+					<font fontName="Georgia" size="14" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date(Integer.parseInt($P{year}),Integer.parseInt($P{month})-1 , 1)]]></textFieldExpression>
 			</textField>
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="-51" width="843" height="121" backcolor="#006699" uuid="7b72b15a-b6bd-4e3e-96b4-3f7da3778c23"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0"/>
+				<staticText>
+					<reportElement x="289" y="39" width="269" height="30" forecolor="#FFFFFF" uuid="4bf07e91-a048-43d4-9af0-49acd38a13ed"/>
+					<textElement textAlignment="Center">
+						<font fontName="Georgia" size="24" isBold="true"/>
+					</textElement>
+					<text><![CDATA[PT ABC SPORT]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="289" y="96" width="269" height="24" forecolor="#FFFFFF" uuid="aa92f3ea-a055-49d3-8fa4-9adbe84cd5c0"/>
+					<textElement textAlignment="Center">
+						<font fontName="Georgia" size="12" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Ciracas, Jakarta Selatan]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="289" y="72" width="269" height="24" forecolor="#FFFFFF" uuid="ca234dac-32bd-4b3a-8346-0b4461f109e4"/>
+					<textElement textAlignment="Center">
+						<font fontName="Georgia" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Tempatnya berolahraga dengan nyaman]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement x="338" y="123" width="50" height="20" forecolor="#000000" uuid="bec8fca3-a3c6-4fae-ab0f-8bbf6a462e98"/>
+				<textElement>
+					<font fontName="Georgia" size="14"/>
+				</textElement>
+				<text><![CDATA[Periode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="90" width="800" height="33" forecolor="#000000" uuid="15857309-79e6-41c2-8395-f9cf6157362d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Georgia" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN TRANSAKSI PENGGUNA]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
@@ -87,56 +108,56 @@ where b.user_id = $P{userId} and isConfirmed = true and (MONTH(b.dateOrder) = $P
 	<columnHeader>
 		<band height="18" splitType="Stretch">
 			<staticText>
-				<reportElement style="Column header" x="0" y="0" width="99" height="18" forecolor="#000000" uuid="d8dcf613-365b-41da-8c16-e4b352818f6f"/>
+				<reportElement style="Column header" mode="Opaque" x="0" y="0" width="110" height="18" forecolor="#006699" backcolor="#CCCCCC" uuid="d8dcf613-365b-41da-8c16-e4b352818f6f"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Kode]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="99" y="0" width="99" height="18" forecolor="#000000" uuid="ae2fea08-4bb7-4243-b460-6f9fa855a92a"/>
+				<reportElement style="Column header" mode="Opaque" x="110" y="0" width="89" height="18" forecolor="#006699" backcolor="#CCCCCC" uuid="ae2fea08-4bb7-4243-b460-6f9fa855a92a"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Lapangan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="198" y="0" width="99" height="18" forecolor="#000000" uuid="aac5c56d-5e14-495f-b95f-df5268439207"/>
+				<reportElement style="Column header" mode="Opaque" x="199" y="0" width="97" height="18" forecolor="#006699" backcolor="#CCCCCC" uuid="aac5c56d-5e14-495f-b95f-df5268439207"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Kategori]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="297" y="0" width="99" height="18" forecolor="#000000" uuid="78664824-1b72-453b-b7e6-b1a5c91ae786"/>
+				<reportElement style="Column header" mode="Opaque" x="296" y="0" width="116" height="18" forecolor="#006699" backcolor="#CCCCCC" uuid="78664824-1b72-453b-b7e6-b1a5c91ae786"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Tgl Transaksi]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="396" y="0" width="99" height="18" forecolor="#000000" uuid="0c1c9516-45b5-49c9-9f41-9297aa1837e0"/>
+				<reportElement style="Column header" mode="Opaque" x="412" y="0" width="119" height="18" forecolor="#006699" backcolor="#CCCCCC" uuid="0c1c9516-45b5-49c9-9f41-9297aa1837e0"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Tgl Pesanan]]></text>
+				<text><![CDATA[Tgl Pemesanan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="495" y="0" width="99" height="18" forecolor="#000000" uuid="2da0b402-2d31-491d-a25e-e1539ad56a67"/>
+				<reportElement style="Column header" mode="Opaque" x="531" y="0" width="82" height="18" forecolor="#006699" backcolor="#CCCCCC" uuid="2da0b402-2d31-491d-a25e-e1539ad56a67"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Mulai]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="594" y="0" width="99" height="18" forecolor="#000000" uuid="9a991f83-ece3-4dac-a4e7-9e4b559e8ad6"/>
+				<reportElement style="Column header" mode="Opaque" x="613" y="0" width="80" height="18" forecolor="#006699" backcolor="#CCCCCC" uuid="9a991f83-ece3-4dac-a4e7-9e4b559e8ad6"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Selesai]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="693" y="0" width="99" height="18" forecolor="#000000" uuid="c2426fae-4124-47ff-ad9e-7573526ad107"/>
+				<reportElement style="Column header" mode="Opaque" x="693" y="0" width="109" height="18" forecolor="#006699" backcolor="#CCCCCC" uuid="c2426fae-4124-47ff-ad9e-7573526ad107"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
@@ -149,58 +170,58 @@ where b.user_id = $P{userId} and isConfirmed = true and (MONTH(b.dateOrder) = $P
 			<frame>
 				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="32464c44-9afc-44a9-a60b-1e8ed6958306"/>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="0" y="0" width="99" height="18" uuid="57e6a41a-2e5f-4435-8656-04cdda4d8f38"/>
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="110" height="18" uuid="57e6a41a-2e5f-4435-8656-04cdda4d8f38"/>
 					<textElement>
-						<font size="14"/>
+						<font fontName="Arial" size="14"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="99" y="0" width="99" height="18" uuid="16dae066-6cf9-4430-8a37-3bb36b14aef0"/>
+					<reportElement style="Detail" positionType="Float" x="110" y="0" width="89" height="18" uuid="16dae066-6cf9-4430-8a37-3bb36b14aef0"/>
 					<textElement>
-						<font size="14"/>
+						<font fontName="Arial" size="14"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="198" y="0" width="99" height="18" uuid="399761cf-28b7-4bdd-aedb-c7e2ecf0e490"/>
+					<reportElement style="Detail" positionType="Float" x="199" y="0" width="97" height="18" uuid="399761cf-28b7-4bdd-aedb-c7e2ecf0e490"/>
 					<textElement>
-						<font size="14"/>
+						<font fontName="Arial" size="14"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{category}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
-					<reportElement style="Detail" positionType="Float" x="297" y="0" width="99" height="18" uuid="6c5ab8c3-a90f-46d5-a9ee-7674d37aa836"/>
+					<reportElement style="Detail" positionType="Float" x="296" y="0" width="116" height="18" uuid="6c5ab8c3-a90f-46d5-a9ee-7674d37aa836"/>
 					<textElement>
-						<font size="14"/>
+						<font fontName="Arial" size="14"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{dateOrder}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
-					<reportElement style="Detail" positionType="Float" x="396" y="0" width="99" height="18" uuid="2bd604c9-57b6-4c13-9a9e-f2a6b75fdc7f"/>
+					<reportElement style="Detail" positionType="Float" x="412" y="0" width="119" height="18" uuid="2bd604c9-57b6-4c13-9a9e-f2a6b75fdc7f"/>
 					<textElement>
-						<font size="14"/>
+						<font fontName="Arial" size="14"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{dateBooked}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" pattern="HH.mm">
-					<reportElement style="Detail" positionType="Float" x="495" y="0" width="99" height="18" uuid="70bf1275-03ae-4896-a590-01eb4d9b6455"/>
+					<reportElement style="Detail" positionType="Float" x="531" y="0" width="82" height="18" uuid="70bf1275-03ae-4896-a590-01eb4d9b6455"/>
 					<textElement>
-						<font size="14"/>
+						<font fontName="Arial" size="14"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{start_time}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" pattern="HH.mm">
-					<reportElement style="Detail" positionType="Float" x="594" y="0" width="99" height="18" uuid="b41780e5-8167-46ce-9415-f98b9ed166fb"/>
+					<reportElement style="Detail" positionType="Float" x="613" y="0" width="80" height="18" uuid="b41780e5-8167-46ce-9415-f98b9ed166fb"/>
 					<textElement>
-						<font size="14"/>
+						<font fontName="Arial" size="14"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{end_time}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="693" y="0" width="99" height="18" uuid="b0bd31a0-b8cd-48e3-9292-53ed8b73dbd1"/>
+					<reportElement style="Detail" positionType="Float" x="693" y="0" width="104" height="18" uuid="b0bd31a0-b8cd-48e3-9292-53ed8b73dbd1"/>
 					<textElement>
-						<font size="14"/>
+						<font fontName="Arial" size="14"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
 				</textField>
@@ -208,41 +229,45 @@ where b.user_id = $P{userId} and isConfirmed = true and (MONTH(b.dateOrder) = $P
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="7" splitType="Stretch">
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="848dcad5-6a83-478b-b855-4d47503a1cdc"/>
-				<graphicElement>
-					<pen lineWidth="0.5" lineColor="#999999"/>
-				</graphicElement>
-			</line>
-		</band>
+		<band height="7" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="25" splitType="Stretch">
-			<frame>
-				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="0ba89a80-e0ed-4b15-b316-839b548e4f04"/>
-				<textField evaluationTime="Report">
-					<reportElement style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF" uuid="fbb462ce-952b-4334-b0dd-b0f8fa01324d"/>
-					<textElement verticalAlignment="Middle">
-						<font size="10" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF" uuid="483578c0-1a8f-4418-9df3-94ae77926113"/>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font size="10" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
-				</textField>
-				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="3014e45f-8e52-4888-90f3-c4860020bd83"/>
-					<textElement verticalAlignment="Middle">
-						<font size="10" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-				</textField>
-			</frame>
+		<band height="134" splitType="Stretch">
+			<staticText>
+				<reportElement x="628" y="37" width="93" height="13" forecolor="#000000" backcolor="#000000" uuid="38a2f1c3-b5ab-430b-aab5-ebf35b2f82c5"/>
+				<textElement>
+					<font fontName="Georgia"/>
+				</textElement>
+				<text><![CDATA[Jakarta Selatan , ]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="709" y="37" width="87" height="13" uuid="37fb075a-104a-4f60-a160-8e19e2e121d9"/>
+				<textElement>
+					<font fontName="Georgia" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="628" y="51" width="168" height="13" uuid="db3a4db2-fad2-424e-b671-bc3216783bf7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Georgia"/>
+				</textElement>
+				<text><![CDATA[Mengetahui , ]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Column header" x="2" y="114" width="80" height="20" forecolor="#000000" uuid="483578c0-1a8f-4418-9df3-94ae77926113"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="628" y="114" width="168" height="20" uuid="d30116cf-ee63-4315-9b1c-2e2935543165"/>
+				<textElement textAlignment="Center">
+					<font fontName="Georgia"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fullname}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageFooter>
 	<summary>

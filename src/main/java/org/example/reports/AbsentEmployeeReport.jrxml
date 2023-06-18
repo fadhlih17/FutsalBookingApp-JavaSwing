@@ -38,34 +38,53 @@ GROUP BY e.id]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="132" splitType="Stretch">
+		<band height="169" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="0" y="0" width="552" height="95" backcolor="#000000" uuid="cc3c3b15-1714-4e23-aada-01f71ae82ddb"/>
+				<reportElement mode="Opaque" x="-20" y="-20" width="596" height="109" backcolor="#006699" uuid="1e85c849-6177-4bce-8fcf-1f5d14e1c284"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0"/>
 				<staticText>
-					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="f364d21a-3063-457f-855d-5b6e530b80d7"/>
-					<textElement>
-						<font isBold="false"/>
+					<reportElement x="165" y="18" width="269" height="30" forecolor="#FFFFFF" uuid="256ac973-f799-44b8-af92-e51d1d1a1671"/>
+					<textElement textAlignment="Center">
+						<font fontName="Georgia" size="24" isBold="true"/>
 					</textElement>
-					<text><![CDATA[ABC Sport]]></text>
+					<text><![CDATA[PT ABC SPORT]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="165" y="75" width="269" height="24" forecolor="#FFFFFF" uuid="be49e775-ae6a-48c4-a7df-133df862f6fa"/>
+					<textElement textAlignment="Center">
+						<font fontName="Georgia" size="12" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Ciracas, Jakarta Selatan]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="165" y="51" width="269" height="24" forecolor="#FFFFFF" uuid="6be4478d-b94d-4fa9-b5e7-59c657f45558"/>
+					<textElement textAlignment="Center">
+						<font fontName="Georgia" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Tempatnya berolahraga dengan nyaman]]></text>
 				</staticText>
 			</frame>
-			<frame>
-				<reportElement mode="Opaque" x="0" y="100" width="552" height="32" forecolor="#000000" backcolor="#CC0000" uuid="7f810031-f92e-441a-b86b-718393039dee"/>
-				<staticText>
-					<reportElement style="SubTitle" x="82" y="3" width="260" height="29" forecolor="#FFFFFF" uuid="91a0b2fc-b667-4794-bb1a-422e2b1aebb8"/>
-					<textElement>
-						<font size="22" isBold="true"/>
-					</textElement>
-					<text><![CDATA[Laporan Absen Karyawan]]></text>
-				</staticText>
-				<textField pattern="MMMMM-yy">
-					<reportElement x="333" y="3" width="180" height="29" forecolor="#FFFFFF" uuid="b7ab1d37-cf24-4456-81c9-24e7a0639b23"/>
-					<textElement>
-						<font fontName="Times New Roman" size="22" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[new java.util.Date(Integer.parseInt($P{year}),Integer.parseInt($P{month})-1 , 1)]]></textFieldExpression>
-				</textField>
-			</frame>
+			<textField pattern="MMMMM yy">
+				<reportElement x="257" y="145" width="180" height="20" forecolor="#000000" uuid="b6cf91e9-0d7f-4d94-9026-e8c89352caa6"/>
+				<textElement>
+					<font fontName="Georgia" size="14" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date(Integer.parseInt($P{year}),Integer.parseInt($P{month})-1 , 1)]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="205" y="145" width="50" height="20" forecolor="#000000" uuid="312b98bf-1c98-4144-a03e-6bcb5d3be293"/>
+				<textElement>
+					<font fontName="Georgia" size="14"/>
+				</textElement>
+				<text><![CDATA[Periode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-20" y="112" width="596" height="33" forecolor="#000000" uuid="adad22a0-f69b-4d0b-b4a7-8f86656abd1a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Georgia" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN PRESENSI KARYAWAN]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
@@ -74,42 +93,42 @@ GROUP BY e.id]]>
 	<columnHeader>
 		<band height="26" splitType="Stretch">
 			<staticText>
-				<reportElement style="Column header" x="0" y="7" width="92" height="18" forecolor="#000000" uuid="36f1bd88-1165-4a79-a3b9-2486a8f32188"/>
+				<reportElement style="Column header" mode="Opaque" x="0" y="7" width="92" height="18" forecolor="#006699" backcolor="#CCCCCC" uuid="36f1bd88-1165-4a79-a3b9-2486a8f32188"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Id Karyawan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="92" y="7" width="125" height="18" forecolor="#000000" uuid="72e2232c-822c-449f-885f-2fa0ae0c11ee"/>
+				<reportElement style="Column header" mode="Opaque" x="92" y="7" width="140" height="18" forecolor="#006699" backcolor="#CCCCCC" uuid="72e2232c-822c-449f-885f-2fa0ae0c11ee"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nama]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="232" y="7" width="59" height="18" forecolor="#000000" uuid="a64e8cb6-6989-4fb8-bcb3-33fd349f2d73"/>
+				<reportElement style="Column header" mode="Opaque" x="232" y="7" width="70" height="18" forecolor="#006699" backcolor="#CCCCCC" uuid="a64e8cb6-6989-4fb8-bcb3-33fd349f2d73"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Cuti]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="302" y="7" width="66" height="18" forecolor="#000000" uuid="c611ca4c-43f7-4ea9-96fa-3bdd10dc9488"/>
+				<reportElement style="Column header" mode="Opaque" x="302" y="7" width="80" height="18" forecolor="#006699" backcolor="#CCCCCC" uuid="c611ca4c-43f7-4ea9-96fa-3bdd10dc9488"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Alpa]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="381" y="7" width="56" height="18" forecolor="#000000" uuid="b5a743f6-5b7b-413a-adc7-ccaaae64fd5f"/>
+				<reportElement style="Column header" mode="Opaque" x="381" y="7" width="71" height="18" forecolor="#006699" backcolor="#CCCCCC" uuid="b5a743f6-5b7b-413a-adc7-ccaaae64fd5f"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Sakit]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="452" y="7" width="53" height="18" forecolor="#000000" uuid="28a18e36-1d47-44ab-8dd8-fb0a2ee40e2a"/>
+				<reportElement style="Column header" mode="Opaque" x="452" y="7" width="103" height="18" forecolor="#006699" backcolor="#CCCCCC" uuid="28a18e36-1d47-44ab-8dd8-fb0a2ee40e2a"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
@@ -167,41 +186,38 @@ GROUP BY e.id]]>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="7" splitType="Stretch">
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="b2770975-1ada-4ea3-9edf-eb63066e7c98"/>
-				<graphicElement>
-					<pen lineWidth="0.5" lineColor="#999999"/>
-				</graphicElement>
-			</line>
-		</band>
+		<band height="7" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="25" splitType="Stretch">
-			<frame>
-				<reportElement mode="Opaque" x="0" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#000000" uuid="615e7360-98cb-4a09-8299-bb74948e44b3"/>
-				<textField evaluationTime="Report">
-					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="28e4d956-0b36-4f48-9bbe-db23c13f368f"/>
-					<textElement verticalAlignment="Middle">
-						<font size="10" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="166a230b-a392-497e-a68d-117cf918537f"/>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font size="10" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
-				</textField>
-				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="caf4d283-57fa-44da-b435-eb8a247923c3"/>
-					<textElement verticalAlignment="Middle">
-						<font size="10" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-				</textField>
-			</frame>
+		<band height="134" splitType="Stretch">
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="468" y="36" width="87" height="13" uuid="a4f5b019-4d9c-4061-b971-4b983d6e6149"/>
+				<textElement>
+					<font fontName="Georgia" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="387" y="50" width="168" height="13" uuid="fef3f4c4-a16c-4397-817b-1caeb3503936"/>
+				<textElement textAlignment="Center">
+					<font fontName="Georgia"/>
+				</textElement>
+				<text><![CDATA[Mengetahui , ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="387" y="36" width="93" height="13" forecolor="#000000" backcolor="#000000" uuid="839c76c0-2c68-4a5b-a1d7-c499501eb0da"/>
+				<textElement>
+					<font fontName="Georgia"/>
+				</textElement>
+				<text><![CDATA[Jakarta Selatan , ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="387" y="114" width="168" height="20" uuid="9ecf81bb-a323-4a96-9b3c-0a52bce3a980"/>
+				<textElement textAlignment="Center">
+					<font fontName="Georgia"/>
+				</textElement>
+				<text><![CDATA[Departement Personalia]]></text>
+			</staticText>
 		</band>
 	</pageFooter>
 	<summary>

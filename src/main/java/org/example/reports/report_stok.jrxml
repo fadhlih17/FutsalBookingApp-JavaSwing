@@ -42,10 +42,6 @@
 					</textElement>
 					<text><![CDATA[PT ABC SPORT]]></text>
 				</staticText>
-				<image>
-					<reportElement x="-16" y="-10" width="62" height="81" uuid="575b776a-08d5-4db1-913f-cabc184f9897"/>
-					<imageExpression><![CDATA["C:\\Users\\Rimuza\\Documents\\NetBeansProjects\\VenueBookingApp-JavaSwing\\src\\main\\resources\\Images\\Sport_Center_ABC-removebg-preview.png"]]></imageExpression>
-				</image>
 				<staticText>
 					<reportElement x="34" y="24" width="76" height="13" forecolor="#FFFFFF" uuid="9338d6a3-c1c9-4989-abfd-0520c5d1af05"/>
 					<textElement>
@@ -168,9 +164,9 @@
 				<textFieldExpression><![CDATA["Hal "+$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="383" y="137" width="176" height="13" uuid="f36c9752-11b9-40f3-83f6-8833bd81e2d9"/>
+				<reportElement x="383" y="137" width="172" height="13" uuid="f36c9752-11b9-40f3-83f6-8833bd81e2d9"/>
 				<textElement markup="none"/>
-				<text><![CDATA[(.....................................................)	]]></text>
+				<text><![CDATA[(...........................................................)	]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="432" y="46" width="65" height="13" uuid="340eb7a1-3475-41bf-a566-872d3e8cd88b"/>
@@ -186,7 +182,7 @@
 				</textElement>
 				<text><![CDATA[Jakarta Selatan , ]]></text>
 			</staticText>
-			<textField pattern="dd/MM/yyyy">
+			<textField pattern="dd MMMMM yyyy">
 				<reportElement x="477" y="59" width="63" height="13" uuid="d1a7eef5-652c-4585-85a1-c18b4cee16b4"/>
 				<textElement>
 					<font fontName="Georgia" isStrikeThrough="false"/>

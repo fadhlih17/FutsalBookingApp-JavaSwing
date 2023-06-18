@@ -76,10 +76,6 @@ where (MONTH(b.dateOrder) = $P{month}) and (Year(b.dateOrder) = $P{year})]]>
 					</textElement>
 					<text><![CDATA[PT ABC SPORT]]></text>
 				</staticText>
-				<image>
-					<reportElement x="-16" y="-10" width="62" height="81" uuid="3334188a-a285-42ae-8008-b8a88675226e"/>
-					<imageExpression><![CDATA["C:\\Users\\Rimuza\\Documents\\NetBeansProjects\\VenueBookingApp-JavaSwing\\src\\main\\resources\\Images\\Sport_Center_ABC-removebg-preview.png"]]></imageExpression>
-				</image>
 				<staticText>
 					<reportElement x="34" y="24" width="76" height="13" forecolor="#FFFFFF" uuid="591e6561-8145-4bb6-8ba2-7de01ea5bdde"/>
 					<textElement>
@@ -234,7 +230,7 @@ where (MONTH(b.dateOrder) = $P{month}) and (Year(b.dateOrder) = $P{year})]]>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{end_time}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="¤ #,##0.00">
+				<textField isStretchWithOverflow="true" pattern="###0.00">
 					<reportElement style="Detail" positionType="Float" x="714" y="0" width="83" height="18" uuid="12c86529-0d10-44e7-95f8-718e71559855"/>
 					<textElement>
 						<font size="14"/>
@@ -254,7 +250,7 @@ where (MONTH(b.dateOrder) = $P{month}) and (Year(b.dateOrder) = $P{year})]]>
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA["Hal "+$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
-			<textField pattern="dd/MM/yyyy">
+			<textField pattern="dd MMMMM yyyy">
 				<reportElement x="716" y="74" width="63" height="13" uuid="406909e6-1580-4bf0-8776-c6c3d170a639"/>
 				<textElement>
 					<font fontName="Georgia" isStrikeThrough="false"/>
