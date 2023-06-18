@@ -54,7 +54,7 @@ where b.user_id = $P{userId} and isConfirmed = true and (MONTH(b.dateOrder) = $P
 	</background>
 	<title>
 		<band height="169" splitType="Stretch">
-			<textField pattern="MMMMM yy">
+			<textField pattern="MMMM yy">
 				<reportElement x="390" y="123" width="180" height="20" forecolor="#000000" uuid="0b667953-eadd-464c-ad89-bc9bbc6ba200"/>
 				<textElement>
 					<font fontName="Georgia" size="14" isBold="false"/>
