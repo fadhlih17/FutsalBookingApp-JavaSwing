@@ -200,7 +200,7 @@
 				<textElement textAlignment="Center" markup="none">
 					<font fontName="Georgia"/>
 				</textElement>
-				<text><![CDATA[Departement Personalia]]></text>
+				<text><![CDATA[Departemen Personalia]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="643" y="14" width="93" height="13" forecolor="#000000" backcolor="#000000" uuid="340d4708-94a3-4d2f-a4d8-135cb692e0fa"/>

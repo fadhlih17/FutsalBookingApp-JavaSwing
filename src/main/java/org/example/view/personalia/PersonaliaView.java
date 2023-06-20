@@ -209,7 +209,7 @@ public class PersonaliaView extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("ABC SPORT");
 
-        jLabel20.setIcon(new javax.swing.ImageIcon("D:\\spam\\icons\\abc logo 100.png")); // NOI18N
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/100x100Sport_Center_ABC-removebg-preview - Copy.png"))); // NOI18N
 
         javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
         menuPanel.setLayout(menuPanelLayout);
@@ -224,23 +224,23 @@ public class PersonaliaView extends javax.swing.JFrame {
                     .addComponent(btnReport, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnLogout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel20)
-                .addGap(62, 62, 62))
             .addGroup(menuPanelLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jLabel1)
+                .addGap(63, 63, 63)
+                .addComponent(jLabel20)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(45, 45, 45))
         );
         menuPanelLayout.setVerticalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuPanelLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addGap(114, 114, 114)
+                .addGap(120, 120, 120)
                 .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -541,7 +541,7 @@ public class PersonaliaView extends javax.swing.JFrame {
         registerAdminPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 109, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel8.setText("Register Akun Admin");
+        jLabel8.setText("Daftar Akun Admin");
         registerAdminPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 6, -1, -1));
 
         tblAdmin.setModel(new javax.swing.table.DefaultTableModel(

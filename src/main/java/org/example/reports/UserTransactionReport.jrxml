@@ -100,6 +100,20 @@ where b.user_id = $P{userId} and isConfirmed = true and (MONTH(b.dateOrder) = $P
 				</textElement>
 				<text><![CDATA[LAPORAN TRANSAKSI PENGGUNA]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="0" y="149" width="82" height="20" uuid="0975e4bb-18f7-4731-82d4-7a459c26d78b"/>
+				<textElement>
+					<font fontName="Georgia"/>
+				</textElement>
+				<text><![CDATA[Nama Pengguna :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="82" y="149" width="168" height="20" uuid="d30116cf-ee63-4315-9b1c-2e2935543165"/>
+				<textElement>
+					<font fontName="Georgia"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fullname}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
@@ -233,40 +247,12 @@ where b.user_id = $P{userId} and isConfirmed = true and (MONTH(b.dateOrder) = $P
 	</columnFooter>
 	<pageFooter>
 		<band height="134" splitType="Stretch">
-			<staticText>
-				<reportElement x="628" y="37" width="93" height="13" forecolor="#000000" backcolor="#000000" uuid="38a2f1c3-b5ab-430b-aab5-ebf35b2f82c5"/>
-				<textElement>
-					<font fontName="Georgia"/>
-				</textElement>
-				<text><![CDATA[Jakarta Selatan , ]]></text>
-			</staticText>
-			<textField pattern="dd MMMMM yyyy">
-				<reportElement x="709" y="37" width="87" height="13" uuid="37fb075a-104a-4f60-a160-8e19e2e121d9"/>
-				<textElement>
-					<font fontName="Georgia" isStrikeThrough="false"/>
-				</textElement>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="628" y="51" width="168" height="13" uuid="db3a4db2-fad2-424e-b671-bc3216783bf7"/>
-				<textElement textAlignment="Center">
-					<font fontName="Georgia"/>
-				</textElement>
-				<text><![CDATA[Mengetahui , ]]></text>
-			</staticText>
 			<textField>
 				<reportElement style="Column header" x="2" y="114" width="80" height="20" forecolor="#000000" uuid="483578c0-1a8f-4418-9df3-94ae77926113"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="10" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="628" y="114" width="168" height="20" uuid="d30116cf-ee63-4315-9b1c-2e2935543165"/>
-				<textElement textAlignment="Center">
-					<font fontName="Georgia"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{fullname}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>

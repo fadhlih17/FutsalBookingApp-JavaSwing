@@ -212,11 +212,11 @@ GROUP BY e.id]]>
 				<text><![CDATA[Jakarta Selatan , ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="387" y="114" width="168" height="20" uuid="9ecf81bb-a323-4a96-9b3c-0a52bce3a980"/>
+				<reportElement x="387" y="114" width="154" height="20" uuid="9ecf81bb-a323-4a96-9b3c-0a52bce3a980"/>
 				<textElement textAlignment="Center">
 					<font fontName="Georgia"/>
 				</textElement>
-				<text><![CDATA[Departement Personalia]]></text>
+				<text><![CDATA[Departemen Personalia]]></text>
 			</staticText>
 		</band>
 	</pageFooter>
