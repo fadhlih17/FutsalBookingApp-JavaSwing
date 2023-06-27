@@ -35,6 +35,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 
@@ -45,6 +46,8 @@ import java.util.Map;
 public class PersonaliaView extends javax.swing.JFrame {
     public PersonaliaView() {
         initComponents();
+        Locale local = new Locale("id", "ID");
+        Locale.setDefault(local);
         employeeFill();
         adminFill();
         reportFill();

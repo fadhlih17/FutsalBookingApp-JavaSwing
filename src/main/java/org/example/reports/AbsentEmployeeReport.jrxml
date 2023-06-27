@@ -64,12 +64,12 @@ GROUP BY e.id]]>
 					<text><![CDATA[Tempatnya berolahraga dengan nyaman]]></text>
 				</staticText>
 			</frame>
-			<textField pattern="MMMMM yy">
-				<reportElement x="257" y="145" width="180" height="20" forecolor="#000000" uuid="b6cf91e9-0d7f-4d94-9026-e8c89352caa6"/>
-				<textElement>
+			<textField pattern="MMMM YYYY">
+				<reportElement x="257" y="145" width="80" height="20" forecolor="#000000" uuid="c2db946e-7f2c-40f3-a222-019c279570bc"/>
+				<textElement markup="none">
 					<font fontName="Georgia" size="14" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new java.util.Date(Integer.parseInt($P{year}),Integer.parseInt($P{month})-1 , 1)]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new java.util.Date(Integer.parseInt($P{year})-1900,Integer.parseInt($P{month})-1 , 1)]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="205" y="145" width="50" height="20" forecolor="#000000" uuid="312b98bf-1c98-4144-a03e-6bcb5d3be293"/>
@@ -189,7 +189,7 @@ GROUP BY e.id]]>
 		<band height="7" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="134" splitType="Stretch">
+		<band height="135" splitType="Stretch">
 			<textField pattern="dd MMMMM yyyy">
 				<reportElement x="468" y="36" width="87" height="13" uuid="a4f5b019-4d9c-4061-b971-4b983d6e6149"/>
 				<textElement>

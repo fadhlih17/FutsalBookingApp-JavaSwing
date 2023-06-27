@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.table.DefaultTableModel;
 import koneksi.koneksi;
 import org.example.controllers.BookingController;
@@ -21,6 +22,8 @@ public class form_stok extends javax.swing.JPanel {
      */
     public form_stok() {
         initComponents();
+        Locale local = new Locale("id", "ID");
+        Locale.setDefault(local);
          datatable();
     }
 

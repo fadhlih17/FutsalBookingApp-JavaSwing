@@ -91,25 +91,11 @@
 				</staticText>
 			</frame>
 			<staticText>
-				<reportElement x="206" y="98" width="394" height="33" forecolor="#000000" uuid="67787fac-b6e7-4846-a2e1-a9903c615e25"/>
+				<reportElement x="206" y="110" width="394" height="33" forecolor="#000000" uuid="67787fac-b6e7-4846-a2e1-a9903c615e25"/>
 				<textElement textAlignment="Center">
 					<font fontName="Georgia" size="24" isBold="true"/>
 				</textElement>
 				<text><![CDATA[LAPORAN DATA KARYAWAN]]></text>
-			</staticText>
-			<textField pattern="MMMM yyyy">
-				<reportElement x="391" y="131" width="129" height="20" forecolor="#000000" uuid="dde1768c-72bf-47e7-b17f-f24254983ba5"/>
-				<textElement>
-					<font fontName="Georgia" size="14"/>
-				</textElement>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="336" y="131" width="58" height="20" forecolor="#000000" uuid="a37d57e7-7a30-4175-9bb0-fe4976c1442f"/>
-				<textElement>
-					<font fontName="Georgia" size="14"/>
-				</textElement>
-				<text><![CDATA[Periode]]></text>
 			</staticText>
 		</band>
 	</title>

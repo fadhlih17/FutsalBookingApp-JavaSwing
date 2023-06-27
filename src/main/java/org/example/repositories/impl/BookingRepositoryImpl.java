@@ -257,7 +257,7 @@ public class BookingRepositoryImpl implements BookingRepository {
                 "join user u on b.user_id = u.id " +
                 "join venue v on b.venue_id = v.id " +
                 "join category c on v.category_id = c.id " +
-                "where user_id = '"+userId+"'";
+                "where user_id = '"+userId+"' order by b.dateBooked asc";
         ResultSet resultSet = null;
         List<BookingDetail> results = new ArrayList<>();
 

@@ -54,12 +54,12 @@ where b.user_id = $P{userId} and isConfirmed = true and (MONTH(b.dateOrder) = $P
 	</background>
 	<title>
 		<band height="169" splitType="Stretch">
-			<textField pattern="MMMM yy">
+			<textField pattern="MMMM yyyy">
 				<reportElement x="390" y="123" width="180" height="20" forecolor="#000000" uuid="0b667953-eadd-464c-ad89-bc9bbc6ba200"/>
 				<textElement>
 					<font fontName="Georgia" size="14" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new java.util.Date(Integer.parseInt($P{year}),Integer.parseInt($P{month})-1 , 1)]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new java.util.Date(Integer.parseInt($P{year})-1900,Integer.parseInt($P{month})-1 , 1)]]></textFieldExpression>
 			</textField>
 			<frame>
 				<reportElement mode="Opaque" x="-21" y="-51" width="843" height="121" backcolor="#006699" uuid="7b72b15a-b6bd-4e3e-96b4-3f7da3778c23"/>

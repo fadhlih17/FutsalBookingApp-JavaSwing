@@ -53,6 +53,8 @@ public class UserView extends javax.swing.JFrame {
 
     public UserView() {
         initComponents();
+        Locale local = new Locale("id", "ID");
+        Locale.setDefault(local);
         txtUserId.setVisible(false);
         createTransactionContainer();
         listVenuesContainer();

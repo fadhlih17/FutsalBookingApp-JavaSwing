@@ -6,6 +6,7 @@ package admin.view;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.table.DefaultTableModel;
 import org.example.controllers.BookingController;
 import org.example.dependencyInjection.BookingControllerFactory;
@@ -20,6 +21,8 @@ private BookingControllerFactory bookingFactory = new BookingControllerFactory()
     
     public form_penjualan() {
         initComponents();
+        Locale local = new Locale("id", "ID");
+        Locale.setDefault(local);
         readTableBookingList();
     }
     
@@ -98,7 +101,7 @@ private BookingControllerFactory bookingFactory = new BookingControllerFactory()
         dataBarang1.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("LAPORAN PENJUALAN");
+        jLabel1.setText("LAPORAN TRANSAKSI");
 
         tblBookingListAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

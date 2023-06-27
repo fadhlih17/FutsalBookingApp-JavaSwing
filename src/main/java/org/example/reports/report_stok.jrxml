@@ -49,7 +49,7 @@
 					</textElement>
 					<text><![CDATA[Jakarta Selatan ]]></text>
 				</staticText>
-				<textField pattern="MMMMM-yy">
+				<textField pattern="MMMMM yyyy">
 					<reportElement x="292" y="57" width="129" height="20" forecolor="#FFFFFF" uuid="01cc7fd3-ed7d-407d-bd64-514db936d6e3"/>
 					<textElement>
 						<font fontName="Georgia" size="14"/>
