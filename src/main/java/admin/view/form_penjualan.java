@@ -210,6 +210,7 @@ private BookingControllerFactory bookingFactory = new BookingControllerFactory()
                 "Kode Pemesanan", "Nama Lapangan", "Kode Lapangan", "Tgl Pesanan", "Email", "Nomor Ponsel", "Mulai", "Selesai", "Total"
             }
         ));
+        tblBookingListAdmin.setSelectionBackground(new java.awt.Color(102, 153, 255));
         tblBookingListAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblBookingListAdminMouseClicked(evt);

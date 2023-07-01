@@ -51,6 +51,7 @@ public class menu_utama extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu Admin");
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/Images/Sport_Center_ABC-removebg-preview - Copy.png")).getImage());
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);

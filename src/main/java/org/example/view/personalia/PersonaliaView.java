@@ -142,6 +142,7 @@ public class PersonaliaView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Personalia");
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/Images/Sport_Center_ABC-removebg-preview - Copy.png")).getImage());
 
         bodyPanel.setBackground(new java.awt.Color(22, 160, 133));
         bodyPanel.setPreferredSize(new java.awt.Dimension(1100, 500));

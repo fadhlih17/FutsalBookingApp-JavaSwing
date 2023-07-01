@@ -141,6 +141,7 @@ public class UserView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Halaman Pengguna");
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/Images/Sport_Center_ABC-removebg-preview - Copy.png")).getImage());
 
         BodyPanelUser.setBackground(new java.awt.Color(0, 102, 255));
 
