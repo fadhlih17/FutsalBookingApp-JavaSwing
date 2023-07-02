@@ -1098,7 +1098,7 @@ public class UserView extends javax.swing.JFrame {
         if (cbCategoryInput.getSelectedItem().equals("Pilih Kategori")){
             cbVenue.removeAllItems();
             cbVenue.addItem("Pilih Lapangan");
-            allVenues = venueController.findAllVenues();
+            allVenues = venueController.findVenuesWhereActive();
             for (VenueResponse allVenue : allVenues) {
                 cbVenue.addItem(allVenue.getName());
             }
