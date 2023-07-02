@@ -145,7 +145,7 @@ public class VenueRepositoryImpl implements VenueRepository {
     public List<Venue> findVenueByCategory(String categorySearch){
         ResultSet resultSet = null;
         List<Venue> venues = new ArrayList<>();
-        String query = "select v.id, v.name, v.description, v.open, v.close, v.price, c.name as category_name, v.isActive from venue v join category c on c.id = v.category_id where c.name = '"+categorySearch+"'";
+        String query = "select v.id, v.name, v.description, v.open, v.close, v.price, c.name as category_name, v.isActive from venue v join category c on c.id = v.category_id where c.name = '"+categorySearch+"' and v.isActive = true";
         try {
             resultSet = context.setResultSet(context.getStatement().executeQuery(query));
             while (resultSet.next()) {
