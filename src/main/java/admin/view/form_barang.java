@@ -298,6 +298,7 @@ public class form_barang extends javax.swing.JPanel {
         jLabel9.setText("Kode Barang");
         jLabel9.setPreferredSize(new java.awt.Dimension(69, 30));
 
+        tkode.setEnabled(false);
         tkode.setPreferredSize(new java.awt.Dimension(77, 30));
 
         jLabel10.setText("Jenis Barang");
@@ -312,6 +313,8 @@ public class form_barang extends javax.swing.JPanel {
 
         jLabel12.setText("Lapangan");
         jLabel12.setPreferredSize(new java.awt.Dimension(69, 30));
+
+        lapangan.setEnabled(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

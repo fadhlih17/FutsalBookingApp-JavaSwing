@@ -36,14 +36,14 @@
 					<text><![CDATA[LAPORAN STOK BARANG]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="33" y="12" width="81" height="20" forecolor="#FFFFFF" uuid="27a98d19-ca7b-4de6-80ab-49d0e65f0df1"/>
+					<reportElement x="10" y="8" width="81" height="20" forecolor="#FFFFFF" uuid="27a98d19-ca7b-4de6-80ab-49d0e65f0df1"/>
 					<textElement textAlignment="Left">
 						<font fontName="Georgia" size="10" isBold="false"/>
 					</textElement>
 					<text><![CDATA[PT ABC SPORT]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="34" y="24" width="76" height="13" forecolor="#FFFFFF" uuid="9338d6a3-c1c9-4989-abfd-0520c5d1af05"/>
+					<reportElement x="10" y="24" width="76" height="13" forecolor="#FFFFFF" uuid="9338d6a3-c1c9-4989-abfd-0520c5d1af05"/>
 					<textElement>
 						<font fontName="Georgia"/>
 					</textElement>
@@ -79,35 +79,35 @@
 				<textElement textAlignment="Left">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[kode]]></text>
+				<text><![CDATA[Kode Barang]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="111" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="f7e1d55a-4963-40ac-8dea-69e3570205af"/>
 				<textElement textAlignment="Left">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[nama]]></text>
+				<text><![CDATA[Nama Barang]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="222" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="fc7587f2-ad2c-4c67-91f9-c10257daf133"/>
 				<textElement textAlignment="Left">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[jenis]]></text>
+				<text><![CDATA[Jenis]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="333" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="2a68d326-98cd-4c33-81c8-6ecede964292"/>
 				<textElement textAlignment="Left">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[stok]]></text>
+				<text><![CDATA[Stok]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="444" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="576436fd-4936-4b70-b9a0-fa14f80aabc2"/>
 				<textElement textAlignment="Left">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[lapangan]]></text>
+				<text><![CDATA[Lapangan]]></text>
 			</staticText>
 		</band>
 	</columnHeader>

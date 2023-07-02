@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7b8205f3-39e8-4fdb-88ca-1f565c53ca28">
-	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
@@ -70,14 +70,14 @@ where (MONTH(b.dateOrder) = $P{month}) and (Year(b.dateOrder) = $P{year})]]>
 					<text><![CDATA[LAPORAN TRANSAKSI]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="33" y="12" width="81" height="20" forecolor="#FFFFFF" uuid="3e3713a2-105f-4598-90fb-1d55c8a52425"/>
+					<reportElement x="10" y="4" width="81" height="20" forecolor="#FFFFFF" uuid="3e3713a2-105f-4598-90fb-1d55c8a52425"/>
 					<textElement textAlignment="Left">
 						<font fontName="Georgia" size="10" isBold="false"/>
 					</textElement>
 					<text><![CDATA[PT ABC SPORT]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="34" y="24" width="76" height="13" forecolor="#FFFFFF" uuid="591e6561-8145-4bb6-8ba2-7de01ea5bdde"/>
+					<reportElement x="10" y="24" width="76" height="13" forecolor="#FFFFFF" uuid="591e6561-8145-4bb6-8ba2-7de01ea5bdde"/>
 					<textElement>
 						<font fontName="Georgia"/>
 					</textElement>

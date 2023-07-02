@@ -121,9 +121,8 @@ public class form_stok extends javax.swing.JPanel {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 612, Short.MAX_VALUE))
-            .addGroup(stokBarangLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, stokBarangLayout.createSequentialGroup()
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
         stokBarangLayout.setVerticalGroup(
