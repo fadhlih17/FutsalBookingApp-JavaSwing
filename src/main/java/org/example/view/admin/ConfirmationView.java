@@ -113,6 +113,7 @@ public class ConfirmationView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Konfirmasi Pesanan");
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/Images/Sport_Center_ABC-removebg-preview - Copy.png")).getImage());
 
         ConfirmationPanel.setBackground(new java.awt.Color(255, 255, 255));
         ConfirmationPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

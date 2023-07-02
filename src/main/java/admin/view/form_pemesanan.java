@@ -4,6 +4,8 @@
  */
 package admin.view;
 
+import java.awt.Color;
+import java.awt.Font;
 import org.example.controllers.BookingController;
 import org.example.dependencyInjection.BookingControllerFactory;
 import org.example.dtos.BookingDetail;
@@ -25,6 +27,12 @@ public class form_pemesanan extends javax.swing.JPanel {
     public form_pemesanan() {
         initComponents();
         readTableBookingList();
+        
+        tblBookingListAdmin.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        tblBookingListAdmin.getTableHeader().setOpaque(false);
+        tblBookingListAdmin.getTableHeader().setBackground(new Color(32, 136, 203));
+        tblBookingListAdmin.getTableHeader().setForeground(new Color(40, 40, 40));
+        tblBookingListAdmin.setRowHeight(25);
     }
     private String bookingId;
 
@@ -216,6 +224,11 @@ public class form_pemesanan extends javax.swing.JPanel {
                 "Kode Booking", "Kode Lapangan", "Tanggal Pesanan", "Email", "Nomor Ponsel", "Mulai", "Selesai", "Status"
             }
         ));
+        tblBookingListAdmin.setFocusable(false);
+        tblBookingListAdmin.setRowHeight(25);
+        tblBookingListAdmin.setSelectionBackground(new java.awt.Color(32, 136, 203));
+        tblBookingListAdmin.setShowHorizontalLines(true);
+        tblBookingListAdmin.getTableHeader().setReorderingAllowed(false);
         tblBookingListAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblBookingListAdminMouseClicked(evt);
@@ -227,7 +240,7 @@ public class form_pemesanan extends javax.swing.JPanel {
         btnChoose.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnChoose.setForeground(new java.awt.Color(255, 255, 255));
         btnChoose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editt.png"))); // NOI18N
-        btnChoose.setText("Pilih");
+        btnChoose.setText("PILIH");
         btnChoose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChooseActionPerformed(evt);
@@ -238,7 +251,7 @@ public class form_pemesanan extends javax.swing.JPanel {
         btnRefresh.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
         btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/refresh.png"))); // NOI18N
-        btnRefresh.setText("Segarkan");
+        btnRefresh.setText("SEGARKAN");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRefreshActionPerformed(evt);
@@ -271,9 +284,9 @@ public class form_pemesanan extends javax.swing.JPanel {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dataPemesananLayout.createSequentialGroup()
                         .addComponent(btnChoose, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnRefresh)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 294, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 293, Short.MAX_VALUE)
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -300,7 +313,7 @@ public class form_pemesanan extends javax.swing.JPanel {
                             .addComponent(cbYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel20))
                         .addGap(16, 16, 16)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

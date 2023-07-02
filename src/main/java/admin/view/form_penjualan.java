@@ -4,6 +4,8 @@
  */
 package admin.view;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -24,6 +26,12 @@ private BookingControllerFactory bookingFactory = new BookingControllerFactory()
         Locale local = new Locale("id", "ID");
         Locale.setDefault(local);
         readTableBookingList();
+        
+        tblBookingListAdmin.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        tblBookingListAdmin.getTableHeader().setOpaque(false);
+        tblBookingListAdmin.getTableHeader().setBackground(new Color(32, 136, 203));
+        tblBookingListAdmin.getTableHeader().setForeground(new Color(40, 40, 40));
+        tblBookingListAdmin.setRowHeight(25);
     }
     
     private void readTableBookingList(){
@@ -210,7 +218,12 @@ private BookingControllerFactory bookingFactory = new BookingControllerFactory()
                 "Kode Pemesanan", "Nama Lapangan", "Kode Lapangan", "Tgl Pesanan", "Email", "Nomor Ponsel", "Mulai", "Selesai", "Total"
             }
         ));
-        tblBookingListAdmin.setSelectionBackground(new java.awt.Color(102, 153, 255));
+        tblBookingListAdmin.setFocusable(false);
+        tblBookingListAdmin.setRowHeight(25);
+        tblBookingListAdmin.setSelectionBackground(new java.awt.Color(32, 136, 203));
+        tblBookingListAdmin.setShowGrid(false);
+        tblBookingListAdmin.setShowHorizontalLines(true);
+        tblBookingListAdmin.getTableHeader().setReorderingAllowed(false);
         tblBookingListAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblBookingListAdminMouseClicked(evt);
@@ -238,7 +251,7 @@ private BookingControllerFactory bookingFactory = new BookingControllerFactory()
         btnPrint.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnPrint.setForeground(new java.awt.Color(255, 255, 255));
         btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/print.png"))); // NOI18N
-        btnPrint.setText("Cetak");
+        btnPrint.setText("CETAK");
         btnPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPrintActionPerformed(evt);

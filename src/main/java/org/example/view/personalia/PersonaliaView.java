@@ -452,6 +452,7 @@ public class PersonaliaView extends javax.swing.JFrame {
 
         btnRefresh.setBackground(new java.awt.Color(255, 204, 0));
         btnRefresh.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
         btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/refresh.png"))); // NOI18N
         btnRefresh.setText("Segarkan");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {

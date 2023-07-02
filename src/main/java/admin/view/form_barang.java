@@ -1,5 +1,7 @@
 package admin.view;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,8 +26,17 @@ public class form_barang extends javax.swing.JPanel {
 
     public form_barang() {
         initComponents();
+        
+        inventory.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        inventory.getTableHeader().setOpaque(false);
+        inventory.getTableHeader().setBackground(new Color(32, 136, 203));
+        inventory.getTableHeader().setForeground(new Color(40, 40, 40));
+        inventory.setRowHeight(25);
+        
         datatable();
         fillCategoryCombo();
+        
+        
     }
 
     private void fillCategoryCombo() {
@@ -107,7 +118,7 @@ public class form_barang extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         tambahBarang = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        kembali = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         simpan = new javax.swing.JButton();
         clear = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -123,7 +134,6 @@ public class form_barang extends javax.swing.JPanel {
         lapangan = new javax.swing.JComboBox<>();
         ubahBarang = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        kembali1 = new javax.swing.JButton();
         simpan1 = new javax.swing.JButton();
         clear1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -137,6 +147,7 @@ public class form_barang extends javax.swing.JPanel {
         tjenis1 = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         lapangan1 = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
 
         setLayout(new java.awt.CardLayout());
 
@@ -149,18 +160,28 @@ public class form_barang extends javax.swing.JPanel {
 
         inventory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Kode Barang", "Nama Barang", "Jenis", "Stok", "Lapangan"
             }
         ));
+        inventory.setFocusable(false);
+        inventory.setRowHeight(25);
+        inventory.setSelectionBackground(new java.awt.Color(32, 136, 203));
+        inventory.setShowGrid(false);
+        inventory.setShowHorizontalLines(true);
+        inventory.getTableHeader().setReorderingAllowed(false);
         inventory.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 inventoryMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                inventoryMouseExited(evt);
             }
         });
         jScrollPane1.setViewportView(inventory);
@@ -168,6 +189,10 @@ public class form_barang extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("DATA BARANG");
 
+        hapus.setBackground(new java.awt.Color(255, 0, 51));
+        hapus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        hapus.setForeground(new java.awt.Color(255, 255, 255));
+        hapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete.png"))); // NOI18N
         hapus.setText("HAPUS");
         hapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,6 +200,10 @@ public class form_barang extends javax.swing.JPanel {
             }
         });
 
+        tambah.setBackground(new java.awt.Color(0, 153, 153));
+        tambah.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        tambah.setForeground(new java.awt.Color(255, 255, 255));
+        tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editt.png"))); // NOI18N
         tambah.setText("UBAH");
         tambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,6 +211,10 @@ public class form_barang extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(0, 153, 51));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/add2.png"))); // NOI18N
         jButton1.setText("TAMBAH");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,13 +230,13 @@ public class form_barang extends javax.swing.JPanel {
             .addGroup(dataBarangLayout.createSequentialGroup()
                 .addGroup(dataBarangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dataBarangLayout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tambah)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(hapus))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(537, Short.MAX_VALUE))
+                .addContainerGap(482, Short.MAX_VALUE))
         );
         dataBarangLayout.setVerticalGroup(
             dataBarangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,13 +261,17 @@ public class form_barang extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setText("UBAH DATA BARANG");
 
-        kembali.setText("BATAL");
-        kembali.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kembaliActionPerformed(evt);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exit.png"))); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
             }
         });
 
+        simpan.setBackground(new java.awt.Color(0, 153, 51));
+        simpan.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        simpan.setForeground(new java.awt.Color(255, 255, 255));
+        simpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-save-40.png"))); // NOI18N
         simpan.setText("SIMPAN");
         simpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,6 +279,10 @@ public class form_barang extends javax.swing.JPanel {
             }
         });
 
+        clear.setBackground(new java.awt.Color(255, 204, 0));
+        clear.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        clear.setForeground(new java.awt.Color(255, 255, 255));
+        clear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/refresh.png"))); // NOI18N
         clear.setText("SEGARKAN");
         clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -319,7 +360,7 @@ public class form_barang extends javax.swing.JPanel {
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lapangan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout tambahBarangLayout = new javax.swing.GroupLayout(tambahBarang);
@@ -332,27 +373,27 @@ public class form_barang extends javax.swing.JPanel {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(tambahBarangLayout.createSequentialGroup()
                         .addGroup(tambahBarangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
                             .addGroup(tambahBarangLayout.createSequentialGroup()
-                                .addComponent(simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(clear, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 519, Short.MAX_VALUE)))
+                                .addComponent(simpan)
+                                .addGap(18, 18, 18)
+                                .addComponent(clear))
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 508, Short.MAX_VALUE)
+                        .addComponent(jLabel4)))
                 .addContainerGap())
         );
         tambahBarangLayout.setVerticalGroup(
             tambahBarangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tambahBarangLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(tambahBarangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(tambahBarangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(clear, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -365,13 +406,10 @@ public class form_barang extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setText("TAMBAH DATA BARANG");
 
-        kembali1.setText("BATAL");
-        kembali1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kembali1ActionPerformed(evt);
-            }
-        });
-
+        simpan1.setBackground(new java.awt.Color(0, 153, 51));
+        simpan1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        simpan1.setForeground(new java.awt.Color(255, 255, 255));
+        simpan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/add2.png"))); // NOI18N
         simpan1.setText("TAMBAH");
         simpan1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -379,6 +417,10 @@ public class form_barang extends javax.swing.JPanel {
             }
         });
 
+        clear1.setBackground(new java.awt.Color(255, 204, 0));
+        clear1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        clear1.setForeground(new java.awt.Color(255, 255, 255));
+        clear1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/refresh.png"))); // NOI18N
         clear1.setText("SEGARKAN");
         clear1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -462,8 +504,15 @@ public class form_barang extends javax.swing.JPanel {
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lapangan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exit.png"))); // NOI18N
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout ubahBarangLayout = new javax.swing.GroupLayout(ubahBarang);
         ubahBarang.setLayout(ubahBarangLayout);
@@ -474,28 +523,28 @@ public class form_barang extends javax.swing.JPanel {
                 .addGroup(ubahBarangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(ubahBarangLayout.createSequentialGroup()
-                        .addGroup(ubahBarangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addGroup(ubahBarangLayout.createSequentialGroup()
-                                .addComponent(simpan1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(clear1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(kembali1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 519, Short.MAX_VALUE)))
+                        .addComponent(simpan1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(clear1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(ubahBarangLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 495, Short.MAX_VALUE)
+                        .addComponent(jLabel5)))
                 .addContainerGap())
         );
         ubahBarangLayout.setVerticalGroup(
             ubahBarangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ubahBarangLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(ubahBarangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(ubahBarangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(kembali1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(clear1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(simpan1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -535,13 +584,6 @@ public class form_barang extends javax.swing.JPanel {
         mainPanel.repaint();
         mainPanel.revalidate();
     }//GEN-LAST:event_tambahActionPerformed
-
-    private void kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kembaliActionPerformed
-        mainPanel.removeAll();
-        mainPanel.add(dataBarang);
-        mainPanel.repaint();
-        mainPanel.revalidate();
-    }//GEN-LAST:event_kembaliActionPerformed
 
     private void hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusActionPerformed
         // TODO add your handling code here:
@@ -595,14 +637,6 @@ public class form_barang extends javax.swing.JPanel {
         mainPanel.revalidate();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void kembali1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kembali1ActionPerformed
-        // TODO add your handling code here:
-        mainPanel.removeAll();
-        mainPanel.add(dataBarang);
-        mainPanel.repaint();
-        mainPanel.revalidate();
-    }//GEN-LAST:event_kembali1ActionPerformed
-
     private void simpan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpan1ActionPerformed
         // TODO add your handling code here:
         String sql = "insert into inventory values (?,?,?,?,?)";
@@ -632,6 +666,25 @@ public class form_barang extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_lapangan1ActionPerformed
 
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        mainPanel.removeAll();
+        mainPanel.add(dataBarang);
+        mainPanel.repaint();
+        mainPanel.revalidate();
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // TODO add your handling code here:
+        mainPanel.removeAll();
+        mainPanel.add(dataBarang);
+        mainPanel.repaint();
+        mainPanel.revalidate();
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void inventoryMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inventoryMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inventoryMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton clear;
@@ -651,13 +704,13 @@ public class form_barang extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton kembali;
-    private javax.swing.JButton kembali1;
     private javax.swing.JComboBox<String> lapangan;
     private javax.swing.JComboBox<String> lapangan1;
     private javax.swing.JPanel mainPanel;

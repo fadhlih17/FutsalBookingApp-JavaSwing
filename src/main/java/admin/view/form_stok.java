@@ -80,7 +80,7 @@ public class form_stok extends javax.swing.JPanel {
         btnPrint.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnPrint.setForeground(new java.awt.Color(255, 255, 255));
         btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/print.png"))); // NOI18N
-        btnPrint.setText("Cetak");
+        btnPrint.setText("CETAK");
         btnPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPrintActionPerformed(evt);
@@ -89,15 +89,22 @@ public class form_stok extends javax.swing.JPanel {
 
         inventory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Kode Barang", "Nama Barang", "Jenis", "Stok", "Lapangan"
             }
         ));
+        inventory.setFocusable(false);
+        inventory.setRowHeight(25);
+        inventory.setSelectionBackground(new java.awt.Color(32, 136, 203));
+        inventory.setShowGrid(false);
+        inventory.setShowHorizontalLines(true);
+        inventory.getTableHeader().setReorderingAllowed(false);
         inventory.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 inventoryMouseClicked(evt);
@@ -109,12 +116,15 @@ public class form_stok extends javax.swing.JPanel {
         stokBarang.setLayout(stokBarangLayout);
         stokBarangLayout.setHorizontalGroup(
             stokBarangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 832, Short.MAX_VALUE)
             .addGroup(stokBarangLayout.createSequentialGroup()
                 .addGroup(stokBarangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 612, Short.MAX_VALUE))
+            .addGroup(stokBarangLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE)
+                .addContainerGap())
         );
         stokBarangLayout.setVerticalGroup(
             stokBarangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

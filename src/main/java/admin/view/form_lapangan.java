@@ -5,6 +5,8 @@
 package admin.view;
 
 
+import java.awt.Color;
+import java.awt.Font;
 import org.example.controllers.CategoryController;
 import org.example.controllers.VenueController;
 import org.example.dependencyInjection.CategoryControllerFactory;
@@ -40,6 +42,13 @@ public class form_lapangan extends javax.swing.JPanel {
     EditVenueView edit = new EditVenueView();
     public form_lapangan() {
         initComponents();
+        
+        tblVenues.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        tblVenues.getTableHeader().setOpaque(false);
+        tblVenues.getTableHeader().setBackground(new Color(32, 136, 203));
+        tblVenues.getTableHeader().setForeground(new Color(40, 40, 40));
+        tblVenues.setRowHeight(25);
+        
         fillComboBox();
         fillCombo();
         readTable();
@@ -109,18 +118,18 @@ public class form_lapangan extends javax.swing.JPanel {
         bgstatus = new javax.swing.ButtonGroup();
         mainPanel = new javax.swing.JPanel();
         dataLapangan = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblVenues = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         cbCategory = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblVenues = new javax.swing.JTable();
         btnCreate = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         btnRefresh = new javax.swing.JButton();
         btnAddCategory = new javax.swing.JButton();
         tambahLapangan = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        kembali = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
         simpan = new javax.swing.JButton();
         reset = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -153,23 +162,6 @@ public class form_lapangan extends javax.swing.JPanel {
 
         dataLapangan.setBackground(new java.awt.Color(255, 255, 255));
         dataLapangan.setForeground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("DATA LAPANGAN");
-
-        cbCategory.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbCategoryItemStateChanged(evt);
-            }
-        });
-        cbCategory.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbCategoryActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Filter Berdasarkan Kategori");
 
         jScrollPane2.setPreferredSize(new java.awt.Dimension(831, 572));
 
@@ -277,9 +269,14 @@ public class form_lapangan extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "id", "Nama", "Deskripsi", "Jam Buka", "Jam Tutup", "Harga", "Kategori", "Status"
+                "ID", "Nama", "Deskripsi", "Jam Buka", "Jam Tutup", "Harga", "Kategori", "Status"
             }
         ));
+        tblVenues.setFocusable(false);
+        tblVenues.setRowHeight(25);
+        tblVenues.setSelectionBackground(new java.awt.Color(32, 136, 203));
+        tblVenues.setShowHorizontalLines(true);
+        tblVenues.getTableHeader().setReorderingAllowed(false);
         tblVenues.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblVenuesMouseClicked(evt);
@@ -287,28 +284,60 @@ public class form_lapangan extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblVenues);
 
-        btnCreate.setText("Tambah Lapangan");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("DATA LAPANGAN");
+
+        cbCategory.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbCategoryItemStateChanged(evt);
+            }
+        });
+        cbCategory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbCategoryActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Filter Berdasarkan Kategori");
+
+        btnCreate.setBackground(new java.awt.Color(0, 153, 51));
+        btnCreate.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCreate.setForeground(new java.awt.Color(255, 255, 255));
+        btnCreate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/add2.png"))); // NOI18N
+        btnCreate.setText("TAMBAH");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateActionPerformed(evt);
             }
         });
 
-        btnEdit.setText("Perbarui");
+        btnEdit.setBackground(new java.awt.Color(0, 153, 153));
+        btnEdit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnEdit.setForeground(new java.awt.Color(255, 255, 255));
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editt.png"))); // NOI18N
+        btnEdit.setText("PERBARUI");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditActionPerformed(evt);
             }
         });
 
-        btnRefresh.setText("Segarkan");
+        btnRefresh.setBackground(new java.awt.Color(255, 204, 0));
+        btnRefresh.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
+        btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/refresh.png"))); // NOI18N
+        btnRefresh.setText("SEGARKAN");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRefreshActionPerformed(evt);
             }
         });
 
-        btnAddCategory.setText("Tambah Kategori");
+        btnAddCategory.setBackground(new java.awt.Color(0, 102, 0));
+        btnAddCategory.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAddCategory.setForeground(new java.awt.Color(255, 255, 255));
+        btnAddCategory.setText("TAMBAH KATEGORI");
         btnAddCategory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddCategoryActionPerformed(evt);
@@ -322,12 +351,12 @@ public class form_lapangan extends javax.swing.JPanel {
             .addGroup(dataLapanganLayout.createSequentialGroup()
                 .addComponent(btnCreate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(btnEdit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAddCategory)
-                .addGap(18, 18, 18)
-                .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnRefresh)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                 .addGroup(dataLapanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cbCategory, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3))
@@ -368,13 +397,17 @@ public class form_lapangan extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setText("TAMBAH LAPANGAN");
 
-        kembali.setText("BATAL");
-        kembali.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kembaliActionPerformed(evt);
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exit.png"))); // NOI18N
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
             }
         });
 
+        simpan.setBackground(new java.awt.Color(0, 153, 51));
+        simpan.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        simpan.setForeground(new java.awt.Color(255, 255, 255));
+        simpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-save-40.png"))); // NOI18N
         simpan.setText("SIMPAN");
         simpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -382,6 +415,10 @@ public class form_lapangan extends javax.swing.JPanel {
             }
         });
 
+        reset.setBackground(new java.awt.Color(255, 204, 0));
+        reset.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        reset.setForeground(new java.awt.Color(255, 255, 255));
+        reset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/refresh.png"))); // NOI18N
         reset.setText("SEGARKAN");
         reset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -430,24 +467,25 @@ public class form_lapangan extends javax.swing.JPanel {
                     .addComponent(txtId)
                     .addComponent(txtName)
                     .addComponent(jScrollPane1)
-                    .addComponent(txtPrice)
-                    .addComponent(cbCategory1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(rbOpen)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(rbClose))
-                            .addComponent(jsOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jsClose, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(cbCategory1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel13)
+                                .addComponent(jLabel14)
+                                .addComponent(jLabel8)
+                                .addComponent(jLabel9)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(rbOpen)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(rbClose))
+                                .addComponent(jsOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jsClose, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtPrice, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -501,13 +539,12 @@ public class form_lapangan extends javax.swing.JPanel {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(tambahLapanganLayout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(575, 575, 575))
+                        .addGap(535, 535, 535)
+                        .addComponent(jLabel10))
                     .addGroup(tambahLapanganLayout.createSequentialGroup()
-                        .addComponent(simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(simpan)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(reset, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(reset)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(6, 6, 6))
         );
@@ -515,12 +552,13 @@ public class form_lapangan extends javax.swing.JPanel {
             tambahLapanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tambahLapanganLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(26, 26, 26)
+                .addGroup(tambahLapanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel10))
+                .addGap(18, 18, 18)
                 .addGroup(tambahLapanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(simpan, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(reset, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(reset, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -530,13 +568,6 @@ public class form_lapangan extends javax.swing.JPanel {
 
         add(mainPanel, "card2");
     }// </editor-fold>//GEN-END:initComponents
-
-    private void kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kembaliActionPerformed
-        mainPanel.removeAll();
-        mainPanel.add(dataLapangan);
-        mainPanel.repaint();
-        mainPanel.revalidate();
-    }//GEN-LAST:event_kembaliActionPerformed
 
     private void simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanActionPerformed
         Time open = Time.valueOf(""+jsOpen.getValue()+":00:00");
@@ -669,6 +700,13 @@ public class form_lapangan extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_rbCloseActionPerformed
 
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        mainPanel.removeAll();
+        mainPanel.add(dataLapangan);
+        mainPanel.repaint();
+        mainPanel.revalidate();
+    }//GEN-LAST:event_jLabel10MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgstatus;
@@ -680,6 +718,7 @@ public class form_lapangan extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cbCategory1;
     private javax.swing.JPanel dataLapangan;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
@@ -695,7 +734,6 @@ public class form_lapangan extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jsClose;
     private javax.swing.JSpinner jsOpen;
-    private javax.swing.JButton kembali;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JRadioButton rbClose;
     private javax.swing.JRadioButton rbOpen;
