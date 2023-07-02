@@ -219,6 +219,7 @@ public class EditVenueView extends javax.swing.JFrame {
     }//GEN-LAST:event_rbCloseEdtVenueActionPerformed
 
     public void fillComboBox(){
+        cbCategoryEdtVenue.removeAllItems();
         List<Category> categories = categoryController.findAllCategories();
         cbCategoryEdtVenue.addItem("Pilih Kategori");
         for (Category category : categories) {

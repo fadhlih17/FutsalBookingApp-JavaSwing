@@ -603,6 +603,7 @@ public class form_lapangan extends javax.swing.JPanel {
 
     private void reset(){
         /*panel tambah*/
+        id = null;
         txtId.setText("");
         txtName.setText("");
         txtDescription.setText("");
@@ -636,7 +637,7 @@ public class form_lapangan extends javax.swing.JPanel {
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         tblVenues.clearSelection();
-
+        reset();
         cbCategory.removeAllItems();
         fillComboBox();
 
@@ -683,6 +684,7 @@ public class form_lapangan extends javax.swing.JPanel {
     }//GEN-LAST:event_tblVenuesMouseClicked
 
     private void fillEditForm () {
+        edit.fillComboBox();
         edit.txtIdEdtVenue.setText(id);
         edit.txtNameEdtVenue.setText(name);
         edit.txtDescriptionEdtVenue.setText(description);
